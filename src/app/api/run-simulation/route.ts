@@ -1,16 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { spawn } from 'child_process';
-import fs from 'fs/promises';
+import { spawn, ChildProcessWithoutNullStreams } from 'child_process';
+// import fs from 'fs/promises'; // fs.readFile will be handled by a separate CSV download endpoint
 import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-
     const {
       apiKey,
       profileId,
-      // merchantId, // Clarify usage for DECIDE_MERCHANT_ID if different from profileId
+      // merchantId, // Not currently used by script for DECIDE_MERCHANT_ID
       numberOfBatches,
       batchSize,
       inputDebitPercent,
@@ -20,113 +19,117 @@ export async function POST(request: NextRequest) {
       maxAmount,
     } = body;
 
-    // Basic validation (more can be added)
     if (!apiKey || !profileId) {
       return NextResponse.json({ success: false, error: 'API Key and Profile ID are required.' }, { status: 400 });
     }
 
     const scriptPath = path.join(process.cwd(), 'src', 'app', 'pseudocode.py');
-    const csvPath = path.join(process.cwd(), 'src', 'app', 'debit_routing_simulation_results.csv');
+    // const csvPath = path.join(process.cwd(), 'src', 'app', 'debit_routing_simulation_results.csv'); // CSV path for reference, not read here
 
-    const args: string[] = ['-u', scriptPath]; // '-u' for unbuffered stdout/stderr
-
-    // Always pass API Key and Profile ID
+    const args: string[] = ['-u', scriptPath];
     args.push('--api_key', apiKey);
     args.push('--profile_id', profileId);
-    // If merchantId from UI is to be used for DECIDE_GATEWAY_MERCHANT_ID, pass it.
-    // The python script currently uses profile_id for DECIDE_GATEWAY_MERCHANT_ID.
-    // if (merchantId) args.push('--merchant_id_for_decide', merchantId);
 
-
-    // Conditionally add other arguments
-    if (numberOfBatches && Number(numberOfBatches) > 0) {
-      args.push('--no_of_batches', String(numberOfBatches));
-    }
-    if (batchSize && Number(batchSize) > 0) {
-      args.push('--batch_size', String(batchSize));
-    }
-    if (inputDebitPercent !== undefined && !isNaN(parseFloat(String(inputDebitPercent)))) {
-      args.push('--input_debit_percent', String(inputDebitPercent));
-    }
-    if (inputCoBadgedPercent !== undefined && !isNaN(parseFloat(String(inputCoBadgedPercent)))) {
-      args.push('--co_badged_percent', String(inputCoBadgedPercent));
-    }
-    if (inputRegulatedPercent !== undefined && !isNaN(parseFloat(String(inputRegulatedPercent)))) {
-      args.push('--regulated_percent', String(inputRegulatedPercent));
-    }
-    if (minAmount && Number(minAmount) > 0) {
-      args.push('--min_amount', String(minAmount));
-    }
-    if (maxAmount && Number(maxAmount) > 0) {
-      args.push('--max_amount', String(maxAmount));
-    }
-
-    // Ensure Python is in PATH or provide full path
-    // const pythonExecutable = process.env.PYTHON_EXECUTABLE || 'python3'; // Or 'python'
-    // Point to the Python interpreter in the virtual environment
-    // Assuming process.cwd() is the root of the Next.js project (Hyperswitch-LCR)
+    if (numberOfBatches && Number(numberOfBatches) > 0) args.push('--no_of_batches', String(numberOfBatches));
+    if (batchSize && Number(batchSize) > 0) args.push('--batch_size', String(batchSize));
+    if (inputDebitPercent !== undefined && !isNaN(parseFloat(String(inputDebitPercent)))) args.push('--input_debit_percent', String(inputDebitPercent));
+    if (inputCoBadgedPercent !== undefined && !isNaN(parseFloat(String(inputCoBadgedPercent)))) args.push('--co_badged_percent', String(inputCoBadgedPercent));
+    if (inputRegulatedPercent !== undefined && !isNaN(parseFloat(String(inputRegulatedPercent)))) args.push('--regulated_percent', String(inputRegulatedPercent));
+    if (minAmount && Number(minAmount) > 0) args.push('--min_amount', String(minAmount));
+    if (maxAmount && Number(maxAmount) > 0) args.push('--max_amount', String(maxAmount));
+    
     const pythonExecutable = path.join(process.cwd(), '.venv', 'bin', 'python3');
+    let pythonProcess: ChildProcessWithoutNullStreams | null = null;
 
+    const stream = new ReadableStream({
+      start(controller) {
+        try {
+          pythonProcess = spawn(pythonExecutable, args);
 
-    return new Promise((resolve, reject) => {
-      const pythonProcess = spawn(pythonExecutable, args);
+          const sendEvent = (type: string, content: any) => {
+            const message = `data: ${JSON.stringify({ type, content })}\n\n`;
+            controller.enqueue(new TextEncoder().encode(message));
+          };
 
-      let stdoutData = '';
-      let stderrData = '';
+          pythonProcess.stdout.on('data', (data) => {
+            const lines = data.toString().split('\n').filter((line:string) => line.trim() !== '');
+            lines.forEach((line:string) => {
+              console.log(`Python stdout: ${line}`);
+              if (line.startsWith('data: ')) {
+                try {
+                  const sseObj = JSON.parse(line.slice(6));
+                  sendEvent(sseObj.type, sseObj.content);
+                } catch (e) {
+                  sendEvent('log', line); // fallback to log if not valid JSON
+                }
+              } else {
+                sendEvent('log', line);
+              }
+            });
+          });
 
-      pythonProcess.stdout.on('data', (data) => {
-        stdoutData += data.toString();
-        console.log(`Python stdout: ${data}`);
-      });
+          pythonProcess.stderr.on('data', (data) => {
+            const lines = data.toString().split('\n').filter((line:string) => line.trim() !== '');
+            lines.forEach((line:string) => {
+              console.error(`Python stderr: ${line}`);
+              sendEvent('error_log', line);
+            });
+          });
 
-      pythonProcess.stderr.on('data', (data) => {
-        stderrData += data.toString();
-        console.error(`Python stderr: ${data}`);
-      });
+          pythonProcess.on('error', (err) => {
+            console.error('Failed to start Python subprocess.', err);
+            sendEvent('script_error', `Failed to start script: ${err.message}`);
+            controller.close();
+          });
 
-      pythonProcess.on('close', async (code) => {
-        console.log(`Python process exited with code ${code}`);
-        if (code === 0) {
-          try {
-            // Attempt to read CSV file
-            const csvFileContent = await fs.readFile(csvPath, 'utf-8');
-            // Optionally delete CSV after reading if it's meant to be transient for this request
-            // await fs.unlink(csvPath); 
-            resolve(NextResponse.json({
-              success: true,
-              consoleOutput: stdoutData + (stderrData ? `\nSTDERR:\n${stderrData}` : ''),
-              csvData: csvFileContent,
-            }));
-          } catch (fileError) {
-            console.error('Error reading CSV file:', fileError);
-            resolve(NextResponse.json({
-              success: true, // Script might have succeeded but CSV reading failed
-              consoleOutput: stdoutData + (stderrData ? `\nSTDERR:\n${stderrData}` : ''),
-              csvData: null,
-              error: 'Simulation script ran, but failed to read result CSV.',
-            }));
-          }
-        } else {
-          resolve(NextResponse.json({
-            success: false,
-            error: `Simulation script failed with exit code ${code}.`,
-            consoleOutput: stdoutData + (stderrData ? `\nSTDERR:\n${stderrData}` : ''),
-          }, { status: 500 }));
+          pythonProcess.on('close', (code) => {
+            console.log(`Python process exited with code ${code}`);
+            sendEvent('script_exit', { code });
+            if (code === 0) {
+              // CSV is generated by the script, client will be notified to download separately
+              sendEvent('csv_ready', { fileName: 'debit_routing_simulation_results.csv' });
+            }
+            controller.close();
+          });
+
+        } catch (e) {
+            let message = 'Unknown error during script execution setup';
+            if (e instanceof Error) message = e.message;
+            console.error('Error setting up script execution:', e);
+            try {
+                const errEvent = `data: ${JSON.stringify({ type: 'script_error', content: `Error setting up script: ${message}` })}\n\n`;
+                controller.enqueue(new TextEncoder().encode(errEvent));
+            } catch (enqueueError) {
+                console.error("Error enqueuing setup error:", enqueueError)
+            }
+            controller.close();
         }
-      });
+      },
+      cancel(reason) {
+        console.log('Stream cancelled by client:', reason);
+        if (pythonProcess && !pythonProcess.killed) {
+          pythonProcess.kill('SIGTERM'); // or 'SIGKILL'
+          console.log('Python process terminated due to client disconnect.');
+        }
+      },
+    });
 
-      pythonProcess.on('error', (err) => {
-        console.error('Failed to start Python subprocess.', err);
-        resolve(NextResponse.json({ success: false, error: 'Failed to start simulation script.', details: err.message }, { status: 500 }));
-      });
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        // 'X-Accel-Buffering': 'no', // Useful if behind Nginx
+      },
     });
 
   } catch (error) {
-    console.error('Error in /api/run-simulation:', error);
+    console.error('Error in /api/run-simulation POST handler:', error);
     let message = 'An unknown error occurred';
     if (error instanceof Error) {
         message = error.message;
     }
+    // This error is for issues before the stream starts (e.g., request.json() fails)
     return NextResponse.json({ success: false, error: 'Internal server error processing simulation request.', details: message }, { status: 500 });
   }
 }

@@ -12,18 +12,20 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ListChecks, CheckCircle2, XCircle, Gauge } from 'lucide-react';
 import type { OverallSRHistory, MerchantConnector } from '@/lib/types'; // Added MerchantConnector
 
-
 interface StatsViewProps {
-  currentControls: FormValues | null;
-  merchantConnectors: MerchantConnector[]; // Added merchantConnectors prop
+  currentControls?: FormValues | null;
+  merchantConnectors?: MerchantConnector[]; // Added merchantConnectors prop
   processedPayments?: number;
   totalSuccessful?: number;
   totalFailed?: number;
-  overallSuccessRateHistory: OverallSRHistory;
+  overallSuccessRateHistory?: OverallSRHistory;
   parentTab?: 'intelligent-routing' | 'least-cost-routing'; // Add parentTab prop
   successRateHistory?: any;
   volumeHistory?: any;
   connectorToggleStates?: any;
+  overallSavingsPercentage?: number;
+  totalProcessedAmount?: number;
+  totalDebitRoutedTransactions?: number;
 }
 
 const CHART_COLORS_HSL = {
@@ -36,33 +38,34 @@ const CHART_COLORS_HSL = {
 
 const chartColorKeys = Object.keys(CHART_COLORS_HSL) as (keyof typeof CHART_COLORS_HSL)[];
 
-export function StatsView({
-  currentControls,
-  merchantConnectors, // Destructure merchantConnectors from props
-  processedPayments = 0,
-  totalSuccessful = 0,
-  totalFailed = 0,
-  overallSuccessRateHistory,
-  parentTab = 'intelligent-routing', // Default to intelligent-routing
-  successRateHistory = [],
-  volumeHistory = [],
-  connectorToggleStates = {},
-}: StatsViewProps) {
+export function StatsView(props: StatsViewProps) {
+  const {
+    currentControls = null,
+    merchantConnectors = [],
+    processedPayments = 0,
+    totalSuccessful = 0,
+    totalFailed = 0,
+    overallSuccessRateHistory = { overall_sr: [], thirty_day_avg_sr: 0, total_transactions: 0 },
+    parentTab = 'intelligent-routing',
+    successRateHistory = [],
+    volumeHistory = [],
+    connectorToggleStates = {},
+    overallSavingsPercentage = 0,
+    totalProcessedAmount = 0,
+    totalDebitRoutedTransactions = 0,
+  } = props;
+
   const overallSR = currentControls?.overallSuccessRate ?? 0;
-  // const effectiveTps = currentControls?.tps ?? 0; // TPS Removed
 
   const processorSRData = useMemo(() => {
     if (!currentControls?.processorWiseSuccessRates) {
       return [];
     }
 
-    // If processorWiseSuccessRates exists, but processedPayments is 0,
-    // map processors to show 0 SR and 0 counts.
-    // Directly use successfulPaymentCount and totalPaymentCount from currentControls
     return Object.keys(currentControls.processorWiseSuccessRates)
       .map(processorId => {
         const processorData = currentControls.processorWiseSuccessRates![processorId];
-        const connectorInfo = merchantConnectors.find(mc => (mc.merchant_connector_id || mc.connector_name) === processorId);
+        const connectorInfo = merchantConnectors?.find(mc => (mc.merchant_connector_id || mc.connector_name) === processorId);
         const processorName = connectorInfo ? connectorInfo.connector_name : processorId;
         
         const successfulPayments = processorData.successfulPaymentCount;
@@ -81,7 +84,7 @@ export function StatsView({
       // Sort by total payments for this processor as a proxy for volume
       .sort((a, b) => b.volumeForSort - a.volumeForSort) 
       .map(({ volumeForSort, ...rest }) => rest); // Remove temporary sort key
-  }, [currentControls?.processorWiseSuccessRates, merchantConnectors]);
+  }, [props.currentControls?.processorWiseSuccessRates, props.merchantConnectors]);
 
   const transactionDistributionData = useMemo(() => {
     if (!currentControls?.processorWiseSuccessRates) {
@@ -90,7 +93,7 @@ export function StatsView({
     return Object.keys(currentControls.processorWiseSuccessRates)
       .map((processorId) => {
         const stats = currentControls.processorWiseSuccessRates![processorId];
-        const connectorInfo = merchantConnectors.find(mc => (mc.merchant_connector_id || mc.connector_name) === processorId);
+        const connectorInfo = merchantConnectors?.find(mc => (mc.merchant_connector_id || mc.connector_name) === processorId);
         const processorName = connectorInfo ? connectorInfo.connector_name : processorId;
         return {
           name: processorName,
@@ -100,7 +103,7 @@ export function StatsView({
       })
       .filter(item => item.value > 0) 
       .sort((a,b) => b.value - a.value); 
-  }, [currentControls?.processorWiseSuccessRates, merchantConnectors]);
+  }, [props.currentControls?.processorWiseSuccessRates, props.merchantConnectors]);
 
   // Card headings based on parentTab
   const headings = parentTab === 'least-cost-routing'
@@ -115,6 +118,8 @@ export function StatsView({
         'Total Failed',
       ];
 
+  console.log('PROPS TO StatsView', { overallSavingsPercentage, totalProcessedAmount, totalDebitRoutedTransactions });
+
   return (
     <div className="space-y-6 flex flex-col">
       {/* Stats Cards in a single row */}
@@ -126,9 +131,9 @@ export function StatsView({
             <CheckCircle2 className="h-5 w-5 text-green-500" />
           </CardHeader>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold">{totalFailed.toLocaleString()}</div>
+            <div className="text-2xl font-bold">{overallSavingsPercentage?.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
-              {processedPayments > 0 ? `${((totalFailed / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
+              {`${overallSavingsPercentage?.toFixed(2)}%`}
             </p>
           </CardContent>
         </Card>
@@ -139,9 +144,9 @@ export function StatsView({
             <ListChecks className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold">{processedPayments.toLocaleString()}</div>
+            <div className="text-2xl font-bold">{totalProcessedAmount?.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
-                of {currentControls?.totalPayments.toLocaleString() || 'N/A'} target
+              USD
             </p>
           </CardContent>
         </Card>
@@ -152,9 +157,9 @@ export function StatsView({
             <ListChecks className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold">{totalSuccessful.toLocaleString()}</div>
+            <div className="text-2xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
-              {processedPayments > 0 ? `${((totalSuccessful / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
+              {processedPayments > 0 ? `${((totalDebitRoutedTransactions / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
             </p>
           </CardContent>
         </Card>

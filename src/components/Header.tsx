@@ -63,7 +63,7 @@ export function Header({
 
       <div className="flex items-center gap-2">
         {(isIdle || isPaused) && (
-          <Button onClick={onStartSimulation} disabled={isSimulating || isPending} variant="primary" size="default">
+          <Button onClick={() => onStartSimulation()} disabled={isSimulating || isPending} variant="primary" size="default">
             {isPending ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <PlayCircle className="mr-2 h-5 w-5" />}
             {isPending ? 'Processing...' : (isPaused ? 'Resume Simulation' : 'Start Simulation')}
           </Button>

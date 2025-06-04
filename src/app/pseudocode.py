@@ -371,7 +371,15 @@ def simulate_debit_routing():
     safe_print(f"   💲 Total Amount Processed (All Successful Txns): ${total_processed_all_types_all_batches:.2f} USD")
     safe_print(f"   📈 Total Debit Routed Transactions: {YELLOW}{total_debit_routed_count}{RESET}")
     safe_print("=" * 40 + "\n")
-    
+
+    # Prepare structured summary data for SSE
+    summary_data = {
+        "overall_savings_percentage": round(overall_savings_percentage, 2),
+        "total_processed_amount": round(total_processed_all_types_all_batches, 2),
+        "total_debit_routed_transactions": total_debit_routed_count
+    }
+    safe_print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}\n")
+
     write_to_csv(all_simulation_data, CSV_FILENAME)
     # Corrected log message for CSV writing in 'w' mode
     if all_simulation_data: # Only print if data was actually written

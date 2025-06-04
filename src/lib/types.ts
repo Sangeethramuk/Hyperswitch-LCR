@@ -89,7 +89,9 @@ export const TransactionLogEntrySchema = z.object({
   status: z.string().describe('Status of the payment (e.g., succeeded, failed, pending).'),
   connector: z.string().describe('The payment connector/processor used for this transaction.'),
   timestamp: z.number().describe('Timestamp of when the transaction was logged (epoch milliseconds).'),
+  rawLog: z.string().optional().describe('Full raw Python log line for the transaction.'), // ✅ Add this
 });
+
 
 // Zod Schemas for AI Simulation Summary Flow
 export const AISummaryProcessorMetricSchema = z.object({
@@ -145,4 +147,6 @@ export interface TransactionLogEntry {
   timestamp: number; // epoch milliseconds, to help with sequencing and time-based analysis
   routingApproach?: 'exploration' | 'exploitation' | 'unknown' | 'N/A'; // Added routing approach
   sr_scores?: Record<string, number>; // Added sr_scores
+  rawLog?: string; // ✅ NEW: Full raw Python log for detailed UI display
 }
+
