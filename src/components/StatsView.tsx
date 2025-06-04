@@ -105,9 +105,9 @@ export function StatsView({
   // Card headings based on parentTab
   const headings = parentTab === 'least-cost-routing'
     ? [
+        'Total Savings (%)',
         'Total Amount Processed',
         'Total Debit Routed Transactions',
-        'Total Savings (%)',
       ]
     : [
         'Total Processed',
@@ -117,11 +117,25 @@ export function StatsView({
 
   return (
     <div className="space-y-6 flex flex-col">
-      {/* Stats Cards in a 2-column grid for wider screens, stack on smaller */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {/* Stats Cards in a single row */}
+      <div className="grid grid-cols-3 gap-6">
+        {/* Total Savings (%) */}
         <Card className="shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
             <CardTitle className="text-sm font-medium">{headings[0]}</CardTitle>
+            <CheckCircle2 className="h-5 w-5 text-green-500" />
+          </CardHeader>
+          <CardContent className="p-6">
+            <div className="text-2xl font-bold">{totalFailed.toLocaleString()}</div>
+            <p className="text-xs text-muted-foreground">
+              {processedPayments > 0 ? `${((totalFailed / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
+            </p>
+          </CardContent>
+        </Card>
+        {/* Total Amount Processed */}
+        <Card className="shadow-sm">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
+            <CardTitle className="text-sm font-medium">{headings[1]}</CardTitle>
             <ListChecks className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent className="p-6">
@@ -131,38 +145,16 @@ export function StatsView({
             </p>
           </CardContent>
         </Card>
-        {/* Effective TPS Card Removed */}
-        {/* <Card className="shadow-md">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Effective TPS</CardTitle>
-            <Gauge className="h-5 w-5 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">N/A</div>
-            <p className="text-xs text-muted-foreground">transactions per second (Rate limited by interval)</p>
-          </CardContent>
-        </Card> */}
+        {/* Total Debit Routed Transactions */}
         <Card className="shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
-            <CardTitle className="text-sm font-medium">{headings[1]}</CardTitle>
-            <CheckCircle2 className="h-5 w-5 text-green-500" />
+            <CardTitle className="text-sm font-medium">{headings[2]}</CardTitle>
+            <ListChecks className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent className="p-6">
             <div className="text-2xl font-bold">{totalSuccessful.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               {processedPayments > 0 ? `${((totalSuccessful / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
-            <CardTitle className="text-sm font-medium">{headings[2]}</CardTitle>
-            <XCircle className="h-5 w-5 text-red-500" />
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="text-2xl font-bold">{totalFailed.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              {processedPayments > 0 ? `${((totalFailed / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
             </p>
           </CardContent>
         </Card>
