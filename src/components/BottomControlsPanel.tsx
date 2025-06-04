@@ -733,48 +733,51 @@ export function BottomControlsPanel({
               {activeTab === 'routing' && (
                 parentTab === 'least-cost-routing' ? (
                   <div className="flex flex-col gap-8">
-                    <h2 className="text-xl font-bold mb-4">Debit Routing Parameters</h2>
+                    <h2 className="text-lg font-semibold mb-4">Debit Routing Parameters</h2>
                     {/* Debit Transactions Slider */}
-                    <div className="mb-6">
-                      <div className="font-semibold text-lg mb-1">Debit Transactions: {form.watch('debitTransactionsPercent') ?? 0}%</div>
+                    <div className="mb-6 w-full">
+                      <div className="font-normal text-base mb-1">Debit Transactions: {form.watch('debitTransactionsPercent') ?? 0}%</div>
                       <Slider
+                        className="w-full"
                         value={[form.watch('debitTransactionsPercent') ?? 0]}
                         min={0}
                         max={100}
                         step={1}
                         onValueChange={value => form.setValue('debitTransactionsPercent', value[0])}
                       />
-                      <div className="text-muted-foreground text-sm mt-1">% of all transactions that are debit</div>
+                      <div className="text-muted-foreground text-xs font-normal mt-1">% of all transactions that are debit</div>
                     </div>
                     {/* Existing Sliders */}
-                    <div className="mb-6">
-                      <div className="font-semibold text-lg mb-1">Eligible Transaction %: {form.watch('eligibleTransactionPercent') ?? 0}%</div>
+                    <div className="mb-6 w-full">
+                      <div className="font-normal text-base mb-1">Eligible Transaction %: {form.watch('eligibleTransactionPercent') ?? 0}%</div>
                       <Slider
+                        className="w-full"
                         value={[form.watch('eligibleTransactionPercent') ?? 0]}
                         min={0}
                         max={100}
                         step={1}
                         onValueChange={value => form.setValue('eligibleTransactionPercent', value[0])}
                       />
-                      <div className="text-muted-foreground text-sm mt-1">% of traffic having co-badged cards</div>
+                      <div className="text-muted-foreground text-xs font-normal mt-1">% of traffic having co-badged cards</div>
                     </div>
-                    <div className="mb-6">
-                      <div className="font-semibold text-lg mb-1">Regulated Issuer Transaction %: {form.watch('regulatedIssuerTransactionPercent') ?? 0}%</div>
+                    <div className="mb-6 w-full">
+                      <div className="font-normal text-base mb-1">Regulated Issuer Transaction %: {form.watch('regulatedIssuerTransactionPercent') ?? 0}%</div>
                       <Slider
+                        className="w-full"
                         value={[form.watch('regulatedIssuerTransactionPercent') ?? 0]}
                         min={0}
                         max={100}
                         step={1}
                         onValueChange={value => form.setValue('regulatedIssuerTransactionPercent', value[0])}
                       />
-                      <div className="text-muted-foreground text-sm mt-1">% of traffic having regulated co-badged cards</div>
+                      <div className="text-muted-foreground text-xs font-normal mt-1">% of traffic having regulated co-badged cards</div>
                     </div>
                     {/* Min and Max Amount Range Slider with Inputs */}
-                    <div className="mb-6">
-                      <div className="font-semibold text-lg mb-1">Amount Range</div>
-                      <div className="flex items-center gap-4 mb-2">
-                        <div className="flex items-center gap-2">
-                          <span>Min</span>
+                    <div className="mb-6 w-full">
+                      <div className="text-base font-semibold mb-1">Amount Range</div>
+                      <div className="flex flex-wrap items-center gap-4 mb-2 w-full">
+                        <div className="flex items-center gap-2 w-auto">
+                          <span className="text-sm font-normal">Min</span>
                           <Input
                             type="number"
                             min={0}
@@ -784,12 +787,12 @@ export function BottomControlsPanel({
                               const min = Math.max(0, Math.min(Number(e.target.value), form.watch('maxAmount') ?? 1000));
                               form.setValue('minAmount', min);
                             }}
-                            className="w-24 text-center"
+                            className="text-center flex-1 min-w-0 text-sm font-normal"
                           />
                         </div>
-                        <span className="text-xl font-bold">-</span>
-                        <div className="flex items-center gap-2">
-                          <span>Max</span>
+                        <span className="text-base font-semibold">-</span>
+                        <div className="flex items-center gap-2 w-auto">
+                          <span className="text-sm font-normal">Max</span>
                           <Input
                             type="number"
                             min={form.watch('minAmount') ?? 0}
@@ -799,11 +802,12 @@ export function BottomControlsPanel({
                               const max = Math.min(1000, Math.max(Number(e.target.value), form.watch('minAmount') ?? 0));
                               form.setValue('maxAmount', max);
                             }}
-                            className="w-24 text-center"
+                            className="text-center flex-1 min-w-0 text-sm font-normal"
                           />
                         </div>
                       </div>
                       <Slider
+                        className="w-full"
                         value={[
                           form.watch('minAmount') ?? 0,
                           form.watch('maxAmount') ?? 1000
@@ -816,7 +820,7 @@ export function BottomControlsPanel({
                           form.setValue('maxAmount', Math.max(min, max));
                         }}
                       />
-                      <div className="text-muted-foreground text-sm mt-1">Enter or select min and max amount for debit routing</div>
+                      <div className="text-muted-foreground text-xs font-normal mt-1">Enter or select min and max amount for debit routing</div>
                     </div>
                   </div>
                 ) : (
@@ -858,6 +862,7 @@ export function BottomControlsPanel({
                                 <FormLabel className="text-xs">Exploration Percent: {field.value}%</FormLabel>
                                 <FormControl>
                                   <Slider
+                                    className="w-full max-w-full"
                                     defaultValue={[field.value || 20]}
                                     min={0} max={100} step={1}
                                     onValueChange={(value: number[]) => { field.onChange(value[0]); }}
@@ -948,33 +953,78 @@ export function BottomControlsPanel({
                   </div>
                 )
               )}
-            </form>
-          </Form>
-        </ScrollArea>
-      </div>
-      {activeTab === 'test-payment-data' && (
+               {activeTab === 'test-payment-data' && (
         parentTab === 'least-cost-routing' ? (
-          <div className="flex flex-col gap-6">
-            <h2 className="text-xl font-bold mb-4">Connector-Specific Test Cards</h2>
-            <div className="border rounded-lg p-4 bg-muted/10">
-              <div className="font-semibold mb-2">Not Co-badged Card</div>
-              <div className="mb-1 text-sm">Joseph Doe</div>
-              <div className="mb-1 text-sm">4111112014267661</div>
-              <div className="mb-1 text-sm">12/30 737</div>
-            </div>
-            <div className="border rounded-lg p-4 bg-muted/10">
-              <div className="font-semibold mb-2">Regulated Co-badged Card</div>
-              <div className="mb-1 text-sm">Joseph Doe</div>
-              <div className="mb-1 text-sm">4400002000000004</div>
-              <div className="mb-1 text-sm">03/30 737</div>
-            </div>
-            <div className="border rounded-lg p-4 bg-muted/10">
-              <div className="font-semibold mb-2">Unregulated Co-badged Card</div>
-              <div className="mb-1 text-sm">Joseph Doe</div>
-              <div className="mb-1 text-sm">5002510000000013</div>
-              <div className="mb-1 text-sm">03/30 737</div>
-            </div>
-          </div>
+        <div>
+                 {/* Not Co-badged Card */}
+                 <div className="mb-7">
+                   <div className="text-lg font-semibold mb-2">Not Co-badged Card</div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Name</div>
+                     <Input value="Joseph Doe" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Card Number</div>
+                     <Input value="4111112014267661" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="flex gap-4">
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">Expiry Date</div>
+                       <Input value="12/30" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">CVV</div>
+                       <Input value="737" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                   </div>
+                 </div>
+                 {/* Regulated Co-badged Card */}
+                 <div className="mb-7">
+                   <div className="text-lg font-semibold mb-2">Regulated Co-badged Card</div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Name</div>
+                     <Input value="Joseph Doe" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Card Number</div>
+                     <Input value="4400002000000004" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="flex gap-4">
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">Expiry Date</div>
+                       <Input value="03/30" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">CVV</div>
+                       <Input value="737" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                   </div>
+                 </div>
+                 {/* Unregulated Co-badged Card */}
+                 <div className="mb-7">
+                   <div className="text-lg font-semibold mb-2">Unregulated Co-badged Card</div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Name</div>
+                     <Input value="Joseph Doe" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="mb-2">
+                     <div className="text-xs font-medium mb-1">Card Number</div>
+                     <Input value="5002510000000013" readOnly className="bg-muted text-base h-10" />
+                   </div>
+                   <div className="flex gap-4">
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">Expiry Date</div>
+                       <Input value="03/30" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                     <div className="flex-1">
+                       <div className="text-xs font-medium mb-1">CVV</div>
+                       <Input value="737" readOnly className="bg-muted text-base h-10" />
+                     </div>
+                   </div>
+                 </div>
+                 </div>
+           
+         
         ) : (
           <div className="flex flex-col gap-6"> {/* Adjusted gap */}
             {/* Separate Section for Failure Percentages */}
@@ -1002,6 +1052,7 @@ export function BottomControlsPanel({
                           </FormLabel>
                           <FormControl>
                             <Slider
+                              className="w-full max-w-full"
                               value={[field.value ?? 0]}
                               min={0} max={100} step={1}
                               onValueChange={(value: number[]) => field.onChange(value[0])}
@@ -1047,7 +1098,9 @@ export function BottomControlsPanel({
                                 render={({ field }) => (
                                   <FormItem>
                                     <FormLabel className="text-xs">Name on card</FormLabel>
-                                    <FormControl><Input placeholder="Default: Joseph Doe" {...field} className="bg-background text-xs h-8" /></FormControl>
+                                    <FormControl>
+                                      <Input placeholder="Default: Joseph Doe" value={field.value} readOnly className="bg-background text-xs h-8" />
+                                    </FormControl>
                                   </FormItem>
                                 )}
                               />
@@ -1058,13 +1111,7 @@ export function BottomControlsPanel({
                                   <FormItem>
                                     <FormLabel className="text-xs">Card number</FormLabel>
                                     <FormControl>
-                                      <Input
-                                        placeholder="Default: 4242..."
-                                        maxLength={19}
-                                        value={formatCardNumber(field.value || '')}
-                                        onChange={e => field.onChange(formatCardNumber(e.target.value))}
-                                        className="bg-background text-xs h-8"
-                                      />
+                                      <Input placeholder="Default: 4242..." value={formatCardNumber(field.value || '')} readOnly className="bg-background text-xs h-8" />
                                     </FormControl>
                                   </FormItem>
                                 )}
@@ -1076,7 +1123,9 @@ export function BottomControlsPanel({
                                   render={({ field }) => (
                                     <FormItem>
                                       <FormLabel className="text-xs">MM</FormLabel>
-                                      <FormControl><Input placeholder="10" maxLength={2} {...field} className="bg-background text-xs h-8" /></FormControl>
+                                      <FormControl>
+                                        <Input placeholder="10" value={field.value} readOnly maxLength={2} className="bg-background text-xs h-8" />
+                                      </FormControl>
                                     </FormItem>
                                   )}
                                 />
@@ -1086,7 +1135,9 @@ export function BottomControlsPanel({
                                   render={({ field }) => (
                                     <FormItem>
                                       <FormLabel className="text-xs">YY</FormLabel>
-                                      <FormControl><Input placeholder="25" maxLength={2} {...field} className="bg-background text-xs h-8" /></FormControl>
+                                      <FormControl>
+                                        <Input placeholder="25" value={field.value} readOnly maxLength={2} className="bg-background text-xs h-8" />
+                                      </FormControl>
                                     </FormItem>
                                   )}
                                 />
@@ -1097,7 +1148,9 @@ export function BottomControlsPanel({
                                 render={({ field }) => (
                                   <FormItem>
                                     <FormLabel className="text-xs">CVC</FormLabel>
-                                    <FormControl><Input placeholder="123" maxLength={4} {...field} className="bg-background text-xs h-8 w-20" /></FormControl>
+                                    <FormControl>
+                                      <Input placeholder="123" value={field.value} readOnly maxLength={4} className="bg-background text-xs h-8 w-20" />
+                                    </FormControl>
                                   </FormItem>
                                 )}
                               />
@@ -1111,7 +1164,7 @@ export function BottomControlsPanel({
                                 render={({ field }) => (
                                   <FormItem>
                                     <FormLabel className="text-xs">Name on card</FormLabel>
-                                    <FormControl><Input placeholder="Default: Jane Roe" {...field} className="bg-background text-xs h-8" /></FormControl>
+                                    <FormControl><Input placeholder="Default: Jane Roe" value={field.value} readOnly className="bg-background text-xs h-8" /></FormControl>
                                   </FormItem>
                                 )}
                               />
@@ -1122,13 +1175,7 @@ export function BottomControlsPanel({
                                   <FormItem>
                                     <FormLabel className="text-xs">Card number</FormLabel>
                                     <FormControl>
-                                      <Input
-                                        placeholder="Default: 4000..."
-                                        maxLength={19}
-                                        value={formatCardNumber(field.value || '')}
-                                        onChange={e => field.onChange(formatCardNumber(e.target.value))}
-                                        className="bg-background text-xs h-8"
-                                      />
+                                      <Input placeholder="Default: 4000..." value={formatCardNumber(field.value || '')} readOnly className="bg-background text-xs h-8" />
                                     </FormControl>
                                   </FormItem>
                                 )}
@@ -1140,7 +1187,7 @@ export function BottomControlsPanel({
                                   render={({ field }) => (
                                     <FormItem>
                                       <FormLabel className="text-xs">MM</FormLabel>
-                                      <FormControl><Input placeholder="12" maxLength={2} {...field} className="bg-background text-xs h-8" /></FormControl>
+                                      <FormControl><Input placeholder="12" value={field.value} readOnly maxLength={2} className="bg-background text-xs h-8" /></FormControl>
                                     </FormItem>
                                   )}
                                 />
@@ -1150,7 +1197,7 @@ export function BottomControlsPanel({
                                   render={({ field }) => (
                                     <FormItem>
                                       <FormLabel className="text-xs">YY</FormLabel>
-                                      <FormControl><Input placeholder="26" maxLength={2} {...field} className="bg-background text-xs h-8" /></FormControl>
+                                      <FormControl><Input placeholder="26" value={field.value} readOnly maxLength={2} className="bg-background text-xs h-8" /></FormControl>
                                     </FormItem>
                                   )}
                                 />
@@ -1161,7 +1208,7 @@ export function BottomControlsPanel({
                                 render={({ field }) => (
                                   <FormItem>
                                     <FormLabel className="text-xs">CVC</FormLabel>
-                                    <FormControl><Input placeholder="999" maxLength={4} {...field} className="bg-background text-xs h-8 w-20" /></FormControl>
+                                    <FormControl><Input placeholder="999" value={field.value} readOnly maxLength={4} className="bg-background text-xs h-8 w-20" /></FormControl>
                                   </FormItem>
                                 )}
                               />
@@ -1178,6 +1225,11 @@ export function BottomControlsPanel({
           </div>
         )
       )}
+            </form>
+          </Form>
+        </ScrollArea>
+      </div>
+     
     </div>
   );
 }

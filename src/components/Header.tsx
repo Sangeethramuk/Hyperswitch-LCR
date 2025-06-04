@@ -57,14 +57,7 @@ export function Header({
       </div>
 
       {/* Centered Tabs */}
-      <div className="flex-grow flex justify-center">
-        <Tabs value={activeTab} onValueChange={onTabChange} className="">
-          <TabsList>
-            <TabsTrigger value="intelligent-routing">Intelligent Routing</TabsTrigger>
-            <TabsTrigger value="least-cost-routing">Least Cost Routing</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
+      <div className="flex-grow flex justify-center"></div>
 
       <div className="flex items-center gap-2">
         {(isIdle || isPaused) && (

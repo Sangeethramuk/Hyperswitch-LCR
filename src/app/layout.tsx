@@ -9,8 +9,8 @@ const geistSans = GeistSans;
 const geistMono = GeistMono;
 
 export const metadata: Metadata = {
-  title: 'Hyperswitch Intelligent Routing',
-  description: 'Visualize and optimize transaction flows',
+  title: 'Hyperswitch Least cost Routing',
+  description: 'Optimize processing fees on debit payments by routing traffic to the cheapest network',
   icons: {
     icon: 'https://juspay.in/favicon.png',
   },

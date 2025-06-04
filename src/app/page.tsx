@@ -93,7 +93,8 @@ export default function HomePage() {
   const [activeSection, setActiveSection] = useState('general');
 
   // Top-level tab: 'intelligent-routing' or 'least-cost-routing'
-  const [parentTab, setParentTab] = useState<'intelligent-routing' | 'least-cost-routing'>('intelligent-routing');
+  // const [parentTab, setParentTab] = useState<'intelligent-routing' | 'least-cost-routing'>('intelligent-routing');
+  const parentTab = 'least-cost-routing';
   // Content tab: 'stats' or 'analytics', always reset to 'stats' when parentTab changes
   const [contentTab, setContentTab] = useState<'stats' | 'analytics'>('stats');
 
@@ -1134,10 +1135,10 @@ export default function HomePage() {
   return (
     <>
       <AppLayout>
-        <div className={parentTab === 'least-cost-routing' ? 'theme-least-cost' : 'theme-intelligent'}>
+        <div className={'theme-least-cost'}>
           <Header
             activeTab={parentTab}
-            onTabChange={tab => setParentTab(tab as 'intelligent-routing' | 'least-cost-routing')}
+            onTabChange={() => {}}
             onStartSimulation={handleStartSimulation} onPauseSimulation={handlePauseSimulation}
             onStopSimulation={handleStopSimulation} simulationState={simulationState}
           />
