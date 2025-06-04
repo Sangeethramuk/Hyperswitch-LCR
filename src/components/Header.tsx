@@ -10,6 +10,7 @@ interface HeaderProps {
   onPauseSimulation: () => void;
   onStopSimulation: () => void;
   simulationState: 'idle' | 'running' | 'paused';
+  isPending?: boolean; // Added for backend loading state
 }
 
 export function Header({
@@ -18,9 +19,10 @@ export function Header({
   onStartSimulation,
   onPauseSimulation,
   onStopSimulation,
-  simulationState
+  simulationState,
+  isPending // Destructure new prop
 }: HeaderProps) {
-  const isSimulating = simulationState === 'running';
+  const isSimulating = simulationState === 'running'; // UI state for simulation
   const isPaused = simulationState === 'paused';
   const isIdle = simulationState === 'idle';
 
@@ -61,19 +63,19 @@ export function Header({
 
       <div className="flex items-center gap-2">
         {(isIdle || isPaused) && (
-          <Button onClick={onStartSimulation} disabled={isSimulating} variant="primary" size="default">
-            {isSimulating ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <PlayCircle className="mr-2 h-5 w-5" />}
-            {isPaused ? 'Resume Simulation' : 'Start Simulation'}
+          <Button onClick={onStartSimulation} disabled={isSimulating || isPending} variant="primary" size="default">
+            {isPending ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <PlayCircle className="mr-2 h-5 w-5" />}
+            {isPending ? 'Processing...' : (isPaused ? 'Resume Simulation' : 'Start Simulation')}
           </Button>
         )}
-        {isSimulating && (
+        {isSimulating && !isPending && ( // Only show Pause if actively simulating (UI state) AND not pending backend
           <Button onClick={onPauseSimulation} variant="outline" size="default">
             <PauseCircle className="mr-2 h-5 w-5" />
             Pause Simulation
           </Button>
         )}
-        {(isSimulating || isPaused) && (
-          <Button onClick={onStopSimulation} variant="destructive" size="default">
+        { (isSimulating || isPaused || isPending) && ( // Show Stop if UI is simulating/paused OR if backend is pending
+          <Button onClick={onStopSimulation} variant="destructive" size="default" disabled={!isPending && simulationState === 'idle'}>
             <StopCircle className="mr-2 h-5 w-5" />
             Stop Simulation
           </Button>
