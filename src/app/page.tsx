@@ -61,6 +61,7 @@ export default function HomePage() {
   const [totalProcessedAmount, setTotalProcessedAmount] = useState<number>(0);
   const [totalDebitRoutedTransactions, setTotalDebitRoutedTransactions] = useState<number>(0);
   const [lastSimulationTimestamp, setLastSimulationTimestamp] = useState<number | null>(null);
+  const [transactionDistributionData, setTransactionDistributionData] = useState<Array<{ name: string; value: number }>>([]);
 
   const { toast } = useToast();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -251,6 +252,7 @@ export default function HomePage() {
         if (done) {
           setLastSimulationTimestamp(Date.now());
           console.log("Stream finished.");
+          processCsvForDistribution();
           break;
         }
         sseBuffer += value;
@@ -407,6 +409,52 @@ export default function HomePage() {
   const handleRequestAiSummary = useCallback(() => { /* ... original ... */ }, [currentControls, transactionLogs, toast, setSummaryAttempted, executeAiSummary]);
   useEffect(() => { /* ... original (for JS sim completion, review if needed for Python SSE) ... */ }, [simulationState, processedPaymentsCount, currentControls, transactionLogs, handleRequestAiSummary, summaryAttempted]);
 
+  const processCsvForDistribution = useCallback(async () => {
+    console.log("Processing CSV for transaction distribution...");
+    try {
+      const response = await fetch('/debit_routing_simulation_results.csv');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const csvText = await response.text();
+      const lines = csvText.split('\n');
+      const headers = lines[0].split(',').map(header => header.trim());
+      const networkIndex = headers.indexOf('card_network');
+
+      if (networkIndex === -1) {
+        console.error("Missing required 'card_network' column in CSV for distribution.");
+        setTransactionDistributionData([]);
+        return;
+      }
+
+      const networkCountMap: { [key: string]: number } = {};
+
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(value => value.trim()); // Use regex for robust split
+        const network = values[networkIndex];
+
+        if (network && network !== 'N/A') { // Exclude empty or N/A networks
+          networkCountMap[network] = (networkCountMap[network] || 0) + 1;
+        }
+      }
+
+      const distributionData = Object.keys(networkCountMap).map(network => ({
+        name: network,
+        value: networkCountMap[network],
+      })).sort((a, b) => b.value - a.value); // Sort by value descending
+
+      console.log("Transaction Distribution Data:", distributionData);
+      setTransactionDistributionData(distributionData);
+
+    } catch (error) {
+      console.error("Error processing CSV for distribution:", error);
+      setTransactionDistributionData([]);
+    }
+  }, []);
+
   return (
     <>
       <AppLayout>
@@ -431,11 +479,11 @@ export default function HomePage() {
               {parentTab !== 'least-cost-routing' ? (
                 <Tabs value={contentTab} onValueChange={tab => setContentTab(tab as 'stats' | 'analytics')} className="flex flex-col h-full">
                   <div className="flex items-center justify-start p-4 pb-0"><TabsList><TabsTrigger value="stats">Stats</TabsTrigger><TabsTrigger value="analytics">Analytics</TabsTrigger></TabsList></div>
-                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} /></div></ScrollArea></TabsContent>
+                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} /></div></ScrollArea></TabsContent>
                   <TabsContent value="analytics" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-2 md:p-4 lg:p-6"><div className="bg-white dark:bg-card border border-gray-200 dark:border-border rounded-xl shadow-sm p-6 mb-6"><AnalyticsGraphsView successRateHistory={successRateHistory} volumeHistory={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} /></div></div></ScrollArea></TabsContent>
                 </Tabs>
               ) : (
-                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} /></div></ScrollArea></div>
+                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} /></div></ScrollArea></div>
               )}
             </div>
             <div className="flex flex-col h-full min-h-0 border-l p-2 md:p-4 lg:p-6 w-[400px] min-w-[300px]">

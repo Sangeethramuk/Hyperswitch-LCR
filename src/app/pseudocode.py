@@ -71,6 +71,14 @@ current_transaction_number = 0
 summary_lock = threading.Lock()
 batch_results_aggregated = []
 
+# Define all possible CSV headers
+CSV_HEADERS = [
+    "run_id", "batch_id", "transaction_timestamp", "payment_id", "amount", 
+    "card_network", "card_isin", "status", "label", "payment_type", 
+    "co_badged_card_networks", "is_eligible_for_debit_routing", "saving_percentage", 
+    "is_debit_routed", "is_regulated"
+]
+
 def safe_print(*args, **kwargs):
     with print_lock:
         print(*args, **kwargs)
@@ -123,7 +131,7 @@ def write_to_csv(data_list, filename):
         
     try:
         with open(filename, 'w', newline='', encoding='utf-8') as output_file: 
-            dict_writer = csv.DictWriter(output_file, fieldnames=keys)
+            dict_writer = csv.DictWriter(output_file, fieldnames=CSV_HEADERS)
             dict_writer.writeheader() 
             dict_writer.writerows(data_list)
         safe_print(f"{GREEN}✅ Successfully wrote {len(data_list)} rows to CSV at {filename}{RESET}") # Success log for data
@@ -197,12 +205,14 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                     response2.raise_for_status()
                     resp2_json = response2.json()
                     debit_output = resp2_json.get("debit_routing_output", {})
+                    is_regulated = debit_output.get("is_regulated", "N/A")
                     networks = debit_output.get("co_badged_card_networks", []); savings_pct = debit_output.get("saving_percentage", 0)
                     txn_data["co_badged_card_networks"] = ", ".join(networks) if networks else "N/A"
                     if txn_data["co_badged_card_networks"] != "N/A": txn_data["is_eligible_for_debit_routing"] = "Yes"
                     first_network = networks[0] if networks else "N/A"
                     debit_networks_set = {"ACCEL", "STAR", "PULSE", "NYCE"}
                     txn_data["is_debit_routed"] = "Yes" if first_network.upper() in debit_networks_set else "No"
+                    txn_data["is_regulated"] = is_regulated
                     if txn_data["status"] == "succeeded":
                         txn_data["saving_percentage"] = savings_pct
                         current_saving = (savings_pct / 100.0) * hs_returned_amount_dollars
@@ -228,6 +238,7 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
         if txn_data["status"] != "succeeded": txn_data["saving_percentage"] = 0
         if payment_type == "credit" or label == "Not Co-badged Debit":
             txn_data["is_eligible_for_debit_routing"] = "No"; txn_data["is_debit_routed"] = "No"
+            txn_data["is_regulated"] = "N/A"
         
         batch_simulation_data.append(txn_data) 
 

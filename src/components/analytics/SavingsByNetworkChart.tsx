@@ -8,8 +8,6 @@ import { DollarSign } from 'lucide-react';
 interface SavingsByNetworkChartProps {
   csvFilePath: string;
   simulationRunId?: string | number | null;
-  totalSavings: number;
-  color?: string;
 }
 
 interface SavingsData {

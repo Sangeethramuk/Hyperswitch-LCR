@@ -9,25 +9,26 @@ import { VolumeOverTimeChart } from './analytics/VolumeOverTimeChart';
 import { SavingsByNetworkChart } from './analytics/SavingsByNetworkChart';
 import type { FormValues } from '@/components/BottomControlsPanel';
 // import { PROCESSORS } from '@/lib/constants'; // PROCESSORS import removed
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ListChecks, CheckCircle2, XCircle, Gauge } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { ListChecks, CheckCircle2, XCircle, Gauge, DollarSign } from 'lucide-react';
 import type { OverallSRHistory, MerchantConnector } from '@/lib/types'; // Added MerchantConnector
 
 interface StatsViewProps {
   currentControls?: FormValues | null;
-  merchantConnectors?: MerchantConnector[]; // Added merchantConnectors prop
+  merchantConnectors?: MerchantConnector[];
   processedPayments?: number;
   totalSuccessful?: number;
   totalFailed?: number;
   overallSuccessRateHistory?: OverallSRHistory;
-  parentTab?: 'intelligent-routing' | 'least-cost-routing'; // Add parentTab prop
+  parentTab?: 'intelligent-routing' | 'least-cost-routing';
   successRateHistory?: any;
   volumeHistory?: any;
   connectorToggleStates?: any;
   overallSavingsPercentage?: number;
   totalProcessedAmount?: number;
   totalDebitRoutedTransactions?: number;
-  simulationRunId?: string | number | null; // Add simulationRunId prop
+  simulationRunId?: string | number | null;
+  transactionDistributionData?: Array<{ name: string; value: number }>;
 }
 
 const CHART_COLORS_HSL = {
@@ -40,25 +41,33 @@ const CHART_COLORS_HSL = {
 
 const chartColorKeys = Object.keys(CHART_COLORS_HSL) as (keyof typeof CHART_COLORS_HSL)[];
 
-export function StatsView(props: StatsViewProps) {
-  const {
-    currentControls = null,
-    merchantConnectors = [],
-    processedPayments = 0,
-    totalSuccessful = 0,
-    totalFailed = 0,
-    overallSuccessRateHistory = { overall_sr: [], thirty_day_avg_sr: 0, total_transactions: 0 },
-    parentTab = 'intelligent-routing',
-    successRateHistory = [],
-    volumeHistory = [],
-    connectorToggleStates = {},
-    overallSavingsPercentage = 0,
-    totalProcessedAmount = 0,
-    totalDebitRoutedTransactions = 0,
-    simulationRunId = null, // Destructure simulationRunId
-  } = props;
-
+export function StatsView({
+  currentControls,
+  merchantConnectors = [],
+  processedPayments,
+  totalSuccessful,
+  totalFailed,
+  overallSuccessRateHistory,
+  parentTab,
+  successRateHistory,
+  volumeHistory,
+  connectorToggleStates,
+  overallSavingsPercentage,
+  totalProcessedAmount,
+  totalDebitRoutedTransactions,
+  simulationRunId,
+  transactionDistributionData = [],
+}: StatsViewProps) {
   const overallSR = currentControls?.overallSuccessRate ?? 0;
+  const totalTxns = (totalSuccessful || 0) + (totalFailed || 0);
+  const overallSavings = overallSavingsPercentage || 0;
+  const totalAmount = totalProcessedAmount || 0;
+  const debitRoutedTxns = totalDebitRoutedTransactions || 0;
+
+  // Determine if any data is available for the charts that rely on simulation results
+  const hasSimulationData = successRateHistory && successRateHistory.length > 0;
+  const hasDistributionData = transactionDistributionData && transactionDistributionData.length > 0;
+  const hasSavingsData = totalAmount > 0 || debitRoutedTxns > 0 || (transactionDistributionData && transactionDistributionData.some(d => d.value > 0));
 
   const processorSRData = useMemo(() => {
     if (!currentControls?.processorWiseSuccessRates) {
@@ -81,32 +90,13 @@ export function StatsView(props: StatsViewProps) {
           successfulPaymentCount: successfulPayments,
           totalPaymentCount: totalPayments,
           // Use totalPaymentCount for sorting by volume, or volumeShare if still needed for other charts
-          volumeForSort: totalPayments, 
+          volumeForSort: totalPayments,
         };
       })
       // Sort by total payments for this processor as a proxy for volume
-      .sort((a, b) => b.volumeForSort - a.volumeForSort) 
+      .sort((a, b) => b.volumeForSort - a.volumeForSort)
       .map(({ volumeForSort, ...rest }) => rest); // Remove temporary sort key
-  }, [props.currentControls?.processorWiseSuccessRates, props.merchantConnectors]);
-
-  const transactionDistributionData = useMemo(() => {
-    if (!currentControls?.processorWiseSuccessRates) {
-      return [];
-    }
-    return Object.keys(currentControls.processorWiseSuccessRates)
-      .map((processorId) => {
-        const stats = currentControls.processorWiseSuccessRates![processorId];
-        const connectorInfo = merchantConnectors?.find(mc => (mc.merchant_connector_id || mc.connector_name) === processorId);
-        const processorName = connectorInfo ? connectorInfo.connector_name : processorId;
-        return {
-          name: processorName,
-          value: stats.volumeShare, // Raw volume count for pie chart value
-          fill: '', // Kept dummy fill, TransactionDistributionChart makes fill optional
-        };
-      })
-      .filter(item => item.value > 0) 
-      .sort((a,b) => b.value - a.value); 
-  }, [props.currentControls?.processorWiseSuccessRates, props.merchantConnectors]);
+  }, [currentControls?.processorWiseSuccessRates, merchantConnectors]);
 
   // Card headings based on parentTab
   const headings = parentTab === 'least-cost-routing'
@@ -128,53 +118,98 @@ export function StatsView(props: StatsViewProps) {
       {/* Stats Cards in a single row */}
       <div className="grid grid-cols-3 gap-6">
         {/* Total Savings (%) */}
-        <Card className="shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
-            <CardTitle className="text-sm font-medium">{headings[0]}</CardTitle>
-            <CheckCircle2 className="h-5 w-5 text-green-500" />
+        <Card className="flex-1">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Savings (%)</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="text-2xl font-bold">{overallSavingsPercentage?.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              {`${overallSavingsPercentage?.toFixed(2)}%`}
-            </p>
+          <CardContent>
+            <div className="text-2xl font-bold">{overallSavings.toFixed(2)}%</div>
           </CardContent>
         </Card>
-        {/* Total Amount Processed */}
-        <Card className="shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
-            <CardTitle className="text-sm font-medium">{headings[1]}</CardTitle>
-            <ListChecks className="h-5 w-5 text-muted-foreground" />
+
+        {/* Total Processed Amount */}
+        <Card className="flex-1">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Processed Amount</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="text-2xl font-bold">{totalProcessedAmount?.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              USD
-            </p>
+          <CardContent>
+            <div className="text-2xl font-bold">${totalAmount.toFixed(2)}</div>
           </CardContent>
         </Card>
+
         {/* Total Debit Routed Transactions */}
-        <Card className="shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6 pl-6 pr-6">
-            <CardTitle className="text-sm font-medium">{headings[2]}</CardTitle>
-            <ListChecks className="h-5 w-5 text-muted-foreground" />
+        <Card className="flex-1">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="text-2xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              {processedPayments > 0 ? `${((totalDebitRoutedTransactions / processedPayments) * 100).toFixed(1)}% of processed` : '0.0%'}
-            </p>
+          <CardContent>
+            <div className="text-2xl font-bold">{debitRoutedTxns}</div>
           </CardContent>
         </Card>
       </div>
-      
-      <SuccessRateOverTimeChart data={successRateHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
-      <VolumeOverTimeChart data={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
-      <TransactionDistributionChart data={transactionDistributionData} />
-      {/* <ProcessorSuccessRatesTable data={processorSRData} /> */}
 
-      {/* New Savings by Network Chart */}
-      <SavingsByNetworkChart csvFilePath="/debit_routing_simulation_results.csv" simulationRunId={simulationRunId} />
+      {/* Transaction Distribution Chart - Display only if data is available */}
+      {hasDistributionData ? (
+        <TransactionDistributionChart data={transactionDistributionData} />
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Transaction Distribution</CardTitle>
+            <CardDescription>Processor-wise distribution of transactions.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center items-center h-64">
+            <div className="text-muted-foreground">No Distribution Data</div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Success Rate Over Time Chart - Display only if simulation data is available */}
+      {hasSimulationData ? (
+        <SuccessRateOverTimeChart data={successRateHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Success Rate Over Time</CardTitle>
+            <CardDescription>Overall and processor success rates over time.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center items-center h-64">
+            <div className="text-muted-foreground">No Simulation Data Available</div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Volume Over Time Chart - Display only if simulation data is available */}
+      {hasSimulationData ? (
+        <VolumeOverTimeChart data={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Volume Over Time</CardTitle>
+            <CardDescription>Overall and processor transaction volume over time.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center items-center h-64">
+            <div className="text-muted-foreground">No Simulation Data Available</div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Savings by Network Chart - Display only if savings data is available */}
+      {hasSavingsData ? (
+        <SavingsByNetworkChart csvFilePath="/debit_routing_simulation_results.csv" simulationRunId={simulationRunId} />
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Savings by Network</CardTitle>
+            <CardDescription>Total savings per network from the simulation.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center items-center h-64">
+            <div className="text-muted-foreground">No savings data available yet for debit routed transactions. Run a simulation.</div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
