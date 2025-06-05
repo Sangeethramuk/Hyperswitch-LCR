@@ -4,9 +4,9 @@ import { useMemo } from 'react';
 import { OverallSuccessRateDisplay } from './analytics/OverallSuccessRateDisplay';
 import { ProcessorSuccessRatesTable } from './analytics/ProcessorSuccessRatesTable';
 import { TransactionDistributionChart } from './analytics/TransactionDistributionChart';
-import { SuccessRateOverTimeChart } from './analytics/SuccessRateOverTimeChart';
 import { VolumeOverTimeChart } from './analytics/VolumeOverTimeChart';
 import { SavingsByNetworkChart } from './analytics/SavingsByNetworkChart';
+import { DailySavingsChart } from './analytics/DailySavingsChart';
 import type { FormValues } from '@/components/BottomControlsPanel';
 // import { PROCESSORS } from '@/lib/constants'; // PROCESSORS import removed
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -29,6 +29,7 @@ interface StatsViewProps {
   totalDebitRoutedTransactions?: number;
   simulationRunId?: string | number | null;
   transactionDistributionData?: Array<{ name: string; value: number }>;
+  dailySavingsData?: { regulated: number; unregulated: number } | null;
 }
 
 const CHART_COLORS_HSL = {
@@ -57,6 +58,7 @@ export function StatsView({
   totalDebitRoutedTransactions,
   simulationRunId,
   transactionDistributionData = [],
+  dailySavingsData = null,
 }: StatsViewProps) {
   const overallSR = currentControls?.overallSuccessRate ?? 0;
   const totalTxns = (totalSuccessful || 0) + (totalFailed || 0);
@@ -68,6 +70,7 @@ export function StatsView({
   const hasSimulationData = successRateHistory && successRateHistory.length > 0;
   const hasDistributionData = transactionDistributionData && transactionDistributionData.length > 0;
   const hasSavingsData = totalAmount > 0 || debitRoutedTxns > 0 || (transactionDistributionData && transactionDistributionData.some(d => d.value > 0));
+  const hasDailySavingsData = dailySavingsData !== null && (dailySavingsData.regulated > 0 || dailySavingsData.unregulated > 0);
 
   const processorSRData = useMemo(() => {
     if (!currentControls?.processorWiseSuccessRates) {
@@ -166,17 +169,17 @@ export function StatsView({
         </Card>
       )}
 
-      {/* Success Rate Over Time Chart - Display only if simulation data is available */}
-      {hasSimulationData ? (
-        <SuccessRateOverTimeChart data={successRateHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
+      {/* Daily Savings Chart - Display only if daily savings data is available */}
+      {hasDailySavingsData ? (
+        <DailySavingsChart data={dailySavingsData} />
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Success Rate Over Time</CardTitle>
-            <CardDescription>Overall and processor success rates over time.</CardDescription>
+            <CardTitle>Daily Savings</CardTitle>
+            <CardDescription>Savings from regulated and unregulated debit routed transactions.</CardDescription>
           </CardHeader>
           <CardContent className="flex justify-center items-center h-64">
-            <div className="text-muted-foreground">No Simulation Data Available</div>
+            <div className="text-muted-foreground">No daily savings data available yet. Run a simulation.</div>
           </CardContent>
         </Card>
       )}
