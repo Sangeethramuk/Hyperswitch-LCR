@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
   // For now, using the fixed filename as per current Python script behavior
   const fixedFileName = 'debit_routing_simulation_results.csv';
-  const csvPath = path.join(process.cwd(), 'src', 'app', fixedFileName);
+  const csvPath = path.join(process.cwd(), 'public', fixedFileName);
 
   try {
     const fileBuffer = await fs.readFile(csvPath);
