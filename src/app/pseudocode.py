@@ -66,6 +66,8 @@ CREDIT_CARDS_BASE = [{"number": "5555555555554444", "label": "Credit", "exp_mont
 print_lock = threading.Lock()
 transaction_counter_lock = threading.Lock()
 current_transaction_number = 0
+summary_lock = threading.Lock()
+batch_results_aggregated = []
 
 def safe_print(*args, **kwargs):
     with print_lock:
@@ -151,7 +153,7 @@ def get_run_specific_cards(input_min_amt, input_max_amt):
     run_credit_cards = _process_card_list(CREDIT_CARDS_BASE)
     return run_regulated_cards, run_unregulated_cards, run_global_network_cheaper_cards, run_not_co_badged_cards, run_credit_cards
 
-def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list, payments_headers_arg): 
+def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list, payments_headers_arg, summary_lock):
     global current_transaction_number 
     
     batch_simulation_data = []
@@ -247,7 +249,29 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
 
         if INTER_PAYMENT_SLEEP_SEC > 0: time.sleep(INTER_PAYMENT_SLEEP_SEC)
         
-    results_list.append({"data": batch_simulation_data, "savings": batch_total_savings, "processed_dg_eligible": batch_total_processed_dg_eligible, "processed_all": batch_total_processed_all})
+    with summary_lock:
+        results_list.append({
+            "data": batch_simulation_data,
+            "savings": batch_total_savings,
+            "processed_dg_eligible": batch_total_processed_dg_eligible,
+            "processed_all": batch_total_processed_all
+        })
+        # Aggregate all results so far
+        partial_sim_data = []
+        partial_savings = 0.0
+        partial_processed = 0.0
+        for result in results_list:
+            partial_sim_data.extend(result["data"])
+            partial_savings += result["savings"]
+            partial_processed += result["processed_all"]
+        partial_debit_routed = sum(1 for txn in partial_sim_data if txn.get("is_debit_routed") == "Yes")
+        partial_savings_percentage = (partial_savings / partial_processed * 100) if partial_processed > 0 else 0
+        partial_summary = {
+            "overall_savings_percentage": round(partial_savings_percentage, 2),
+            "total_processed_amount": round(partial_processed, 2),
+            "total_debit_routed_transactions": partial_debit_routed
+        }
+        print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
 
 def simulate_debit_routing():
     global TOTAL_TRANSACTIONS, current_transaction_number
@@ -329,13 +353,12 @@ def simulate_debit_routing():
     random.shuffle(ALL_CARDS_TO_SIMULATE_GLOBALLY)
 
     threads = []
-    batch_results_aggregated = [] 
     for i in range(NO_OF_BATCHES):
         start_index = i * BATCH_SIZE
         end_index = start_index + BATCH_SIZE
         transactions_for_this_batch = ALL_CARDS_TO_SIMULATE_GLOBALLY[start_index:end_index]
         if not transactions_for_this_batch: continue
-        thread = threading.Thread(target=run_batch, args=(i + 1, transactions_for_this_batch, global_run_id, batch_results_aggregated, PAYMENTS_HEADERS))
+        thread = threading.Thread(target=run_batch, args=(i + 1, transactions_for_this_batch, global_run_id, batch_results_aggregated, PAYMENTS_HEADERS, summary_lock))
         threads.append(thread)
         thread.start()
         if INITIAL_DELAY_SEC > 0 and i == 0 : time.sleep(INITIAL_DELAY_SEC) 
