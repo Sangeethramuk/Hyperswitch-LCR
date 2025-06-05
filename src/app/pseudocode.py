@@ -71,6 +71,15 @@ current_transaction_number = 0
 summary_lock = threading.Lock()
 batch_results_aggregated = []
 
+# --- Aggregation Variables for Real-time Charts ---
+network_transaction_counts = {}
+regulated_successful_count = 0
+unregulated_successful_count = 0
+regulated_total_savings = 0.0
+unregulated_total_savings = 0.0
+network_total_savings = {}
+# --- End Aggregation Variables ---
+
 # Define all possible CSV headers
 CSV_HEADERS = [
     "run_id", "batch_id", "transaction_timestamp", "payment_id", "amount", 
@@ -168,6 +177,12 @@ def get_run_specific_cards(input_min_amt, input_max_amt):
 
 def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list, payments_headers_arg, summary_lock):
     global current_transaction_number 
+    global network_transaction_counts
+    global regulated_successful_count
+    global unregulated_successful_count
+    global regulated_total_savings
+    global unregulated_total_savings
+    global network_total_savings
     
     batch_simulation_data = []
     batch_total_savings = 0.0
@@ -217,6 +232,30 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                         txn_data["saving_percentage"] = savings_pct
                         current_saving = (savings_pct / 100.0) * hs_returned_amount_dollars
                         batch_total_savings += current_saving
+                        
+                        # Update real-time aggregation variables (thread-safe)
+                        with summary_lock:
+                            # Transaction Distribution Count
+                            network = txn_data.get("card_network")
+                            if network and network != "N/A":
+                                network_transaction_counts[network] = network_transaction_counts.get(network, 0) + 1
+
+                            # Daily Volume Count (Successful regulated/unregulated)
+                            if txn_data.get("status") == "succeeded":
+                                if txn_data.get("is_regulated") is True:
+                                    regulated_successful_count += 1
+                                else:
+                                    unregulated_successful_count += 1
+
+                            # Daily Savings and Savings by Network
+                            if txn_data.get("is_debit_routed") == "Yes" and txn_data.get("status") == "succeeded" and current_saving > 0:
+                                if txn_data.get("is_regulated") is True:
+                                    regulated_total_savings += current_saving
+                                else:
+                                    unregulated_total_savings += current_saving
+                                
+                                network_total_savings[network] = network_total_savings.get(network, 0.0) + current_saving
+
                         if txn_data["is_eligible_for_debit_routing"] == "Yes": batch_total_processed_dg_eligible += hs_returned_amount_dollars
                 except Exception as dg_e: # More specific exception for DG call if needed for debugging
                     safe_print(f"{YELLOW}Batch {batch_id}, Txn {i}: DG API call failed. Error: {dg_e}{RESET}")
@@ -236,9 +275,12 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
             safe_print(f"{RED}Batch {batch_id}, Txn {i} ({label}): HS API Unexpected Error. Error: {e}{RESET}")
             
         if txn_data["status"] != "succeeded": txn_data["saving_percentage"] = 0
-        if payment_type == "credit" or label == "Not Co-badged Debit":
-            txn_data["is_eligible_for_debit_routing"] = "No"; txn_data["is_debit_routed"] = "No"
-            txn_data["is_regulated"] = "N/A"
+        # Ensure is_eligible_for_debit_routing, is_debit_routed, is_regulated are set even if DG call fails or for non-debit transactions
+        if payment_type != "debit" or label == "Not Co-badged Debit":
+            txn_data["is_eligible_for_debit_routing"] = "No"
+            txn_data["is_debit_routed"] = "No"
+            if "is_regulated" not in txn_data: # Only set to N/A if not already set by DG
+                 txn_data["is_regulated"] = "N/A"
         
         batch_simulation_data.append(txn_data) 
 
@@ -246,6 +288,7 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
             current_transaction_number += 1
             log_txn_num = current_transaction_number
         
+        # Log transaction details using safe_print
         card_type_label_log = txn_data.get('label', 'Unknown Card')
         if txn_data.get('payment_type') == 'credit': card_type_display_log = "Credit"
         elif card_type_label_log == "Not Co-badged Debit": card_type_display_log = "Single Network Debit"
@@ -265,6 +308,28 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
 
         if INTER_PAYMENT_SLEEP_SEC > 0: time.sleep(INTER_PAYMENT_SLEEP_SEC)
         
+        # Periodically send chart data updates (e.g., after every 50 transactions within this batch)
+        if (i % 50 == 0 and i > 0) or i == len(transactions_for_this_batch):
+             with summary_lock:
+                 chart_data_update = {
+                     'type': 'chart_update',
+                     'content': {
+                         'transactionDistribution': network_transaction_counts,
+                         'dailySavings': {
+                             'regulated': round(regulated_total_savings, 2),
+                             'unregulated': round(unregulated_total_savings, 2)
+                         },
+                         'dailyVolume': {
+                             'regulated': regulated_successful_count,
+                             'unregulated': unregulated_successful_count
+                         },
+                         'savingsByNetwork': network_total_savings
+                     }
+                 }
+                 # Send as an SSE event
+                 print(f"event: chart_update\ndata: {json.dumps(chart_data_update)}\n\n")
+                 sys.stdout.flush() # Ensure the output is sent immediately
+
     with summary_lock:
         results_list.append({
             "data": batch_simulation_data,

@@ -32,6 +32,7 @@ interface StatsViewProps {
   transactionDistributionData?: Array<{ name: string; value: number }>;
   dailySavingsData?: { regulated: number; unregulated: number } | null;
   dailyVolumeData?: { regulated: number; unregulated: number } | null;
+  savingsByNetworkData?: { [network: string]: number };
 }
 
 const CHART_COLORS_HSL = {
@@ -62,6 +63,7 @@ export function StatsView({
   transactionDistributionData = [],
   dailySavingsData = null,
   dailyVolumeData = null,
+  savingsByNetworkData,
 }: StatsViewProps) {
   const overallSR = currentControls?.overallSuccessRate ?? 0;
   const totalTxns = (totalSuccessful || 0) + (totalFailed || 0);
@@ -204,7 +206,7 @@ export function StatsView({
 
       {/* Savings by Network Chart - Display only if savings data is available */}
       {hasSavingsData ? (
-        <SavingsByNetworkChart csvFilePath="/debit_routing_simulation_results.csv" simulationRunId={simulationRunId} />
+        <SavingsByNetworkChart data={savingsByNetworkData} simulationRunId={simulationRunId} />
       ) : (
         <Card>
           <CardHeader>

@@ -64,6 +64,7 @@ export default function HomePage() {
   const [transactionDistributionData, setTransactionDistributionData] = useState<Array<{ name: string; value: number }>>([]);
   const [dailySavingsData, setDailySavingsData] = useState<{ regulated: number; unregulated: number } | null>(null);
   const [dailyVolumeData, setDailyVolumeData] = useState<{ regulated: number; unregulated: number } | null>(null);
+  const [savingsByNetworkData, setSavingsByNetworkData] = useState<{[network: string]: number}>({});
 
   const { toast } = useToast();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -282,7 +283,7 @@ export default function HomePage() {
     }
   };
 
-  const handleSseEvent = (eventData: {type: string, content: any}) => {
+  const handleSseEvent = useCallback((eventData: {type: string, content: any}) => {
     console.log('handleSseEvent', eventData);
     transactionCounterRef.current += 1;
     const baseLog: Partial<TransactionLogEntry> = { 
@@ -338,10 +339,20 @@ export default function HomePage() {
         setTotalProcessedAmount(eventData.content.total_processed_amount);
         setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions ?? 0);
         break;
+      case 'chart_update':
+        console.log('Received chart update:', eventData.content);
+        setTransactionDistributionData(Object.keys(eventData.content.transactionDistribution).map(network => ({
+          name: network,
+          value: eventData.content.transactionDistribution[network]
+        })).sort((a, b) => b.value - a.value));
+        setDailySavingsData(eventData.content.dailySavings);
+        setDailyVolumeData(eventData.content.dailyVolume);
+        setSavingsByNetworkData(eventData.content.savingsByNetwork);
+        break;
       default:
         console.warn("Unknown SSE event type:", eventData.type);
     }
-  };
+  }, []);
 
   const handleStartSimulation = useCallback(async (forceStart = false) => {
     console.log('[handleStartSimulation] Called. forceStart:', forceStart, 'simulationState:', simulationState);
@@ -396,15 +407,15 @@ export default function HomePage() {
   }, [simulationState, toast]);
 
   const handleStopSimulation = useCallback(() => {
-    console.log('[handleStopSimulation] Called. Current simulationState:', simulationState);
-    if (streamControllerRef.current) {
-      console.log('[handleStopSimulation] Aborting stream controller.');
-      streamControllerRef.current.abort('User stopped simulation');
+    if (simulationState === 'running') {
+      if (streamControllerRef.current) {
+        streamControllerRef.current.abort('User stopped simulation'); 
+        toast({ title: "Simulation Stopping..."});
+      }
+    } else { 
+      setSimulationState('idle');
+      toast({ title: "Simulation Stopped (UI)"});
     }
-    // Always reset simulation state and show a toast, regardless of the initial state
-    resetSimulationState();
-    setSimulationState('idle');
-    toast({ title: "Simulation Stopped", description: "Simulation stream has been stopped."});
   }, [simulationState, toast]);
 
   const executeAiSummary = useCallback(async () => { /* ... original ... */ }, [currentControls, processedPaymentsCount, transactionLogs, overallSuccessRateHistory, toast, accumulatedGlobalStatsRef, accumulatedProcessorStatsRef, setIsSummaryModalOpen, setIsSummarizing, setSummaryText]);
@@ -432,15 +443,12 @@ export default function HomePage() {
         console.error("Missing required columns in CSV for distribution.");
         setTransactionDistributionData([]);
         setDailySavingsData(null);
-        setDailyVolumeData(null);
         return;
       }
 
       const networkCountMap: { [key: string]: number } = {};
       let regulatedSavings = 0;
       let unregulatedSavings = 0;
-      let regulatedSuccessfulCount = 0;
-      let unregulatedSuccessfulCount = 0;
 
       for (let i = 1; i < lines.length; i++) {
         const line = lines[i].trim();
@@ -464,10 +472,8 @@ export default function HomePage() {
             const savings = amount * (savingPercentage / 100);
             if (isRegulated) {
               regulatedSavings += savings;
-              regulatedSuccessfulCount += 1;
             } else {
               unregulatedSavings += savings;
-              unregulatedSuccessfulCount += 1;
             }
           }
         }
@@ -484,14 +490,10 @@ export default function HomePage() {
       console.log("Daily Savings Data:", { regulated: regulatedSavings, unregulated: unregulatedSavings });
       setDailySavingsData({ regulated: parseFloat(regulatedSavings.toFixed(2)), unregulated: parseFloat(unregulatedSavings.toFixed(2)) }); // Store rounded savings
 
-      console.log("Daily Volume Data:", { regulated: regulatedSuccessfulCount, unregulated: unregulatedSuccessfulCount });
-      setDailyVolumeData({ regulated: regulatedSuccessfulCount, unregulated: unregulatedSuccessfulCount }); // Store daily volume counts
-
     } catch (error) {
       console.error("Error processing CSV for distribution and daily savings:", error);
       setTransactionDistributionData([]);
       setDailySavingsData(null);
-      setDailyVolumeData(null);
     }
   }, []);
 
@@ -519,11 +521,11 @@ export default function HomePage() {
               {parentTab !== 'least-cost-routing' ? (
                 <Tabs value={contentTab} onValueChange={tab => setContentTab(tab as 'stats' | 'analytics')} className="flex flex-col h-full">
                   <div className="flex items-center justify-start p-4 pb-0"><TabsList><TabsTrigger value="stats">Stats</TabsTrigger><TabsTrigger value="analytics">Analytics</TabsTrigger></TabsList></div>
-                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} /></div></ScrollArea></TabsContent>
+                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} /></div></ScrollArea></TabsContent>
                   <TabsContent value="analytics" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-2 md:p-4 lg:p-6"><div className="bg-white dark:bg-card border border-gray-200 dark:border-border rounded-xl shadow-sm p-6 mb-6"><AnalyticsGraphsView successRateHistory={successRateHistory} volumeHistory={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} /></div></div></ScrollArea></TabsContent>
                 </Tabs>
               ) : (
-                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} /></div></ScrollArea></div>
+                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} /></div></ScrollArea></div>
               )}
             </div>
             <div className="flex flex-col h-full min-h-0 border-l p-2 md:p-4 lg:p-6 w-[400px] min-w-[300px]">

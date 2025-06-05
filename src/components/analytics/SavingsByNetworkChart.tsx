@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { DollarSign } from 'lucide-react';
 
 interface SavingsByNetworkChartProps {
-  csvFilePath: string;
+  data?: { [network: string]: number };
   simulationRunId?: string | number | null;
 }
 
@@ -30,104 +30,39 @@ const BAR_COLORS = [
   '#ADD8E6', // LightBlue
 ];
 
-export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsByNetworkChartProps) {
+export function SavingsByNetworkChart({ data, simulationRunId }: SavingsByNetworkChartProps) {
   const [savingsData, setSavingsData] = useState<SavingsData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchAndProcessCsv = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const response = await fetch(csvFilePath);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const csvText = await response.text();
+    // Process data received from the parent component
+    if (data) {
+      setLoading(true); // Still show loading briefly while processing
+      setError(null);
 
-        const lines = csvText.split('\n');
-        const headers = lines[0].split(',').map(header => header.trim());
-        const networkIndex = headers.indexOf('card_network');
-        const amountIndex = headers.indexOf('amount');
-        const savingsIndex = headers.indexOf('saving_percentage');
-        const statusIndex = headers.indexOf('status');
-        const routedIndex = headers.indexOf('is_debit_routed');
+      const uniqueNetworks = Object.keys(data);
+      const processedData: SavingsData[] = uniqueNetworks
+        .filter(network => network !== 'N/A') // Filter out N/A networks
+        .map((network, index) => ({
+          network,
+          totalSavings: parseFloat((data[network] || 0).toFixed(2)), // Use data from prop, round to 2 decimal places
+          color: BAR_COLORS[index % BAR_COLORS.length], // Assign a color
+        }));
 
-        if (networkIndex === -1 || amountIndex === -1 || savingsIndex === -1 || statusIndex === -1 || routedIndex === -1) {
-          throw new Error("Missing required columns in CSV.");
-        }
+      const sortedData = processedData.sort((a, b) => b.totalSavings - a.totalSavings); // Sort by total savings descending
 
-        const uniqueNetworks = new Set<string>();
-        const savingsMap: { [key: string]: number } = {};
+      console.log("Processed Savings Data for Chart:", sortedData); // Log the data being used for the chart
+      setSavingsData(sortedData);
+      setLoading(false);
+    } else {
+      // If no data is provided, reset or show initial state
+      setSavingsData([]);
+      setLoading(false);
+    }
 
-        const csvRowRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
-
-        for (let i = 1; i < lines.length; i++) {
-          const line = lines[i].trim();
-          if (!line) continue;
-
-          const values = line.split(csvRowRegex).map(value => value.trim().replace(/^"|"$/g, ''));
-          
-          if (values.length > Math.max(networkIndex, amountIndex, savingsIndex, statusIndex, routedIndex)) {
-            const network = values[networkIndex];
-            if (network) {
-              uniqueNetworks.add(network);
-            }
-          }
-        }
-
-        // Initialize savingsMap with all unique networks and 0 savings
-        uniqueNetworks.forEach(network => {
-          savingsMap[network] = 0;
-        });
-
-        // Process rows again to calculate actual savings for qualifying transactions
-        for (let i = 1; i < lines.length; i++) {
-          const line = lines[i].trim();
-          if (!line) continue;
-
-          const values = line.split(csvRowRegex).map(value => value.trim().replace(/^"|"$/g, ''));
-          
-          if (values.length > Math.max(networkIndex, amountIndex, savingsIndex, statusIndex, routedIndex)) {
-            const network = values[networkIndex];
-            const amount = parseFloat(values[amountIndex]);
-            const savingPercentage = parseFloat(values[savingsIndex]);
-            const status = values[statusIndex];
-            const isRouted = values[routedIndex];
-
-            if (status === 'succeeded' && isRouted === 'Yes' && !isNaN(amount) && !isNaN(savingPercentage) && network) { // Ensure network is valid
-              const savings = amount * (savingPercentage / 100);
-              savingsMap[network] = (savingsMap[network] || 0) + savings;
-            }
-          }
-        }
-
-        console.log("Calculated Savings Data Map:", savingsMap); // Log the calculated savings map
-
-        const processedData: SavingsData[] = Array.from(uniqueNetworks)
-          .map((network, index) => ({
-            network,
-            totalSavings: parseFloat((savingsMap[network] || 0).toFixed(2)), // Use calculated savings or 0, round to 2 decimal places
-            color: BAR_COLORS[index % BAR_COLORS.length], // Assign a color
-          }));
-
-        const filteredData = processedData.filter(entry => entry.network !== 'N/A'); // Filter out N/A networks
-
-        const sortedData = filteredData.sort((a, b) => b.totalSavings - a.totalSavings); // Sort by total savings descending
-
-        setSavingsData(sortedData);
-      } catch (err: any) {
-        console.error("Error fetching or processing CSV:", err);
-        setError(err.message || "An error occurred while loading savings data.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAndProcessCsv();
-  }, [csvFilePath, simulationRunId]);
+    // No need to fetch CSV anymore, remove the fetchAndProcessCsv function call
+  }, [data, simulationRunId]); // Depend on data and simulationRunId
 
   if (loading) {
     return (
@@ -138,20 +73,6 @@ export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsB
         </CardHeader>
         <CardContent className="h-[300px] flex items-center justify-center">
           <p className="text-muted-foreground">Loading savings data...</p>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  if (error) {
-    return (
-      <Card className="shadow-sm">
-        <CardHeader className="p-6">
-          <CardTitle className="flex items-center"><DollarSign className="mr-2 h-5 w-5 text-primary" /> Savings by Network</CardTitle>
-          <CardDescription>Total savings per network from the simulation.</CardDescription>
-        </CardHeader>
-        <CardContent className="h-[300px] flex items-center justify-center">
-          <p className="text-red-500">Error: {error}</p>
         </CardContent>
       </Card>
     );
