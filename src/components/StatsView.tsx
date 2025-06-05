@@ -127,34 +127,34 @@ export function StatsView({
       <div className="grid grid-cols-3 gap-6">
         {/* Total Savings (%) */}
         <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
             <CardTitle className="text-sm font-medium">Total Savings (%)</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{overallSavings.toFixed(2)}%</div>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">{overallSavings.toFixed(2)}</div>
+            <p className="text-xs text-muted-foreground">%</p>
           </CardContent>
         </Card>
 
         {/* Total Processed Amount */}
         <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
             <CardTitle className="text-sm font-medium">Total Processed Amount</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">${totalAmount.toFixed(2)}</div>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">${totalAmount.toFixed(2)}</div>
+            <p className="text-xs text-muted-foreground">USD</p>
           </CardContent>
         </Card>
 
         {/* Total Debit Routed Transactions */}
         <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
             <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{debitRoutedTxns}</div>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">{debitRoutedTxns}</div>
+            <p className="text-xs text-muted-foreground">Total Txns</p>
           </CardContent>
         </Card>
       </div>
@@ -164,11 +164,11 @@ export function StatsView({
         <TransactionDistributionChart data={transactionDistributionData} />
       ) : (
         <Card>
-          <CardHeader>
+          <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle>Transaction Distribution</CardTitle>
-            <CardDescription>Processor-wise distribution of transactions.</CardDescription>
+            <CardDescription>Network-wise distribution of transactions</CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center items-center h-64">
+          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
             <div className="text-muted-foreground">No Distribution Data</div>
           </CardContent>
         </Card>
@@ -179,11 +179,11 @@ export function StatsView({
         <DailySavingsChart data={dailySavingsData} />
       ) : (
         <Card>
-          <CardHeader>
+          <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle>Daily Savings</CardTitle>
-            <CardDescription>Savings from regulated and unregulated debit routed transactions.</CardDescription>
+            <CardDescription>Savings from regulated and unregulated debit routed transactions</CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center items-center h-64">
+          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
             <div className="text-muted-foreground">No daily savings data available yet. Run a simulation.</div>
           </CardContent>
         </Card>
@@ -194,11 +194,11 @@ export function StatsView({
         <DailyVolumeChart data={dailyVolumeData} />
       ) : (
         <Card>
-          <CardHeader>
+          <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle>Daily Volume</CardTitle>
-            <CardDescription>Overall and processor transaction volume over time.</CardDescription>
+            <CardDescription>Overall transaction volume from regulated and unregulated debit routed transactions</CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center items-center h-64">
+          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
             <div className="text-muted-foreground">No daily volume data available yet. Run a simulation.</div>
           </CardContent>
         </Card>
@@ -209,11 +209,11 @@ export function StatsView({
         <SavingsByNetworkChart data={savingsByNetworkData} simulationRunId={simulationRunId} />
       ) : (
         <Card>
-          <CardHeader>
+          <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle>Savings by Network</CardTitle>
-            <CardDescription>Total savings per network from the simulation.</CardDescription>
+            <CardDescription>Total savings per network</CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center items-center h-64">
+          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
             <div className="text-muted-foreground">No savings data available yet for debit routed transactions. Run a simulation.</div>
           </CardContent>
         </Card>
