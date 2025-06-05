@@ -159,6 +159,31 @@ export function StatsView({
         </Card>
       </div>
 
+      {/* Regulated and Unregulated Savings Cards in a two-column grid */}
+      <div className="grid grid-cols-2 gap-6">
+        {/* Regulated Savings Card */}
+        <Card>
+          <CardHeader className="px-6 pt-4 pb-2">
+            <CardTitle className="text-sm font-medium">Regulated Savings</CardTitle>
+          </CardHeader>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">${dailySavingsData?.regulated?.toFixed(2) || '0.00'}</div>
+            <p className="text-xs text-muted-foreground">USD</p>
+          </CardContent>
+        </Card>
+
+        {/* Unregulated Savings Card */}
+        <Card>
+          <CardHeader className="px-6 pt-4 pb-2">
+            <CardTitle className="text-sm font-medium">Unregulated Savings</CardTitle>
+          </CardHeader>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">${dailySavingsData?.unregulated?.toFixed(2) || '0.00'}</div>
+            <p className="text-xs text-muted-foreground">USD</p>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Transaction Distribution Chart - Display only if data is available */}
       {hasDistributionData ? (
         <TransactionDistributionChart data={transactionDistributionData} />
@@ -170,36 +195,6 @@ export function StatsView({
           </CardHeader>
           <CardContent className="flex justify-center items-center h-64 px-6 py-4">
             <div className="text-muted-foreground">No Distribution Data</div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Daily Savings Chart - Display only if daily savings data is available */}
-      {hasDailySavingsData ? (
-        <DailySavingsChart data={dailySavingsData} />
-      ) : (
-        <Card>
-          <CardHeader className="px-6 pt-4 pb-2">
-            <CardTitle>Daily Savings</CardTitle>
-            <CardDescription>Savings from regulated and unregulated debit routed transactions</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
-            <div className="text-muted-foreground">No daily savings data available yet. Run a simulation.</div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Daily Volume Chart - Display only if daily volume data is available */}
-      {dailyVolumeData !== null ? (
-        <DailyVolumeChart data={dailyVolumeData} />
-      ) : (
-        <Card>
-          <CardHeader className="px-6 pt-4 pb-2">
-            <CardTitle>Daily Volume</CardTitle>
-            <CardDescription>Overall transaction volume from regulated and unregulated debit routed transactions</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-center items-center h-64 px-6 py-4">
-            <div className="text-muted-foreground">No daily volume data available yet. Run a simulation.</div>
           </CardContent>
         </Card>
       )}
