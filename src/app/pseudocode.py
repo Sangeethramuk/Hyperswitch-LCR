@@ -308,8 +308,8 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
 
         if INTER_PAYMENT_SLEEP_SEC > 0: time.sleep(INTER_PAYMENT_SLEEP_SEC)
         
-        # Periodically send chart data updates (e.g., after every 50 transactions within this batch)
-        if (i % 50 == 0 and i > 0) or i == len(transactions_for_this_batch):
+        # Periodically send chart data updates (e.g., after every 1 transaction within this batch)
+        if True:
              with summary_lock:
                  chart_data_update = {
                      'type': 'chart_update',
@@ -326,8 +326,36 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                          'savingsByNetwork': network_total_savings
                      }
                  }
-                 # Send as an SSE event
+                 # Send chart_update as an SSE event
                  print(f"event: chart_update\ndata: {json.dumps(chart_data_update)}\n\n")
+
+                 # Also send summary update after every transaction
+                 # Aggregate all results so far across all completed batches and current batch's processed transactions
+                 partial_sim_data = []
+                 partial_savings = 0.0
+                 partial_processed = 0.0
+                 
+                 # Aggregate from results of previously completed batches
+                 for result in results_list:
+                     partial_sim_data.extend(result["data"])
+                     partial_savings += result["savings"]
+                     partial_processed += result["processed_all"]
+                 
+                 # Add data from the current batch processed so far
+                 partial_sim_data.extend(batch_simulation_data) # batch_simulation_data contains txns processed in THIS batch so far
+                 partial_savings += batch_total_savings # batch_total_savings contains savings in THIS batch so far
+                 partial_processed += batch_total_processed_all # batch_total_processed_all contains processed amount in THIS batch so far
+
+                 partial_debit_routed = sum(1 for txn in partial_sim_data if txn.get("is_debit_routed") == "Yes")
+                 partial_savings_percentage = (partial_savings / partial_processed * 100) if partial_processed > 0 else 0
+                 partial_summary = {
+                     "overall_savings_percentage": round(partial_savings_percentage, 2),
+                     "total_processed_amount": round(partial_processed, 2),
+                     "total_debit_routed_transactions": partial_debit_routed
+                 }
+                 # Send summary as an SSE event
+                 print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
+
                  sys.stdout.flush() # Ensure the output is sent immediately
 
     with summary_lock:
@@ -337,22 +365,6 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
             "processed_dg_eligible": batch_total_processed_dg_eligible,
             "processed_all": batch_total_processed_all
         })
-        # Aggregate all results so far
-        partial_sim_data = []
-        partial_savings = 0.0
-        partial_processed = 0.0
-        for result in results_list:
-            partial_sim_data.extend(result["data"])
-            partial_savings += result["savings"]
-            partial_processed += result["processed_all"]
-        partial_debit_routed = sum(1 for txn in partial_sim_data if txn.get("is_debit_routed") == "Yes")
-        partial_savings_percentage = (partial_savings / partial_processed * 100) if partial_processed > 0 else 0
-        partial_summary = {
-            "overall_savings_percentage": round(partial_savings_percentage, 2),
-            "total_processed_amount": round(partial_processed, 2),
-            "total_debit_routed_transactions": partial_debit_routed
-        }
-        print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
 
 def simulate_debit_routing():
     global TOTAL_TRANSACTIONS, current_transaction_number
