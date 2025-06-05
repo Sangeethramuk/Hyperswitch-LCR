@@ -4,9 +4,10 @@ import { useMemo } from 'react';
 import { OverallSuccessRateDisplay } from './analytics/OverallSuccessRateDisplay';
 import { ProcessorSuccessRatesTable } from './analytics/ProcessorSuccessRatesTable';
 import { TransactionDistributionChart } from './analytics/TransactionDistributionChart';
-import { VolumeOverTimeChart } from './analytics/VolumeOverTimeChart';
+import { SuccessRateOverTimeChart } from './analytics/SuccessRateOverTimeChart';
 import { SavingsByNetworkChart } from './analytics/SavingsByNetworkChart';
 import { DailySavingsChart } from './analytics/DailySavingsChart';
+import { DailyVolumeChart } from './analytics/DailyVolumeChart';
 import type { FormValues } from '@/components/BottomControlsPanel';
 // import { PROCESSORS } from '@/lib/constants'; // PROCESSORS import removed
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -30,6 +31,7 @@ interface StatsViewProps {
   simulationRunId?: string | number | null;
   transactionDistributionData?: Array<{ name: string; value: number }>;
   dailySavingsData?: { regulated: number; unregulated: number } | null;
+  dailyVolumeData?: { regulated: number; unregulated: number } | null;
 }
 
 const CHART_COLORS_HSL = {
@@ -59,6 +61,7 @@ export function StatsView({
   simulationRunId,
   transactionDistributionData = [],
   dailySavingsData = null,
+  dailyVolumeData = null,
 }: StatsViewProps) {
   const overallSR = currentControls?.overallSuccessRate ?? 0;
   const totalTxns = (totalSuccessful || 0) + (totalFailed || 0);
@@ -184,17 +187,17 @@ export function StatsView({
         </Card>
       )}
 
-      {/* Volume Over Time Chart - Display only if simulation data is available */}
-      {hasSimulationData ? (
-        <VolumeOverTimeChart data={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
+      {/* Daily Volume Chart - Display only if daily volume data is available */}
+      {dailyVolumeData !== null ? (
+        <DailyVolumeChart data={dailyVolumeData} />
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Volume Over Time</CardTitle>
+            <CardTitle>Daily Volume</CardTitle>
             <CardDescription>Overall and processor transaction volume over time.</CardDescription>
           </CardHeader>
           <CardContent className="flex justify-center items-center h-64">
-            <div className="text-muted-foreground">No Simulation Data Available</div>
+            <div className="text-muted-foreground">No daily volume data available yet. Run a simulation.</div>
           </CardContent>
         </Card>
       )}
