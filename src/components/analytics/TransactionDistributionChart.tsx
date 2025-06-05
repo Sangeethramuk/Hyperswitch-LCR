@@ -20,23 +20,45 @@ const PIE_CHART_COLORS = [
   'hsl(274, 74%, 66%)',
 ];
 
+// Mapping of network names to colors
+const NETWORK_COLORS: { [key: string]: string } = {
+  'Visa': PIE_CHART_COLORS[0], // Yellow
+  'Accel': PIE_CHART_COLORS[1], // Blue
+  'Mastercard': PIE_CHART_COLORS[2], // Red
+  'Nyce': PIE_CHART_COLORS[3], // Green
+  'Star': PIE_CHART_COLORS[4], // Purple
+  // Add other networks as needed with appropriate colors
+  'Pulse': '#FF8C00', // Example: DarkOrange
+  // Default color for unknown networks
+  'Other': '#D3D3D3', // Example: LightGrey
+};
+
+// Function to get color by network name, with a fallback
+const getColorForNetwork = (networkName: string) => {
+  return NETWORK_COLORS[networkName] || NETWORK_COLORS['Other'];
+};
+
 export function TransactionDistributionChart({ data }: TransactionDistributionChartProps) {
   const previousDataRef = useRef<Array<{ name: string; value: number; fill?: string }>>([]);
 
   useEffect(() => {
     if (data && data.length > 0 && data.some(item => item.value > 0)) {
-      previousDataRef.current = data;
+      // When updating, assign the correct color based on network name
+      previousDataRef.current = data.map(item => ({ 
+        ...item, 
+        fill: getColorForNetwork(item.name) 
+      }));
     }
   }, [data]);
 
-  const currentData = (data && data.length > 0 && data.some(item => item.value > 0)) ? data : previousDataRef.current;
+  const currentData = (data && data.length > 0 && data.some(item => item.value > 0)) ? data.map(item => ({...item, fill: getColorForNetwork(item.name)})) : previousDataRef.current;
   const hasData = currentData && currentData.length > 0 && currentData.some(item => item.value > 0);
 
   return (
     <Card>
       <CardHeader className="pt-6 pl-6 pr-6">
         <CardTitle className="flex items-center"><PieChartIcon className="mr-2 h-6 w-6 text-primary" /> Transaction Distribution</CardTitle>
-        <CardDescription>Processor-wise distribution of transactions.</CardDescription>
+        <CardDescription>Network-wise distribution of transactions</CardDescription>
       </CardHeader>
       <CardContent className="flex items-center justify-center h-[300px]">
         {hasData ? (
@@ -44,9 +66,15 @@ export function TransactionDistributionChart({ data }: TransactionDistributionCh
             <PieChart>
               <Legend 
                 wrapperStyle={{ color: 'hsl(var(--foreground))', fontSize: '12px', paddingTop: '10px' }}
-                formatter={(value, entry) => (
-                  <span style={{ color: 'hsl(var(--foreground))' }}>{value}</span>
-                )}
+                formatter={(value, entry) => {
+                  const legendItem = currentData.find(item => item.name === value);
+                  const percentage = legendItem ? (legendItem.value / currentData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0) : 0;
+                  return (
+                    <span style={{ color: 'hsl(var(--foreground))' }}>
+                      {value} ({percentage}%)
+                    </span>
+                  );
+                }}
               />
               <Pie
                 data={currentData}
@@ -69,10 +97,11 @@ export function TransactionDistributionChart({ data }: TransactionDistributionCh
                 {currentData.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`} 
-                    fill={PIE_CHART_COLORS[index % PIE_CHART_COLORS.length]} // Use direct colors
+                    fill={entry.fill || PIE_CHART_COLORS[index % PIE_CHART_COLORS.length]} // Use assigned fill or fallback
                   />
                 ))}
               </Pie>
+              <Tooltip formatter={(value, name) => [`${value} transactions`, name]} />
             </PieChart>
           </ResponsiveContainer>
         ) : (

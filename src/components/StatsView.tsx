@@ -142,7 +142,7 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Total Processed Amount</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${totalAmount.toFixed(2)}</div>
+            <div className="text-4xl font-bold">${totalAmount.toLocaleString('en-US', { maximumFractionDigits: 0 })}</div>
             <p className="text-xs text-muted-foreground">USD</p>
           </CardContent>
         </Card>

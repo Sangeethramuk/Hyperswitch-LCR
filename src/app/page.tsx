@@ -277,9 +277,9 @@ export default function HomePage() {
         if (error.name !== 'AbortError') {
             toast({ title: "Stream Error", description: error.message, variant: "destructive" });
         }
-        setSimulationState('idle');
     } finally {
         streamReaderRef.current = null;
+        setSimulationState('idle');
     }
   };
 
