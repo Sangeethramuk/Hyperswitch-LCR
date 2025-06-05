@@ -80,6 +80,14 @@ unregulated_total_savings = 0.0
 network_total_savings = {}
 # --- End Aggregation Variables ---
 
+# --- Global Counters for Summary Stats (Thread-Safe) ---
+global_total_processed_amount = 0.0
+global_total_savings = 0.0
+global_debit_routed_count = 0
+
+global_stats_lock = threading.Lock() # Use a separate lock for global summary stats
+# --- End Global Counters ---
+
 # Define all possible CSV headers
 CSV_HEADERS = [
     "run_id", "batch_id", "transaction_timestamp", "payment_id", "amount", 
@@ -183,6 +191,10 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
     global regulated_total_savings
     global unregulated_total_savings
     global network_total_savings
+    global global_total_processed_amount # Declare global usage
+    global global_total_savings # Declare global usage
+    global global_debit_routed_count # Declare global usage
+    global global_stats_lock # Declare global usage
     
     batch_simulation_data = []
     batch_total_savings = 0.0
@@ -255,6 +267,14 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                                     unregulated_total_savings += current_saving
                                 
                                 network_total_savings[network] = network_total_savings.get(network, 0.0) + current_saving
+
+                        # Update global summary counters (thread-safe)
+                        with global_stats_lock:
+                            if txn_data.get("status") == "succeeded":
+                                global_total_processed_amount += hs_returned_amount_dollars
+                                global_total_savings += current_saving
+                                if txn_data.get("is_debit_routed") == "Yes":
+                                    global_debit_routed_count += 1
 
                         if txn_data["is_eligible_for_debit_routing"] == "Yes": batch_total_processed_dg_eligible += hs_returned_amount_dollars
                 except Exception as dg_e: # More specific exception for DG call if needed for debugging
@@ -331,27 +351,19 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
 
                  # Also send summary update after every transaction
                  # Aggregate all results so far across all completed batches and current batch's processed transactions
-                 partial_sim_data = []
-                 partial_savings = 0.0
-                 partial_processed = 0.0
-                 
-                 # Aggregate from results of previously completed batches
-                 for result in results_list:
-                     partial_sim_data.extend(result["data"])
-                     partial_savings += result["savings"]
-                     partial_processed += result["processed_all"]
-                 
-                 # Add data from the current batch processed so far
-                 partial_sim_data.extend(batch_simulation_data) # batch_simulation_data contains txns processed in THIS batch so far
-                 partial_savings += batch_total_savings # batch_total_savings contains savings in THIS batch so far
-                 partial_processed += batch_total_processed_all # batch_total_processed_all contains processed amount in THIS batch so far
+                 # Use global counters for total processed amount and total debit routed count
+                 with global_stats_lock: # Acquire lock to read global counters
+                     current_global_processed_amount = global_total_processed_amount
+                     current_global_savings = global_total_savings
+                     current_global_debit_routed_count = global_debit_routed_count
 
-                 partial_debit_routed = sum(1 for txn in partial_sim_data if txn.get("is_debit_routed") == "Yes")
-                 partial_savings_percentage = (partial_savings / partial_processed * 100) if partial_processed > 0 else 0
+                 # Recalculate savings percentage based on global values
+                 current_global_savings_percentage = (current_global_savings / current_global_processed_amount * 100) if current_global_processed_amount > 0 else 0
+
                  partial_summary = {
-                     "overall_savings_percentage": round(partial_savings_percentage, 2),
-                     "total_processed_amount": round(partial_processed, 2),
-                     "total_debit_routed_transactions": partial_debit_routed
+                     "overall_savings_percentage": round(current_global_savings_percentage, 2),
+                     "total_processed_amount": round(current_global_processed_amount, 2),
+                     "total_debit_routed_transactions": current_global_debit_routed_count # Use the global counter
                  }
                  # Send summary as an SSE event
                  print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
@@ -489,12 +501,16 @@ def simulate_debit_routing():
     safe_print("=" * 40 + "\n")
 
     # Prepare structured summary data for SSE
+    # This final summary can still use aggregated batch results for completeness
+    final_total_debit_routed = sum(1 for txn in all_simulation_data if txn.get("is_debit_routed") == "Yes")
+    final_overall_savings_percentage = (total_savings_all_batches / total_processed_all_types_all_batches * 100) if total_processed_all_types_all_batches > 0 else 0
+
     summary_data = {
-        "overall_savings_percentage": round(overall_savings_percentage, 2),
+        "overall_savings_percentage": round(final_overall_savings_percentage, 2),
         "total_processed_amount": round(total_processed_all_types_all_batches, 2),
-        "total_debit_routed_transactions": total_debit_routed_count
+        "total_debit_routed_transactions": final_total_debit_routed # Use final aggregated count here
     }
-    safe_print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}\n")
+    safe_print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}")
 
     write_to_csv(all_simulation_data, CSV_FILENAME)
     # Corrected log message for CSV writing in 'w' mode
