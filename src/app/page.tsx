@@ -396,15 +396,15 @@ export default function HomePage() {
   }, [simulationState, toast]);
 
   const handleStopSimulation = useCallback(() => {
-    if (simulationState === 'running') {
-      if (streamControllerRef.current) {
-        streamControllerRef.current.abort('User stopped simulation'); 
-        toast({ title: "Simulation Stopping..."});
-      }
-    } else { 
-      setSimulationState('idle');
-      toast({ title: "Simulation Stopped (UI)"});
+    console.log('[handleStopSimulation] Called. Current simulationState:', simulationState);
+    if (streamControllerRef.current) {
+      console.log('[handleStopSimulation] Aborting stream controller.');
+      streamControllerRef.current.abort('User stopped simulation');
     }
+    // Always reset simulation state and show a toast, regardless of the initial state
+    resetSimulationState();
+    setSimulationState('idle');
+    toast({ title: "Simulation Stopped", description: "Simulation stream has been stopped."});
   }, [simulationState, toast]);
 
   const executeAiSummary = useCallback(async () => { /* ... original ... */ }, [currentControls, processedPaymentsCount, transactionLogs, overallSuccessRateHistory, toast, accumulatedGlobalStatsRef, accumulatedProcessorStatsRef, setIsSummaryModalOpen, setIsSummarizing, setSummaryText]);
