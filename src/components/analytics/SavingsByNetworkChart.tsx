@@ -1,19 +1,36 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DollarSign } from 'lucide-react';
 
 interface SavingsByNetworkChartProps {
   csvFilePath: string;
   simulationRunId?: string | number | null;
+  totalSavings: number;
+  color?: string;
 }
 
 interface SavingsData {
   network: string;
   totalSavings: number;
+  color?: string;
 }
+
+// Define a color palette
+const BAR_COLORS = [
+  '#FF6347', // Tomato
+  '#4682B4', // SteelBlue
+  '#FFD700', // Gold
+  '#6A5ACD', // SlateBlue
+  '#3CB371', // MediumSeaGreen
+  '#FF8C00', // DarkOrange
+  '#40E0D0', // Turquoise
+  '#EE82EE', // Violet
+  '#90EE90', // LightGreen
+  '#ADD8E6', // LightBlue
+];
 
 export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsByNetworkChartProps) {
   const [savingsData, setSavingsData] = useState<SavingsData[]>([]);
@@ -44,10 +61,31 @@ export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsB
           throw new Error("Missing required columns in CSV.");
         }
 
+        const uniqueNetworks = new Set<string>();
         const savingsMap: { [key: string]: number } = {};
 
         const csvRowRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
 
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (!line) continue;
+
+          const values = line.split(csvRowRegex).map(value => value.trim().replace(/^"|"$/g, ''));
+          
+          if (values.length > Math.max(networkIndex, amountIndex, savingsIndex, statusIndex, routedIndex)) {
+            const network = values[networkIndex];
+            if (network) {
+              uniqueNetworks.add(network);
+            }
+          }
+        }
+
+        // Initialize savingsMap with all unique networks and 0 savings
+        uniqueNetworks.forEach(network => {
+          savingsMap[network] = 0;
+        });
+
+        // Process rows again to calculate actual savings for qualifying transactions
         for (let i = 1; i < lines.length; i++) {
           const line = lines[i].trim();
           if (!line) continue;
@@ -61,23 +99,27 @@ export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsB
             const status = values[statusIndex];
             const isRouted = values[routedIndex];
 
-            if (status === 'succeeded' && isRouted === 'Yes' && !isNaN(amount) && !isNaN(savingPercentage)) {
+            if (status === 'succeeded' && isRouted === 'Yes' && !isNaN(amount) && !isNaN(savingPercentage) && network) { // Ensure network is valid
               const savings = amount * (savingPercentage / 100);
               savingsMap[network] = (savingsMap[network] || 0) + savings;
             }
           }
         }
 
-        console.log("Filtered Savings Data Map:", savingsMap);
+        console.log("Calculated Savings Data Map:", savingsMap); // Log the calculated savings map
 
-        const processedData: SavingsData[] = Object.keys(savingsMap)
-          .map(network => ({
+        const processedData: SavingsData[] = Array.from(uniqueNetworks)
+          .map((network, index) => ({
             network,
-            totalSavings: parseFloat(savingsMap[network].toFixed(2)), // Round to 2 decimal places
-          }))
-          .sort((a, b) => b.totalSavings - a.totalSavings); // Sort by total savings descending
+            totalSavings: parseFloat((savingsMap[network] || 0).toFixed(2)), // Use calculated savings or 0, round to 2 decimal places
+            color: BAR_COLORS[index % BAR_COLORS.length], // Assign a color
+          }));
 
-        setSavingsData(processedData);
+        const filteredData = processedData.filter(entry => entry.network !== 'N/A'); // Filter out N/A networks
+
+        const sortedData = filteredData.sort((a, b) => b.totalSavings - a.totalSavings); // Sort by total savings descending
+
+        setSavingsData(sortedData);
       } catch (err: any) {
         console.error("Error fetching or processing CSV:", err);
         setError(err.message || "An error occurred while loading savings data.");
@@ -144,7 +186,11 @@ export function SavingsByNetworkChart({ csvFilePath, simulationRunId }: SavingsB
             <XAxis dataKey="network" stroke="hsl(var(--muted-foreground))" />
             <YAxis stroke="hsl(var(--muted-foreground))" tickFormatter={(value) => `$` + value.toLocaleString()} />
             <Tooltip formatter={(value: number) => [`$` + value.toFixed(2), "Total Savings"]} />
-            <Bar dataKey="totalSavings" fill="hsl(var(--chart-1))" />
+            <Bar dataKey="totalSavings">
+              {savingsData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

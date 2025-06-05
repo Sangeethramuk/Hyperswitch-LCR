@@ -34,7 +34,9 @@ DEFAULT_MAX_AMOUNT = 1000
 
 INITIAL_DELAY_SEC = 0 
 INTER_PAYMENT_SLEEP_SEC = 0.5 # Increased from 0.1 to 0.5
-CSV_FILENAME = "debit_routing_simulation_results.csv"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..')) # Assuming script is in project_root/src/app
+CSV_FILENAME = os.path.join(PROJECT_ROOT, 'public', 'debit_routing_simulation_results.csv')
 PAYMENTS_API_URL = 'https://sandbox.hyperswitch.io/payments'
 DECIDE_GATEWAY_API_URL = 'https://sandbox.juspay.in/decide-gateway'
 DECIDE_MERCHANT_ID = DEFAULT_PROFILE_ID
@@ -103,18 +105,20 @@ def generate_decide_gateway_payload(payment_id, amount_dollars, card_isin):
     }
 
 def write_to_csv(data_list, filename):
+    safe_print(f"Attempting to write CSV to: {filename}") # Log the target filename
     if not data_list: 
+        safe_print("Data list is empty. Will clear/create an empty CSV.") # Log empty data case
         try:
             with open(filename, 'w', newline='', encoding='utf-8') as output_file:
                 pass 
-            safe_print("No data to write to CSV; CSV file cleared/created.")
+            safe_print(f"{GREEN}✅ Successfully cleared/created empty CSV at {filename}{RESET}") # Success log for empty
         except IOError as e:
-            safe_print(f"{RED}❌ Error clearing/creating CSV file: {e}{RESET}")
+            safe_print(f"{RED}❌ Error clearing/creating CSV file {filename}: {e}{RESET}") # Detailed error log
         return
 
     keys = list(data_list[0].keys()) if data_list else []
     if not keys: 
-        safe_print(f"{RED}Cannot write to CSV: No data keys found, though data_list was not empty.{RESET}")
+        safe_print(f"{RED}Cannot write to CSV {filename}: No data keys found, though data_list was not empty.{RESET}")
         return
         
     try:
@@ -122,7 +126,8 @@ def write_to_csv(data_list, filename):
             dict_writer = csv.DictWriter(output_file, fieldnames=keys)
             dict_writer.writeheader() 
             dict_writer.writerows(data_list)
-    except IOError as e: safe_print(f"{RED}❌ Error writing CSV file: {e}{RESET}")
+        safe_print(f"{GREEN}✅ Successfully wrote {len(data_list)} rows to CSV at {filename}{RESET}") # Success log for data
+    except IOError as e: safe_print(f"{RED}❌ Error writing CSV file {filename}: {e}{RESET}") # Detailed error log
 
 def get_run_specific_cards(input_min_amt, input_max_amt):
     def _process_card_list(base_list, special_logic=None):
@@ -432,7 +437,5 @@ if __name__ == "__main__":
     INPUT_MIN_AMOUNT = args.min_amount
     INPUT_MAX_AMOUNT = args.max_amount
     
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    CSV_FILENAME = os.path.join(script_dir, "debit_routing_simulation_results.csv")
-
+    # The CSV_FILENAME is now defined globally using absolute paths
     simulate_debit_routing()

@@ -60,6 +60,7 @@ export default function HomePage() {
   const [overallSavingsPercentage, setOverallSavingsPercentage] = useState<number>(0);
   const [totalProcessedAmount, setTotalProcessedAmount] = useState<number>(0);
   const [totalDebitRoutedTransactions, setTotalDebitRoutedTransactions] = useState<number>(0);
+  const [lastSimulationTimestamp, setLastSimulationTimestamp] = useState<number | null>(null);
 
   const { toast } = useToast();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -248,16 +249,8 @@ export default function HomePage() {
       while (true) {
         const { value, done } = await reader.read();
         if (done) {
-          if (sseBuffer.trim().length > 0) {
-             try {
-                if (sseBuffer.startsWith('data: ')) {
-                    const jsonData = JSON.parse(sseBuffer.substring(6));
-                    handleSseEvent(jsonData);
-                }
-             } catch (e) { console.error("Error parsing final SSE chunk:", sseBuffer, e); }
-          }
-          setSimulationState('idle');
-          toast({ title: "Simulation Stream Ended" });
+          setLastSimulationTimestamp(Date.now());
+          console.log("Stream finished.");
           break;
         }
         sseBuffer += value;
@@ -438,11 +431,11 @@ export default function HomePage() {
               {parentTab !== 'least-cost-routing' ? (
                 <Tabs value={contentTab} onValueChange={tab => setContentTab(tab as 'stats' | 'analytics')} className="flex flex-col h-full">
                   <div className="flex items-center justify-start p-4 pb-0"><TabsList><TabsTrigger value="stats">Stats</TabsTrigger><TabsTrigger value="analytics">Analytics</TabsTrigger></TabsList></div>
-                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} /></div></ScrollArea></TabsContent>
+                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} /></div></ScrollArea></TabsContent>
                   <TabsContent value="analytics" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-2 md:p-4 lg:p-6"><div className="bg-white dark:bg-card border border-gray-200 dark:border-border rounded-xl shadow-sm p-6 mb-6"><AnalyticsGraphsView successRateHistory={successRateHistory} volumeHistory={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} /></div></div></ScrollArea></TabsContent>
                 </Tabs>
               ) : (
-                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} /></div></ScrollArea></div>
+                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} /></div></ScrollArea></div>
               )}
             </div>
             <div className="flex flex-col h-full min-h-0 border-l p-2 md:p-4 lg:p-6 w-[400px] min-w-[300px]">
