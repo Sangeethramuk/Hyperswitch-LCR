@@ -6,6 +6,7 @@ import { ProcessorSuccessRatesTable } from './analytics/ProcessorSuccessRatesTab
 import { TransactionDistributionChart } from './analytics/TransactionDistributionChart';
 import { SuccessRateOverTimeChart } from './analytics/SuccessRateOverTimeChart';
 import { VolumeOverTimeChart } from './analytics/VolumeOverTimeChart';
+import { SavingsByNetworkChart } from './analytics/SavingsByNetworkChart';
 import type { FormValues } from '@/components/BottomControlsPanel';
 // import { PROCESSORS } from '@/lib/constants'; // PROCESSORS import removed
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,6 +27,7 @@ interface StatsViewProps {
   overallSavingsPercentage?: number;
   totalProcessedAmount?: number;
   totalDebitRoutedTransactions?: number;
+  simulationRunId?: string | number | null; // Add simulationRunId prop
 }
 
 const CHART_COLORS_HSL = {
@@ -53,6 +55,7 @@ export function StatsView(props: StatsViewProps) {
     overallSavingsPercentage = 0,
     totalProcessedAmount = 0,
     totalDebitRoutedTransactions = 0,
+    simulationRunId = null, // Destructure simulationRunId
   } = props;
 
   const overallSR = currentControls?.overallSuccessRate ?? 0;
@@ -169,6 +172,9 @@ export function StatsView(props: StatsViewProps) {
       <VolumeOverTimeChart data={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} />
       <TransactionDistributionChart data={transactionDistributionData} />
       {/* <ProcessorSuccessRatesTable data={processorSRData} /> */}
+
+      {/* New Savings by Network Chart */}
+      <SavingsByNetworkChart csvFilePath="/debit_routing_simulation_results.csv" simulationRunId={simulationRunId} />
     </div>
   );
 }
