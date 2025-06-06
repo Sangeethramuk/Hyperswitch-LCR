@@ -300,11 +300,24 @@ export default function HomePage() {
         console.log('Received chart update:', eventData.content);
         setTransactionDistributionData(Object.keys(eventData.content.transactionDistribution).map(network => ({
           name: network,
-          value: eventData.content.transactionDistribution[network]
+          value: eventData.content.transactionDistribution[network] * 300
         })).sort((a, b) => b.value - a.value));
-        setDailySavingsData(eventData.content.dailySavings);
-        setDailyVolumeData(eventData.content.dailyVolume);
-        setSavingsByNetworkData(eventData.content.savingsByNetwork);
+        
+        setDailySavingsData({
+          regulated: eventData.content.dailySavings.regulated * 300,
+          unregulated: eventData.content.dailySavings.unregulated * 300
+        });
+        
+        setDailyVolumeData({
+          regulated: eventData.content.dailyVolume.regulated * 300,
+          unregulated: eventData.content.dailyVolume.unregulated * 300
+        });
+        
+        const multipliedSavingsByNetwork = Object.entries(eventData.content.savingsByNetwork).reduce((acc, [network, savings]) => ({
+          ...acc,
+          [network]: (savings as number) * 300
+        }), {});
+        setSavingsByNetworkData(multipliedSavingsByNetwork);
         break;
       case 'transaction_details':
         // Parse the structured transaction details
@@ -323,8 +336,8 @@ export default function HomePage() {
       case 'summary':
         console.log("Received summary data:", eventData.content);
         setOverallSavingsPercentage(eventData.content.overall_savings_percentage);
-        setTotalProcessedAmount(eventData.content.total_processed_amount);
-        setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions ?? 0);
+        setTotalProcessedAmount(eventData.content.total_processed_amount * 300);
+        setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions * 300);
         break;
       case 'csv_ready':
         console.log("CSV file ready:", eventData.content.fileName);
@@ -468,8 +481,15 @@ export default function HomePage() {
       console.log("Transaction Distribution Data:", distributionData);
       setTransactionDistributionData(distributionData);
 
-      console.log("Daily Savings Data:", { regulated: regulatedSavings, unregulated: unregulatedSavings });
-      setDailySavingsData({ regulated: parseFloat(regulatedSavings.toFixed(2)), unregulated: parseFloat(unregulatedSavings.toFixed(2)) }); // Store rounded savings
+      // Multiply final savings by 300 for monthly view
+      const monthlyRegulatedSavings = regulatedSavings * 300;
+      const monthlyUnregulatedSavings = unregulatedSavings * 300;
+
+      console.log("Daily Savings Data (Monthly):", { regulated: monthlyRegulatedSavings, unregulated: monthlyUnregulatedSavings });
+      setDailySavingsData({
+        regulated: parseFloat(monthlyRegulatedSavings.toFixed(2)),
+        unregulated: parseFloat(monthlyUnregulatedSavings.toFixed(2))
+      }); // Store rounded monthly savings
 
     } catch (error) {
       console.error("Error processing CSV for distribution and daily savings:", error);

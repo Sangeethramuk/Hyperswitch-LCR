@@ -124,37 +124,30 @@ export function StatsView({
   return (
     <div className="space-y-6 flex flex-col">
       {/* Stats Cards in a single row */}
-      <div className="grid grid-cols-3 gap-6">
-        {/* Total Savings (%) */}
-        <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
-            <CardTitle className="text-sm font-medium">Total Savings (%)</CardTitle>
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
+            <CardTitle className="text-sm font-medium">Monthly Savings</CardTitle>
           </CardHeader>
-          <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">{overallSavings.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">%</p>
+          <CardContent className="pt-0 pb-6 pl-6 pr-6">
+            {/* Calculate total monthly savings by summing regulated and unregulated */}
+            <div className="text-2xl font-bold">${((dailySavingsData?.regulated || 0) + (dailySavingsData?.unregulated || 0)).toFixed(2)}</div>
           </CardContent>
         </Card>
-
-        {/* Total Processed Amount */}
-        <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
-            <CardTitle className="text-sm font-medium">Total Processed Amount</CardTitle>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
+            <CardTitle className="text-sm font-medium">Monthly Amount Processed</CardTitle>
           </CardHeader>
-          <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${totalAmount.toLocaleString('en-US', { maximumFractionDigits: 0 })}</div>
-            <p className="text-xs text-muted-foreground">USD</p>
+          <CardContent className="pt-0 pb-6 pl-6 pr-6">
+            <div className="text-2xl font-bold">${totalProcessedAmount.toFixed(2)}</div>
           </CardContent>
         </Card>
-
-        {/* Total Debit Routed Transactions */}
-        <Card className="flex-1">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pb-4 px-6">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
             <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
           </CardHeader>
-          <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">{debitRoutedTxns}</div>
-            <p className="text-xs text-muted-foreground">Total Txns</p>
+          <CardContent className="pt-0 pb-6 pl-6 pr-6">
+            <div className="text-2xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
           </CardContent>
         </Card>
       </div>
@@ -168,7 +161,6 @@ export function StatsView({
           </CardHeader>
           <CardContent className="py-6 px-6">
             <div className="text-4xl font-bold">${dailySavingsData?.regulated?.toFixed(2) || '0.00'}</div>
-            <p className="text-xs text-muted-foreground">USD</p>
           </CardContent>
         </Card>
 
@@ -179,7 +171,6 @@ export function StatsView({
           </CardHeader>
           <CardContent className="py-6 px-6">
             <div className="text-4xl font-bold">${dailySavingsData?.unregulated?.toFixed(2) || '0.00'}</div>
-            <p className="text-xs text-muted-foreground">USD</p>
           </CardContent>
         </Card>
       </div>
