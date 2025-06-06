@@ -326,6 +326,10 @@ export default function HomePage() {
         setTotalProcessedAmount(eventData.content.total_processed_amount);
         setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions ?? 0);
         break;
+      case 'csv_ready':
+        console.log("CSV file ready:", eventData.content.fileName);
+        setSimulationCsvFileName(eventData.content.fileName);
+        break;
       default:
         console.warn("Unknown SSE event type:", eventData.type);
     }
