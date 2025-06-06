@@ -105,7 +105,7 @@ export function SavingsByNetworkChart({ data, simulationRunId }: SavingsByNetwor
             <XAxis dataKey="network" stroke="hsl(var(--muted-foreground))" />
             <YAxis stroke="hsl(var(--muted-foreground))" tickFormatter={(value) => `$` + value.toLocaleString()} />
             <Tooltip formatter={(value: number) => [`$` + value.toFixed(2), "Total Savings"]} />
-            <Bar dataKey="totalSavings">
+            <Bar dataKey="totalSavings" barSize={90}>
               {savingsData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
