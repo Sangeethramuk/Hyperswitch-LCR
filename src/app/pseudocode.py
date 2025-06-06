@@ -204,7 +204,8 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
         card_number = card_info["number"]; label = card_info["label"]
         min_amt, max_amt = card_info["amount_range"]
         if min_amt > max_amt: 
-            print(f"event: warning\ndata: {json.dumps({'message': f'BATCH {batch_id}, TXN IDX {i}: SKIPPING due to invalid range ({min_amt} > {max_amt}) for card: {card_info["label"]}'})}\n\n")
+            message_content = f'BATCH {batch_id}, TXN IDX {i}: SKIPPING due to invalid range ({min_amt} > {max_amt}) for card: {card_info["label"]}'
+            print(f"event: warning\ndata: {json.dumps({'message': message_content})}\n\n")
             continue 
         amount = random.randint(min_amt, max_amt)
         payment_type = card_info.get("payment_type", "debit")
@@ -509,7 +510,8 @@ def simulate_debit_routing():
     print(f"event: info\ndata: {json.dumps({'message': f'💰 Total Savings (as % of Total Processed Amount): {overall_savings_percentage:.2f}% (Total Savings: ${total_savings_all_batches:.2f} on Total Processed: ${total_processed_all_types_all_batches:.2f})'})}\n\n")
     print(f"event: info\ndata: {json.dumps({'message': f'💲 Total Amount Processed (All Successful Txns): ${total_processed_all_types_all_batches:.2f} USD'})}\n\n")
     print(f"event: info\ndata: {json.dumps({'message': f'📈 Total Debit Routed Transactions: {total_debit_routed_count}'})}\n\n")
-    print(f"event: info\ndata: {json.dumps({'message': '========================================\n'})}\n\n")
+    message_content_line513 = '========================================\n'
+    print(f"event: info\ndata: {json.dumps({'message': message_content_line513})}\n\n")
     # Prepare structured summary data for SSE
     final_total_debit_routed = sum(1 for txn in all_simulation_data if txn.get("is_debit_routed") == "Yes")
     final_overall_savings_percentage = (total_savings_all_batches / total_processed_all_types_all_batches * 100) if total_processed_all_types_all_batches > 0 else 0

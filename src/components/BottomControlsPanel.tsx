@@ -21,6 +21,8 @@ import type { ControlsState, PaymentMethod, ProcessorPaymentMethodMatrix, Proces
 import { Settings2, TrendingUp, Zap, VenetianMaskIcon, AlertTriangle, Trash2, Copy } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
+const ALL_DEBIT_NETWORKS = ['Star', 'Pulse', 'Accel', 'Nyce', 'Mastercard', 'Visa', 'American Express', 'Discover'];
+
 const LOCALSTORAGE_SUCCESS_CARD_KEY = 'hyperswitch_successCardDetails';
 const LOCALSTORAGE_FAILURE_CARD_KEY = 'hyperswitch_failureCardDetails';
 
@@ -154,6 +156,7 @@ export type FormValues = Omit<z.infer<typeof formSchema>, 'structuredRule' | 'ov
   debitTransactionsPercent?: number;
   minAmount?: number;
   maxAmount?: number;
+  debitNetworkStates?: Record<string, boolean>;
 };
 
 interface BottomControlsPanelProps {
@@ -194,6 +197,21 @@ export function BottomControlsPanel({
 }: BottomControlsPanelProps & { activeTab: string; parentTab?: 'intelligent-routing' | 'least-cost-routing' }) {
   const { toast } = useToast();
   const [successBasedAlgorithmId, setSuccessBasedAlgorithmId] = useState<string | null>(null);
+
+  const [debitNetworkStates, setDebitNetworkStates] = useState<Record<string, boolean>>(
+    () => ALL_DEBIT_NETWORKS.reduce((acc, network) => {
+      acc[network] = true; // Default to true (on)
+      return acc;
+    }, {} as Record<string, boolean>)
+  );
+
+  const handleDebitNetworkToggle = (networkName: string, newState: boolean) => {
+    setDebitNetworkStates(prevStates => ({
+      ...prevStates,
+      [networkName]: newState,
+    }));
+  };
+
   // const [activeRoutingAlgorithm, setActiveRoutingAlgorithm] = useState<any | null>(null); // Removed
   // const [isLoadingActiveRouting, setIsLoadingActiveRouting] = useState<boolean>(false); // Removed
   const dynamicDefaults = useMemo(() => {
@@ -365,7 +383,7 @@ export function BottomControlsPanel({
           };
         }
         const { overallSuccessRate, ...outputValues } = formData as any; 
-        onFormChange({ ...outputValues, structuredRule: rule } as FormValues);
+        onFormChange({ ...outputValues, structuredRule: rule, debitNetworkStates } as FormValues);
 
         // Save card details to localStorage
         // Saving global card details to localStorage is removed as fields are removed
@@ -385,14 +403,14 @@ export function BottomControlsPanel({
             };
         }
         const { overallSuccessRate, ...outputValues } = initialFormData as any;
-        onFormChange({ ...outputValues, structuredRule: initialRule } as FormValues);
+        onFormChange({ ...outputValues, structuredRule: initialRule, debitNetworkStates } as FormValues);
     } else {
         const { overallSuccessRate, ...outputValues } = initialFormValues as any;
-        onFormChange({ ...outputValues, structuredRule: null } as FormValues);
+        onFormChange({ ...outputValues, structuredRule: null, debitNetworkStates } as FormValues);
     }
 
     return () => subscription.unsubscribe();
-  }, [form, onFormChange]);
+  }, [form, onFormChange, debitNetworkStates]);
 
   const { control, setValue } = form;
 
@@ -693,10 +711,13 @@ export function BottomControlsPanel({
                 parentTab === 'least-cost-routing' ? (
                   <div className="flex flex-col gap-4">
                     <h2 className="text-xl font-bold mb-2">Debit networks</h2>
-                    {['Star', 'Pulse', 'Accel', 'Nyce'].map((network) => (
+                    {ALL_DEBIT_NETWORKS.map((network) => (
                       <div key={network} className="flex items-center justify-between border rounded-lg px-4 py-3 bg-white dark:bg-card">
                         <span className="font-medium text-lg">{network}</span>
-                        <Switch checked={true} onCheckedChange={() => {}} />
+                        <Switch 
+                          checked={debitNetworkStates[network]} 
+                          onCheckedChange={(newState) => handleDebitNetworkToggle(network, newState)} 
+                        />
                       </div>
                     ))}
                   </div>

@@ -1,0 +1,1001 @@
+run_id,batch_id,transaction_timestamp,payment_id,amount,card_network,card_isin,status,label,payment_type,co_badged_card_networks,is_eligible_for_debit_routing,saving_percentage,is_debit_routed,is_regulated
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:11.925647,pay_hXkbZ98zIVo9cgeRnBXe,222,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:14.512719,pay_P9YPZldnZ1oKHrC1orU8,256,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:16.348151,pay_bc5dzRTrTlhSBPW1nH4j,62,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:18.170732,pay_SR7DLnHU9DnnL5oA5vnP,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:20.062795,pay_DBwY0TKKGZaU8ecnvCnU,78,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:22.609966,pay_rCAgLfH3FfcbV5P1pQPF,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:24.519374,pay_8PiRnXVfvcMdrNFpNURO,214,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:26.315673,pay_Ik9FCpaDM2oKgtJ5CHfM,288,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:28.225620,pay_Px18mzVIf8OEvXSM3Edd,204,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:30.289921,pay_fJpxPhvhBIfCCQgBV3Y7,258,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:32.448703,pay_nWKe15Q7wlkiGB0dWwL0,120,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:34.639893,pay_HCkhYOfZD7QD4O1Cw8DH,149,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:36.481599,pay_7EQ1IHaB1diVMEcOfRWA,252,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:38.857028,pay_RKnk6HNeVmESZ4Zf73Ca,263,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:40.729734,pay_TqrZQJqpypi57BT2lzYX,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:42.837073,pay_i7y14DmohuKpcBoHlw3H,234,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:44.761351,pay_HF04ztQ6zHeA88asBsYX,196,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:46.823844,pay_vuHXKNMMQr4SghB1TJCj,186,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:49.311454,pay_DuTxeJPblSv5t4fZ6MvX,63,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,35,2025-06-06T17:44:51.439557,pay_mVpFB1lndDqIMCufgBgU,71,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:11.923139,N/A,64,N/A,N/A,FAILED_HS_HTTP_429,Unregulated Debit,debit,N/A,No,0,N/A,
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:13.220463,pay_KD9aNxgNmtj52vZKiWsK,100,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:15.398769,pay_k7z779W8D9to8HvFmoxA,243,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:17.560317,pay_MByWDfVroWegIZzCm1p4,204,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:19.914630,pay_rr07GwppNHjoNvFaRcmo,283,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:22.485835,pay_sRWaQPu8CFceOZvwpb7z,184,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:24.662255,pay_Wpq3680yf6C7uqXlMuxG,68,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:26.428318,pay_Z6UMXo8uDUDXaN6Quq94,103,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:28.326219,pay_2jotcQ9CVVvqIpDwTh3W,263,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:30.260489,pay_Vsv4A52fRYLvNJxNK9JX,243,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:32.120258,pay_NabFfPtupOAiM0k6om24,101,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:33.954697,pay_o8uBNgp4NLFhT1AbKc1d,218,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:35.988027,pay_VhszEx0FC0gs3n83GMjn,178,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:37.871924,pay_NFDRWvov8QNsAm52niAJ,170,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:39.727810,pay_ZV5HbQWF8IXoeAkZfz1W,285,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:41.795797,pay_g4ZcwHomIPYvg7tHNcLi,281,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:44.325511,pay_GW6xO3ZhqNFvjuFILg9I,56,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.45,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:46.764066,pay_oNehyrTti4D3CfLzmZrw,144,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:48.772865,pay_GZwJsIS7D3uE4W1mnkpE,290,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,29,2025-06-06T17:44:51.457577,pay_lHcRyGDZDLir5aGmO4EB,112,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:11.919726,N/A,125,N/A,N/A,FAILED_HS_HTTP_429,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:13.221352,pay_Ws95dCpayiCJ0HUVdfSw,227,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:15.553028,pay_warrwXzwBXRfxc2Aopwc,135,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:17.768797,pay_xZLjscjH7JrBEPv2KZvP,183,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:19.943665,pay_OaraUnhGSF4L88HwezQj,299,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:22.628647,pay_vYUCH7DYq7ZwNUfCJm7l,283,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:24.548046,pay_JoYHwMQv8MCPbf2gSLt5,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:26.363177,pay_VxrgRRx5NyUGZKDrQbAh,213,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:28.292713,pay_tURjG2m2zQdY9YKYLZLc,179,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:30.205308,pay_NzUtU8SqU7trzknOzc4U,198,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:32.119229,pay_lxcVSsGDOrJRuUftyt01,60,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:34.212305,pay_viPmBL3C0oo40HHr4fhg,76,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:36.197990,pay_rhUbgnJDXZo6tzG4mIYI,80,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:38.350402,pay_U238gAdUZJ6K2h0RqyJX,172,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:40.167477,pay_BLLCe4OjjXGh1Cth4Ekp,174,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:42.615210,pay_kbYIOc0zk0eYlscNl7ut,201,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:44.746044,pay_DZhJ3KCxx1WZXganKmWe,253,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:47.175565,pay_eqdcCaP9SAj9nJhzHlpX,207,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:49.425740,pay_pMB9WZ8dElCYNB7Int9X,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,22,2025-06-06T17:44:51.567183,pay_n4wvbS7D49pmiM6c5vdi,95,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:11.917460,pay_Uv7JXThWDVk8SBZ95RTz,130,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:14.739854,pay_KhxU0vij5dVHeYhscBIQ,279,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:16.751115,pay_YT9HJHAl6JvtUS9sZ0Bp,90,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:18.735042,pay_rJNlMxaMckepl3LHvGEF,84,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:20.807876,pay_j88XbRiY85DCw90CX0v9,94,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:23.189055,pay_OMhdEyc4d2YeABjnbMZQ,89,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:25.282927,pay_18XaVusoKnmJO3nQyhl2,54,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:27.391913,pay_MzMRWzRhM882Lu8UMGwd,122,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:29.461614,pay_MUv6FdZlibaujC4FwmJZ,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:31.369099,pay_84ZL4OuWosxEZMzNnAM3,90,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:33.288162,pay_c4sRnmQ2zMAzQcOTKlyR,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:35.089127,pay_XOTTUw9MmYWFhBRJfIXV,212,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:36.930131,pay_u4Tbd5DhqKBVGVeWUw9Z,300,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:38.869608,pay_qSZA3chwiGDonw99TxFm,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:40.728373,pay_6X0f9ivKTBXIyBZEn6Bb,171,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:42.994744,pay_J9osQ7mmblzr09E3FuKc,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:45.099436,pay_coabCsckNIqMBsGB895e,179,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:47.150593,pay_Jj6XjNZBYz9t60ZWQGce,159,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:49.387321,pay_Ju5PMbR3OOWiEZVuo43Z,210,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,19,2025-06-06T17:44:51.520596,pay_jyx9v9yqrHHU4rnSo4wa,239,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:11.930280,N/A,151,N/A,N/A,FAILED_HS_HTTP_429,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:13.229512,pay_Oj9XWYzcGdOzFn0D5QQr,169,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:15.735670,pay_LwueMxn3aeMZIrDjXPJi,166,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:17.632488,pay_mUaQY4HZqM2Tw1H6IE5d,72,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:19.623451,pay_AzodRlzgHfTWslyUfnub,173,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:22.426544,pay_JBuOiYOqGpgj9pPrkkJl,167,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:24.344716,pay_QfUP6XzJGv8swiFpVT4E,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:26.243863,pay_uSIheVavTFV9XOJwiSzr,67,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:28.477658,pay_VN3epqRePa5BWyHQbsb1,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:30.667048,pay_ldibOEvqcwHCBV6ovtEV,166,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:32.612178,pay_BgirFkIf18ZrRA3Exzh5,88,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:34.734382,pay_WfdUbEjGI9lDPgJ1T3B6,273,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:36.915037,pay_zgtDZSi974GPSdsOLJap,130,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:38.926966,pay_GoYsceAuFY9QopzDOyOE,110,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:40.967113,pay_VWWrJ7ghKkdFXCURldDG,159,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:43.020779,pay_h7zI3pAIWGNclj6qKj5u,284,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:45.117086,pay_WxY3njCpByzfoK7CVMmH,238,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:47.159808,pay_QtHr6CvbAWXMIwlDyFaC,110,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:49.230117,pay_mgW2r0UZ9J2o0x0rSWM6,221,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,44,2025-06-06T17:44:51.492789,pay_HtEMYCBQoNLXvnIUVwvX,209,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:11.924508,N/A,147,N/A,N/A,FAILED_HS_HTTP_429,Regulated Debit,debit,N/A,No,0,N/A,
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:13.241925,pay_3IohWap1BQx6iPT3g8WA,258,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:15.699406,pay_CK9DgLVm44Py8YrhEg75,234,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:17.907765,pay_esMudIE8dDQJMXTX0WJn,64,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:19.797486,pay_rKRFrI27P6OwoQe2STer,79,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:22.608457,pay_NGHeFBXT4jG7FnzezbNe,238,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:24.802727,pay_Rvo4pMYkatqg3vsJbzsV,157,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:26.887410,pay_0sTkl6MU0SYDvONJRrOv,223,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:28.966168,pay_NN4QOpgioZSN2jFPOecD,226,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:30.993928,pay_vkI4xP478IomqZ0Y2pQM,109,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:32.810839,pay_Ww9L2Gh146ukogclLHuV,216,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:34.921780,pay_KbpEBJCCZMol3Y6JtYyX,209,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:36.917409,pay_atvv6W6lrJijvCoBzT38,105,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:38.870262,pay_9nTjtww5kmHgj27xBxGa,181,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:41.060299,pay_YBS9iEWzihG4ubhpd1yy,72,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:43.019350,pay_aY1tyva3TiNTYLC3AUjB,196,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:45.089493,pay_dZXv5gYBEiUWWzllQD8F,67,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:47.443865,pay_IRnUXbUY0bln1e0wZTQr,188,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:49.454006,pay_2R1HtNcpc1iOzF3W217O,267,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,32,2025-06-06T17:44:51.911352,pay_EzOqIZxUHjuyYWq1dSGx,130,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:11.920185,N/A,298,N/A,N/A,FAILED_HS_HTTP_429,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:13.240145,pay_jKCQlH8jOJ7XnbssYj9V,177,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:15.779103,pay_5aNYsXYILIZFmySonUxj,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:17.969647,pay_lagYGDkotFHLC8SemSti,277,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:20.102633,pay_lkJDGEvodhHcD5iKdL6a,132,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:22.451389,pay_HMFnNTeQWPxDoDn8vs4D,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:24.526461,pay_zBxM5uuYYdgt171CkWIh,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:26.366287,pay_y1FsVP8DeUA57Qw3e1Gn,123,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:28.309496,pay_G3vT1SKMPQdDMqsv8pmW,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:30.293781,pay_UkiAkqTKvAJEWxCp5u0J,74,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:32.200752,pay_B54TvZeDxt0SKm8X0K0b,218,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:34.268362,pay_qCwIziIJIvqPCZJah1wx,277,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:36.567366,pay_qBGJAAB3lud1HfkVvsEe,82,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.38,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:38.829754,pay_BaVD6aMWxQye1imWIauj,148,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:40.844786,pay_CiSiUHLD2CWSAkvV9UP4,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:42.996191,pay_tQDeZlNXmJrVKK2XnHjr,126,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:45.305239,pay_v37LqkLB7IqYcV1lxbZl,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:47.323422,pay_7SkqKf1kyAux2JltyCMY,206,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:49.452943,pay_zrT6d6exfuC2YaxH4z0f,194,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,23,2025-06-06T17:44:51.973130,pay_eke7PhjpPaE9qDrzLxDk,109,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:11.925457,N/A,299,N/A,N/A,FAILED_HS_HTTP_429,Unregulated Debit,debit,N/A,No,0,N/A,
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:13.241079,pay_whSdMTZPLaYV3m4HIiP0,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:15.460158,pay_fK1aIfULFs3W8p5RAxol,255,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:17.788460,pay_37OfMuttAsvtLJ55N7cQ,100,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:19.998909,pay_maKLUw8a9nCJ5WHoTU2H,246,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:22.678070,pay_vhtOlbz5GCk6wseagWBW,263,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:24.744755,pay_o64pA43leOBE1dbs0drC,142,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:26.878959,pay_0bW9qDKPvVkR2LfxYZoc,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:28.828072,pay_0NVCaYSbJXEaBLxcOkIR,253,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:31.111403,pay_2PW6K5OxoaOzKrxrjmhB,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:33.002685,pay_NQPHJqwNiXSKQegw1eS6,153,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:34.828909,pay_py2YmV7oPew9YK9CiFh2,93,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:36.869742,pay_fABfRWzB2f7BA5mfo0Y7,217,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:38.741588,pay_x9KvkqCMh5E9bEZjanTn,171,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:40.986136,pay_fBGMTSpthdhzSc96dDkk,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:43.030877,pay_t7z3ZYnorBAeEwAby0uS,58,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:44.835663,pay_B2ntzI7ThhKX3VECXIX2,266,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:47.258438,pay_GCO8uTaErzRfogmtOB4y,212,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:49.657800,pay_QxclOEpC7pPPVzlDDFvG,268,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,34,2025-06-06T17:44:52.115618,pay_tEL88nJ37sfpwKKSPp31,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:11.907521,pay_q2vIVmhkMMVxa87XBrgf,261,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:14.665586,pay_OKvsj0ya1oNvgXISxGD4,202,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:16.719488,pay_NvaRgtnjdDsIbdyYrIJt,95,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:18.728284,pay_Nyl3B3ObV5vGts4UZ7w5,166,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:21.093921,pay_P7AVHbSts7rBDsnl5yww,74,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:23.008245,pay_ne6lOXtitcJ00GstLfDE,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:24.935363,pay_oPOptHEWHNjowu18ezQP,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:26.836069,pay_7ekaIsHbPIgRphbTsCTu,88,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:28.894946,pay_2fysIvISlTjo6lfEXsGx,203,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:31.094337,pay_aDJIm8fk7vmqU3iOyX3d,99,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:32.961338,pay_p6f5pfgJP020nnc91faY,77,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:34.802318,pay_oG8dYYTO5uqyZlRtiVqD,300,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:37.085191,pay_i1w2xPTftTli1InRYJWj,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:38.939005,pay_RufguqRLOdC17MxTPoCH,176,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:41.160451,pay_e6DKMiqPgpYOZgAUSdGn,168,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:43.343653,pay_jWCJyoLFLqPaPjdVtyKn,65,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:45.241964,pay_u2WgVnpgvfpyVAmwPiqL,118,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:47.443069,pay_puO57lSoPqHSYfJo1Zda,185,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:49.688885,pay_ExaR1zQs1nPjypt1ejfn,57,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,2,2025-06-06T17:44:52.169532,pay_vCulKdRVmZtXwyHQpDMi,246,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:11.927210,N/A,119,N/A,N/A,FAILED_HS_HTTP_429,Unregulated Debit (Special),debit,N/A,No,0,N/A,
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:13.236203,pay_g8DVCeojqeKxznXiX9Bh,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:15.392402,pay_FU1o3sqKJsLZiRGTo0ok,177,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:17.390116,pay_z2UXsJoVghOFquPFGez7,224,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:19.375783,pay_CtLkX8HsZ0yA93iyidX7,203,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:22.049819,pay_5bi5irNkOtu05nyOWO9e,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:23.859089,pay_VOySPdeQBaY8LM5Pkwpm,170,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:26.075370,pay_BzKQqnhbDNW7muv7irRa,252,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:27.913083,pay_ErVlRhfUxK9AXSbd9bsW,52,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:29.920246,pay_jcXc7dfU5qsGKZa02Dke,76,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:32.116932,pay_4s9PagWNopb3ZvubwDGT,212,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:33.918914,pay_zS98TdcPUhWQlsY3IKiQ,212,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:36.323490,pay_3xSRvSijc1LiHSF19kNB,122,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:38.178140,pay_0xtiEp7SKrhc4uOjDQ4J,218,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:39.990527,pay_rbcnYMmn5W6DkkhIkRDh,133,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:42.322466,pay_1zdxyjvNWtnizdUzD798,73,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:45.167003,pay_o6OJFp80JXM7fAAc5BD3,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:47.383532,pay_OKv2BPJmKrGJrh0BvUnB,144,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:49.668825,pay_hkwBZMG8d2SqjEaUovUD,95,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,37,2025-06-06T17:44:52.039219,pay_BJqvwVOnXVCyi7HzJfp1,174,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:11.916122,pay_4NWUqNMccd8onaQSxy3O,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:14.303645,pay_4nkahNcPbLDXa7cRu5Wg,102,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:16.425611,pay_aMLIK0ZZLuuXEftTq30T,226,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:18.123546,pay_0awXh9Fwc0ZqRCySCF1D,300,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:19.906461,pay_scjUeTtJjH48BOoaGMcC,120,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:22.607311,pay_EhDphZjwpfMRbOQdpnSd,191,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:24.852831,pay_eXPEKRNaWgfvT5e6dzIH,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:26.969164,pay_5oIHd43xRUvsZ7BaK0RP,187,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:29.130406,pay_sq5pZSmcQ6FO6HJJKloq,219,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:31.001720,pay_dml4D5Dli9F9fZnZ0Vo9,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:32.943675,pay_0eZFH26PHfb2m9tgUfmn,202,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:34.834804,pay_hIGY1Npc4qgq6L2IBdwq,216,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:36.871197,pay_x5iXqqov0WzKFpKgvvHr,235,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:39.069550,pay_83j0ZLBhxYEp0CKZxLKW,94,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:40.992884,pay_AmdfcCXv4WWS4QLjTMr9,223,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:43.269679,pay_O4ohYP6ZuqQKlGJWaRHW,170,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:45.428874,pay_584mnEevLUM1b2C4AWKN,131,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:47.943555,pay_bBbQzvdFfEcPoM65ckyz,52,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:50.301857,pay_s9ZTN4KcsKWfuSqTs0PG,266,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,16,2025-06-06T17:44:52.325534,pay_jA8uPXFkh8jaMiiwfavi,74,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:11.931144,pay_UNVcSUkS7JoRRTBml1x9,210,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:14.986655,pay_RYSz9Q2WTle8BU7tFy2C,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:17.052755,pay_dOlmidFWydbKO1gEJGcD,233,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:19.027404,pay_h1gS1255jIoI8PHFQQpx,168,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:21.519019,pay_h9MFXTEY6V1uh5uzSFB8,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:23.342942,pay_q6R8ECjWV3C21dNzz9Ea,105,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:25.365274,pay_I9WGy4TwximcjmPfHk2R,263,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:27.199430,pay_GXpRkhxG4eh2OVAhaiDh,161,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:29.374867,pay_SXx1IgTSUidYhk1pFrXu,138,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:31.587518,pay_LcUj71OVUtSIckTaVnKn,138,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:33.496367,pay_VwniMmZpj1H9MQBlm2hf,115,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:35.426793,pay_waShdGgl5yZetfNNbjmC,167,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:37.291392,pay_BkbGGWkkFylGslDQpiFR,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:39.306139,pay_kNn4osZ8hzBKuZEm9fig,64,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:41.306566,pay_5ASPGfeBj6RDQkWSnmE8,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:43.601500,pay_fII5iEawowaLJ15VmTlS,66,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:45.704001,pay_4sPUBQisRwjo8j9UgCkg,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:48.003583,pay_8L9jlDK5vF9iEzeaGaFQ,85,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:50.477208,pay_RWYZFNKXyD1dNAik1eu0,112,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,46,2025-06-06T17:44:52.465012,pay_6u2WwWy5eQo3Ue5F3qWU,271,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:11.932008,pay_xWyzeayuoToz81HiwGm1,190,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:14.285310,pay_KkMRvoMR6ForNTp6xkPL,129,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:16.510499,pay_7YbI3OyKqMKoUBHLbQpD,140,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:18.367396,pay_YEUgNo2VqojgyOUSSMuK,220,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:20.213071,pay_HxY6MeB7g2UnolXbUetP,272,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:22.777027,pay_sEGQERDjgpPZV8l830N0,142,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:25.031094,pay_JTaMqimX3Sj5KJ7EA5HF,198,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:27.259064,pay_uXJTP0g4uSrcOEQ1sYTb,220,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:29.153670,pay_TJXNU2VCo0OdeN4SrCcV,81,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:31.429546,pay_U3DAgpfVCTW6Ygv0owtY,210,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:33.403797,pay_6BUrSg5kn3tyXKTYtRh1,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:35.365321,pay_iJHmEBh0kluWBfrzD5mj,159,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:37.249853,pay_X6fya6SG204zU0ZrLwrR,243,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:39.164209,pay_VrodjWQVEybccuDCH3IR,177,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:41.334287,pay_6lRArxpVJqtkMYvfEPK6,78,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:43.490185,pay_MhvzUh7RSATu5Hd6Oux8,98,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:45.378255,pay_wMfc0hiyEFBNbDPblHdk,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:47.641530,pay_mqbUEWTrz7WzUFm3c7xf,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:50.160502,pay_rYZEp3zOvyDqjtnwLLZ8,93,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,48,2025-06-06T17:44:52.198048,pay_ZSMziOOTkaTAZ4ih7RA2,269,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:11.931575,pay_QS8PTGcoCWw5DQ22fTjp,82,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:14.664777,pay_D8kSgdDMeHwTpDrNZgim,137,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:17.015707,pay_7z5DWkyq1WAp0oSAwmAz,108,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:18.943890,pay_PE10Dd1Ay63be6aT1riq,254,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:21.115205,pay_be4DxNSIKdlkG08Pq7jv,218,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:23.083604,pay_XvuztjVtW76yi2X5JZV6,270,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:25.266247,pay_H3xixUxvgrzgxeFzDo8A,240,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:26.992956,pay_LDMk065wl1wrXn8YEj3a,120,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:29.352811,pay_Yoy0meBP2VAI3BYBVTSA,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:31.371475,pay_yu3D7ZB9Of0ciK3Mqlz9,54,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:33.348493,pay_kd6P2hykaNWQAJbJ6pm7,148,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:35.278999,pay_CojFF7N9VKKjABUqeQKA,199,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:37.096131,pay_b1xcappuZkirvkgRLVX6,51,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.27,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:39.236608,pay_7zR1cLQIgxgBSRca4BMa,227,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:41.196702,pay_2SDECMjsGM2cdaMlQVcZ,247,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:43.710649,pay_lZKsclrK8iQ19knNnhXQ,63,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:46.171633,pay_6vhNi45DjO1xwrifKJzI,274,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:48.459742,pay_BirIRjVGdWeeYODc6ily,54,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:50.501835,pay_1ISrtne8eBde1GW2g8Sb,234,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,47,2025-06-06T17:44:52.422553,pay_Y6xpBkX95PXcL3G6aRIY,146,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:11.922075,pay_xxdEcnehM2OyWHZwlk4f,285,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:14.670172,pay_GK15srPpi1O7sK6ofPax,72,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:16.961288,pay_1ur0vTKqc2pXCgc77SaA,288,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:18.986449,pay_xojPnOo2srDAKNTr84HP,67,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:21.398959,pay_WvfN1xjKpH7YEo5csmcd,170,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:23.538613,pay_0AHfmmhURsMOSz0jp8ML,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:25.434271,pay_0xGgSveoR7sDRbWmBmxt,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:27.454436,pay_dSuphGhX4tgyUNSHb65h,75,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:29.555260,pay_YY78kNd9ETb537iBSgy0,183,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:31.465134,pay_WnbxMEHtpU1IDZavph0M,294,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:33.633957,pay_hf6KCtBakAy4pC9B8EZm,166,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:35.561551,pay_ZolCZx3mk4bsCmmZus4o,253,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:37.433254,pay_K3bIoHv2TbZwbAjwKXeN,217,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:39.412461,pay_yt5mkp6PJo6fPWqfaarD,110,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:41.375791,pay_rlVXF5zdxvDzgIu4juYL,117,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:43.559301,pay_ze1guSS4ZpXfVUP3yqFi,131,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:45.669339,pay_VKRdqzw93Z4WRZsHtJxR,212,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:47.914806,pay_KVXt2Vw7MYixDYk08e1b,193,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:50.432040,pay_uFU2AOFFydDf7Q0ukVQG,234,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,27,2025-06-06T17:44:52.483930,pay_m5Ix1jDepacadiyEFHuA,113,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:11.915723,N/A,262,N/A,N/A,FAILED_HS_HTTP_429,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:13.231069,pay_U7Lm1BJCpVPsCQ0qEhTC,66,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:15.449138,pay_jBp5QHkxqsneN9funUb6,117,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:17.402339,pay_4lfSzRnQ8PaECVLAhhPx,255,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:19.385254,pay_cMJoZNm09KP4Fp6mm7Sb,274,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:22.294865,pay_4mZra8amlnzPEciBUOAf,96,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:24.292559,pay_xbqwbplqIP8Wz0s88TQd,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:26.189284,pay_lBOgJblTxFoaR7hNzeI4,152,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:28.378885,pay_5g0AwBb87e8swzu38yaP,250,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:30.908953,pay_SHtvPaSTG8LbWwV464xN,172,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:33.095169,pay_XMOe2yMXrVWUrOmHvDfC,203,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:34.999449,pay_5tAoyi66WvQqjwinuCIn,183,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:36.938762,pay_uo1qAMv9CHTpcocX4gcX,215,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:38.888621,pay_P3EqNYeQs5ypWJhALgM7,92,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:40.991313,pay_BINY4H33QeTtdsCVWDuc,87,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:42.971491,pay_qTWBtsxugEcSL3R9TJkp,283,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:45.304087,pay_VWW4NCHpUQmsYmBGFRps,86,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:47.533586,pay_PjeKE8aSHLeds64x9wUW,288,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:49.796844,pay_HhpJcLa9yfOU5REsA7jK,144,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,15,2025-06-06T17:44:52.332117,pay_CSALnNe77nRHQSD04ETE,280,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:11.925023,N/A,135,N/A,N/A,FAILED_HS_HTTP_429,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:13.225012,pay_NgePku705SryUfY6EAcB,60,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:15.777612,pay_KA8afctPQ9gMHLgxKgbF,72,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:17.802037,pay_ouKhDUYwA6o5fwdXmqvZ,78,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:19.856241,pay_SXqF61nX6KpzqL6hFITg,74,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:22.379790,pay_2HhHqxAHLOoEqfTlWi4n,173,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:24.383449,pay_itglV36Ew4VKSoJWWhBN,294,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:26.542643,pay_amVGUK9hF9UjWoFIxYOh,229,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:28.360969,pay_An6iD3G4vJGKMlFppySK,91,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:30.698986,pay_dEA5F7mm3NHHLU4NtPoY,292,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:32.925141,pay_wqVza105N55tc5dr1SIp,291,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:35.038930,pay_1WV6fA5zo2RsBW9UsKLK,280,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:36.899228,pay_o3OQs0xSQYVKTgvn8ZW3,105,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:38.827481,pay_nmVPX6RGVYa4JLN5EAm9,234,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:40.977076,pay_90DE5xmxFXNJrI10CMss,142,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:42.965817,pay_7ww8TSuluYoEnWjgJusU,134,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:45.305745,pay_m0V4nYXtvakex82FN0Qo,285,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:47.660284,pay_jQVlmSd67dibRnq4H3gm,82,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:50.270470,pay_LK6jK2o0up31M1FghBig,299,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,33,2025-06-06T17:44:52.581896,pay_tfoixuoRUiFIheCSSVfu,88,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:11.923607,N/A,123,N/A,N/A,FAILED_HS_HTTP_429,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:13.232944,pay_Uho9NzYM2IbRU5dIfDQa,96,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:15.638229,pay_WxKGXcIABkvr0VuIFI4O,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:17.461119,pay_aCaRULsQwwL4AFl9bHwf,165,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:19.435354,pay_cePD1yde6VuVeKDwQUQl,198,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:21.949767,pay_v2V1FOfwI12mPlYS4iUi,170,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:24.111826,pay_BNpXjCeNVYb0DZCBdyyu,166,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:26.188388,pay_tLyyiofh4m6CRH4FaquM,125,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:28.275264,pay_Xwc33nXqttsgxXp8dyHZ,254,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:30.720012,pay_ywd7aYROoSVvoRQXimvs,191,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:32.669698,pay_e7IfbHU4ONTa0LIoidpi,108,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:34.761517,pay_77O3W31849QBFWPKIYZA,292,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:37.035855,pay_KSrnwdPCViCSasfCDVlN,252,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:38.920124,pay_bIeKvLPMwJTDtDFvMuBN,117,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:41.015333,pay_YzGdveOF5AglL5aeQI2N,168,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:43.281367,pay_RTW7kF51bsfBsl31isYk,234,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:45.498819,pay_tQW9MUu4gCSqAGIstxJj,267,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:48.095088,pay_xHDCNQVdvveVImkQCYGz,284,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:50.477782,pay_BibASAYYNQEMbPnVnyCY,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,30,2025-06-06T17:44:52.365198,pay_TfpoEqpwKiALBQgjsJGV,214,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:11.927663,pay_1hMefOLk3uxnb3Z3XHkv,206,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:14.678869,pay_SENhnYElb2PSdsWzq9mG,250,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:16.903323,pay_sTGR5Qs59V3fx9HgPpPx,120,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:19.370362,pay_AesQRniTWSUqTwhUgYXC,153,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:21.961536,pay_Rcx8Dn8ywuivfSzfn6Ff,128,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:23.787759,pay_o8dOui4XuQMcPTd9TCrS,180,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:25.954615,pay_Y9kifCLvmxTM7rfJ0HyP,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:27.870893,pay_Ea9RQbfMzenKt7kYBXQY,226,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:29.808766,pay_OBOS8MxdscfHSrZyP7Le,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:31.665976,pay_O4c56g2odA9G1txUW3Iv,201,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:33.887173,pay_KaGV4Cz5sryfvT6FjH4I,256,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:36.124657,pay_Hp8n0ffwNRDEf2qnBaeX,123,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:37.972524,pay_MXRV1FFtMuiFdYQ95upo,243,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:39.790243,pay_yn7yHycRZGiAI0Iut6CV,143,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:42.168395,pay_f7nHeqcIOvy11pgr427K,162,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:44.460460,pay_vVod6foGoyABnPuDeEmh,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:46.554395,pay_T8XxcGvTF5ZZCg79fUhu,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:48.481747,pay_LfbYLd1tjSP1UleKCHe4,261,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:50.528192,pay_CPaUio6w77blvHCSwdA6,101,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,38,2025-06-06T17:44:52.785459,pay_TMz9oSefDT3aKm9MA0CZ,76,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:11.915025,pay_sXdzYqmqw2dy6zHK7pG4,259,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:14.681376,pay_AiE8mx9hzFyeP0Z50ZHA,295,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:16.741135,pay_CNMyT3FXrikrEYlf78kx,252,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:18.867182,pay_lDFKm9pXzE7YRWzFYxv0,109,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:21.069702,pay_WJ1shkxAIyDOP5t7e5u8,127,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:23.070928,pay_1fRETHbE4ZSGq4WXhU61,269,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:25.023236,pay_7lxV4JV5iv11d7ChnOrf,64,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:26.949607,pay_3HwayaQw386u40U5lZh8,218,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:29.233798,pay_QFGCQDRnHYOfpPZ1xmGl,137,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:31.518156,pay_W4LJctSRKrtPIA1IOzRu,248,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:33.394747,pay_TaSo7KhCUUx6yFllV2Cn,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:35.311866,pay_vSm6BdR1FDHnrL3Rxt5X,145,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:37.202005,pay_AdcfWxjd81JSbz6ABgvr,228,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:39.050970,pay_kczHtUoxdDk5PnKDcPAQ,56,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:41.287690,pay_gR42HcSUpvd8BWJjAxA9,116,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:43.305492,pay_l2VpmXWNyExJFgRNOy8v,254,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:45.254715,pay_vcmuL7XDOfbXAixEzLfB,269,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:47.752107,pay_cyoI0gemtA3voL8J7scy,197,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:50.276925,pay_is5MnLN7Fz2KqAJKWFLP,227,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,14,2025-06-06T17:44:52.268711,pay_6A1f25BoLJr0mhWhObqL,63,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:11.930745,pay_1fGKHOhFZWWdTC9fij8L,165,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:14.569672,pay_JoZJZtrKAovSv5tywo8y,96,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:16.374255,pay_sq41M3tK4Y7EA3dgwKfk,164,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:18.223070,pay_naq6PKD3v7zPdj8bNQZ6,177,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:20.344100,pay_l0GxBP77ahDJt9HPcAUG,216,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:22.802565,pay_yjZwOBU9IU5jUtiBUjti,251,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:24.702639,pay_i55kfrK09CQadpyo1n2v,143,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:26.454065,pay_Ib7824TSmudXKT8hTFKf,206,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:28.292954,pay_VNPO3CjFNmsTPJRixeaZ,232,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:30.810744,pay_BlazZGmkCZMzGfqc10Xg,212,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:32.836411,pay_67fn6S0TFWtva4l9QxID,77,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:34.710540,pay_srkeOjnHaIq7tfcrt9O3,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:36.628102,pay_NciP96giCm1Wl6AC3yz7,232,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:38.558783,pay_WW7wFSamnIpEdOkF3J6M,291,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:40.379283,pay_h8JPKgQ9irkKVQXFaph9,205,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:42.223178,pay_AUNr4aCgUJ6C9gNvYXLj,111,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:45.169859,pay_z7EgN5rs4Fp3KTfoqXIc,240,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:47.580388,pay_GoyXLVabvTf77nCClkMX,82,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:49.614361,pay_IDVKaYUkfCreN6vrRvAr,121,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,45,2025-06-06T17:44:52.323313,pay_xBjLNy9yJWjp2l875CGn,70,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:11.910759,pay_iBXRjftLhFpORVY8xGXU,149,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:14.630758,pay_psY0YtJMc5xyINCJsiQB,224,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:16.863171,pay_7yOiFxMvYkoELN8kZiOU,60,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:18.757141,pay_sFKhKFUr6SZgZrmOHHAP,137,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:21.218545,pay_wolpujBUuoazf1bBGebB,252,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:23.209561,pay_lsRgHNicMPGSuKI4DKvy,236,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:25.056562,pay_ZD4wW0UnH7dacuYnCKE9,243,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:27.305383,pay_GOm4Moi1B0LMlVdoJRIx,205,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:29.124504,pay_0By2vAtqJKSvbb0z1cwR,66,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:30.994871,pay_s4ado5hO4OXiSjgTJrj1,50,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:33.383938,pay_G0GbpnFpdhxGhwvKlRmB,194,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:35.244971,pay_dnZeWDvCPHKkVIMUfS7w,155,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:37.398973,pay_YU8zOzQJKAIC3nlEQE5e,70,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:39.570255,pay_waw10IAGCatSnjh0MirH,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:41.511421,pay_1ajwD8wIkfdp5lwN0iu0,205,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:43.633232,pay_Q0EDrObDFSa6KiEJ4Nza,100,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:45.894176,pay_Xf3BIjfBuEBT5IXNMmKF,211,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:48.140937,pay_frSY7wb1GFDhHqur7vCD,70,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:50.431446,pay_qgdRWvF9arcyshKvW0Rt,107,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,11,2025-06-06T17:44:52.685406,pay_1KhIxsSnZonEXbrAqj0g,133,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:11.907713,pay_r2mipQTDqG1s4NMWWpXH,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:14.325801,pay_dvocOQB0YpKzyu80EYeT,103,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:16.466795,pay_qBmSmrfxMJv8yHkBwPhp,190,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:18.377704,pay_HX6c2dqiU4t1EfvNsOyg,202,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:20.241465,pay_cIP0xCbX19OCUlKrf5TK,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:22.729362,pay_ncBGvgGlqAVZmi2I2sLe,57,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:24.724449,pay_7S4OCecngxh0bDC6uKZK,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:26.728073,pay_SdvTQ4aq27fGeP1DjbcH,96,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:28.943694,pay_fGcAEO8b3lWRl2G75Pre,186,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:31.285329,pay_qbmK5NZI8igCQIo7406m,170,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:33.071538,pay_pLGN4NPPBQrsiOxagd2W,121,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:35.278039,pay_0Vdo2fGAr1ySL31q5zTC,211,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:37.434550,pay_Iggw85Msx3vp71nJTLlJ,265,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:39.368391,pay_AFxPlEvp43NMh4hoqCyf,291,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:41.346485,pay_uaczCb6uVNhKBa2oZjBn,259,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:43.413538,pay_nVzOXqmknZxRCAv94Elr,210,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:45.631577,pay_IciExnZBwi98UPh4IQrv,121,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:47.965268,pay_K61imOHKouZnoaTFZC98,87,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:50.410817,pay_rTKZb6bIeVIscrCkHy39,294,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,3,2025-06-06T17:44:52.363634,pay_f6UZ5IPTb6kqJXgxptuT,151,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:11.908304,pay_Fb0e3pQfHn6J0aEFy174,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:14.677634,pay_FSriJIm4csOIFzFGdlBV,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:16.816490,pay_u1vBkmVieOEnZkoNVNPO,231,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:18.792858,pay_iOG25cjrnm6DvX2OAivG,286,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:20.953688,pay_mO2LZQfo4387Ui59LTdB,233,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:23.050477,pay_FbogL0o8CIu1Qiei9QEV,78,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:24.914111,pay_6rmFPLcciLTCsM1F98cj,287,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:26.870141,pay_4DaB1pcwr4nb2WVtz9pZ,107,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:28.931118,pay_GFSzNVrEN7X1bAQPSn92,55,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:30.966383,pay_m6QWr90b0bmaxoREJ4D3,174,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:32.769393,pay_66awqOxQ4LXXrgABQ8SU,182,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:34.808067,pay_0YBKPA0lgrAwMFHAu59Y,268,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:37.080719,pay_Gg0rl4i9t34Hg9EUavdU,153,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:39.361821,pay_wn5fnz2YSPd8cC3rMUmm,156,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:41.604365,pay_AchrvBmYkIi8IK46AXYI,227,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:43.755149,pay_EOxPX2jcPiqNJ9dsbB18,275,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:46.222780,pay_FjnRxD1SOYpq7Jgm4aLx,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:48.168917,pay_WJXSpnJAHIIIdFwFJc8u,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:50.347734,pay_FBOHTDQVKL8xSsCFxFHk,85,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,5,2025-06-06T17:44:52.324923,pay_3NFChjT7Fujn7bUl6cgD,156,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:11.929426,pay_vUr8VHmVhZSmBLS4VLf9,275,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:14.665151,pay_oRufTnfwRiH50PytWMQ3,211,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:16.676069,pay_U0n5QzwIjZoRzlApitl2,187,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:18.497920,pay_KbLW1qRVyZixIA61YxOg,230,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:20.346764,pay_KpboLDZ9bWhDutBTwWv7,276,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:22.871250,pay_LglaJNu2IISY8sGnhURg,206,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:24.726210,pay_t3XJxx8uTl0fzzv28WBm,216,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:26.777711,pay_xcmjLTpfstxQZpenAsld,249,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:28.720559,pay_6BI7Dx82gf6xyh7S6ddH,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:30.881057,pay_lj3iIjMuNDvencaWFt2H,267,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:33.093534,pay_LQAkOS8UmTXbYa5AI5D9,188,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:35.236588,pay_jmktVOq3hIsec0FoTDaR,80,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.39,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:37.363132,pay_twLuJtKaJOcKRXWCG4KW,290,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:39.331767,pay_QL5JQcdvlt0NEOztSRi7,133,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:41.565336,pay_YGWmH4QIcK8OmcnsFfDW,141,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:43.741445,pay_1iuTv5HITTdaxBoSBI1H,221,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:46.501319,pay_irXNN8aZiOrpDdCenCZl,94,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:48.301498,pay_H3NTQ72gKdWzq4yOXPGB,176,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:50.503242,pay_9YlVTUtdvCHyXIXGXCy0,149,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,42,2025-06-06T17:44:52.514183,pay_0N634Lf6Qwd2sE2R4lWW,98,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:11.909150,pay_fF7st14sjH8jiwoGaGmd,245,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:14.741002,pay_pMFqdRj9oltyroVbIOju,188,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:16.826072,pay_agpHRSb0c2icKhUkuxSm,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:18.887261,pay_FXEiYdMm8CMW4LwS8EVd,152,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:21.369604,pay_Jc92595hZEhcaqdLEiRz,237,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:23.200358,pay_OwnIOaN6JtzCqbqx7N6g,61,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:25.624092,pay_VpmqWp6py39SqX3PCPsF,241,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:27.827992,pay_sOTZeArX6MhJ9nfswNdJ,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:29.934030,pay_H8LlYf3U97BMcDt3IbmJ,60,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:31.803157,pay_OgybJKvxfb9jESiBHXXX,65,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:33.790830,pay_03pfarCpy3C4Eb1xHFVG,266,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:35.826904,pay_9FMYB4rjfHMPEjqrxAhO,100,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:38.110311,pay_FuyZPSOl2pG8ipSm7nYI,203,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:40.206529,pay_GTa9rZtX6rHHUJKwoN78,120,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:42.135649,pay_XwYnr73pwJdHN6QnP9ck,165,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:44.518071,pay_w97iVo2C4qjgs8W8n3Yy,108,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:46.811969,pay_dKYfnEuiJL6T1cdGWL1L,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:48.854234,pay_U7mfCmrALKXIKgOsnlbA,263,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:51.297673,pay_rRGpeJG3Tq0HQMIMeVLx,244,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,10,2025-06-06T17:44:53.190658,pay_VKCpV3Pfp6alrq4TRAO9,169,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:11.928605,pay_X67csvqWwc4J5I6h9KLq,194,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:14.452592,pay_qWRsjyHS3gp7TWMK4f9t,196,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:16.636038,pay_d4goC2YYI0FqRxixUmDE,90,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:18.833699,pay_nNLsJ7ghy6ydlGH12ba6,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:20.949653,pay_cu4iRfqP4Vqmmd9cWezH,187,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:23.069064,pay_qazNKFTCpLyJLqyfJRSK,138,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:25.393904,pay_CzQjpRPvfPVwvNZenKBh,297,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:27.238023,pay_iidFn2csPvWdP7xcUmlY,230,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:29.376989,pay_0wWhjmuMw9yFHqYqLfPW,95,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:31.442055,pay_vS8gcrBPKkFvmPUxo6W2,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:33.483355,pay_7durMCFjffkFJdv4ATT2,106,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:35.429017,pay_ua0ButtrGOWOsQWvMGqr,153,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:37.406740,pay_bqzutb2ToQ7yuaZ2rJdA,257,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:39.510468,pay_Hg5R3Snd2cXthUfKFwTy,234,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:41.542748,pay_jMVuIloQ3ZXD7pGRtOmz,124,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:43.743443,pay_XjavohW1ckNv3N8lR6Qd,224,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:46.183439,pay_MV3H24zonF928jTZc1DU,113,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:48.270971,pay_SgtMKiap1HabzC2GTeNC,196,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:50.718792,pay_ElVG9lMySbXLRgMliuHr,279,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,40,2025-06-06T17:44:53.017390,pay_itklkkvwPnJbZQPbilLI,187,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:11.932409,pay_c3PZzAkExPfL8A1xRGqF,96,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:14.613663,pay_dADQpzAWMkPNBoV5NQYc,201,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:16.588163,pay_dTFXyuBw7Rnj4z72DzfH,240,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:18.427585,pay_h9Ic0RjlLNtujsfpxnIy,75,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:20.236257,pay_rxAVywIVsj0x8ivmYmi0,72,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:22.793056,pay_npSfyFDVqPfjkjKchi7k,76,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:25.108798,pay_yIVLr0YFA1mUgOHVNWRJ,67,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.41,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:27.394916,pay_S6Ep24R9iHis5gKZ29S9,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:29.208852,pay_e91Ej7wUMgWGyaytUDuR,84,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:31.219075,pay_tHdWhzITSMXBUYJu4AfZ,120,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:33.252036,pay_WVJKHMWhfNVSPTfFGYe7,54,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:35.078104,pay_fJUK2bb5YXqVzuvIX5g8,149,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:37.330433,pay_US8x7PUSJyzWkZxeVxRg,201,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:39.135532,pay_i64AjDyrGDnUiEwW3i26,88,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:41.412668,pay_z8qodOi7AIuDqk6aElq6,84,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:43.801970,pay_nT9Bpce2Xb93FTBBapub,102,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:46.126816,pay_JwaeF1hRuNk9MOIU7Ba7,82,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:48.173063,pay_MIDEOdgOERU1uyRTpzE2,89,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:50.734998,pay_nqXEzMUW50aWlMXAaI9A,201,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,49,2025-06-06T17:44:53.044576,pay_wkcWrn5WVlsLceXqonQX,286,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:11.916579,pay_rb7RjXnxBhcRiB7qMfEJ,54,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:14.478291,pay_cZCUe02bEVDrXz4N16iC,251,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:16.638300,pay_6MQDyV0ZCLyThLMNtFtX,102,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:18.949461,pay_AViRAeWvXLTvLn5jVpdE,210,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:21.039702,pay_9eJFKeHgIPXGNWVwjPGJ,136,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:23.190260,pay_zQCOzP4mX8WzwclGuAbv,133,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:25.570381,pay_Nika4tuGv8mleghCOylC,253,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:27.876294,pay_E5VZWpTDsQaxuH1WRmbO,185,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:30.200162,pay_pDTASy6UPWMJa6dxgdXh,215,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:32.067358,pay_4qMVzgzOduw8s7bHA1mN,277,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:33.908335,pay_H2wGhjT77jAyp0HrDbPi,118,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:36.102703,pay_GicwNTq6RCQHfH6FFxFJ,266,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:38.239109,pay_X7q5CDx0pZvZaNw7WHa5,250,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:40.175469,pay_SaIQP1CfsqstpWU1Izr8,255,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:42.560744,pay_JcOHVb3eOg1e8n7xzmf8,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:44.561734,pay_0ywz0EsaQaRjg8yUTP0k,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:46.607853,pay_rtZW4ZRsfooYmmELSfl3,178,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:48.990913,pay_lYu6AKDwIgVndUGxVuos,268,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:51.458090,pay_nDISm3tO7k5tU2FspBlg,107,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,17,2025-06-06T17:44:53.314489,pay_jUQxgdDWSVy8K05nNbgO,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:11.908520,pay_dNLVpn6MPdBMqw98nrBM,149,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:14.740461,pay_Am5Ko1AzA7AZoRa8Tjew,182,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:16.671036,pay_XXLtMCJYyMkE2yCHn3Yo,290,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:18.912619,pay_xGoVacxsBVI7elgbnxOH,132,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:21.143651,pay_oGroj75YaR87TNnqVzgQ,228,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:23.342528,pay_oHuosx9JQnlYTcRN38sQ,233,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:25.602100,pay_JY5ge2wojV5yBSxjnbeR,226,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:27.944826,pay_pA8PDKq0fQU61Wkn3eSf,181,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:29.918390,pay_851iIdp7bfGTWNbjq3Qw,258,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:31.894084,pay_AO4yoXRLcXJBhthbUasS,249,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:33.889180,pay_hxEvgSuCQpv3GzaZFM1b,107,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:36.112264,pay_dBGSsooFXdHYyjzAyzTh,132,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:37.865409,pay_aII8Ka7v9jmTVf1emDFv,213,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:40.116135,pay_abt06ZFsGR1vUQIN0YAo,116,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:42.622187,pay_Xsjw9GrtTwzaNu2HPHmx,294,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:44.672571,pay_vAiZzMWc8xJlljrhDPD3,173,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:46.929472,pay_8C95KPYACnKb5Z8qPna0,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:48.902010,pay_JfZJsXxl3skcXcWVb95p,121,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:51.636414,pay_AP1usbcR5vDFPbdJhoEX,73,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,6,2025-06-06T17:44:53.437338,pay_gEPeeGMEwaoFc1wOehje,142,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:11.908985,pay_vVM0D2in6KY3bAEfKuXU,70,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:14.728197,pay_PrklYUdUhU54zY4HqwVr,184,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:16.750757,pay_nUmfLGX8UuCLiFhKFKo2,163,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:18.985731,pay_iejmEL2qfhohQ6pjSv5x,277,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:21.420201,pay_QOtAVqiubEUgEfCKMDOl,173,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:23.287559,pay_p0HiP3FaSZCKBY7fMc8P,67,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:25.470438,pay_Ii7eXpH5CbuCj6YOwjpb,296,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:27.779268,pay_EgRKt1QTfAV5oT2aUu2z,67,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:29.746737,pay_J1tQHZ0cfRJMB6eiriVP,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:31.770169,pay_6CwmuoUSOb3TNWjzfIXk,125,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:33.885472,pay_XBAaoQeyCb3EbqFu35Xx,163,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:36.270489,pay_MI9QCat9m8TXsaanp8eZ,124,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:38.353606,pay_umSoP04llXUBNnYBKD6k,124,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:40.395960,pay_8P1DPTulmst2XYTyjD2J,293,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:42.650448,pay_uhG7XNwskinpKZyrTUNP,239,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:44.734544,pay_DpMbJDlFB09rPCqHiDyM,294,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:46.994048,pay_aHr5Ir5u5WtCYc88hEf8,254,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:49.334424,pay_jsqAJwKwENglz8aw8lc4,244,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:51.534146,pay_xfDJyt0MHitB1Di1QSo4,249,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,9,2025-06-06T17:44:53.327156,pay_kQWZeZoXv20g5vyukNaF,76,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.39,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:11.920822,pay_Uv4e5LhJgyC5gHQR9KQ0,145,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:15.012423,pay_ZWRglrKP5cDmuF9vnUN2,94,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:17.502676,pay_rMj6ssJXIkEHkUEUJN31,275,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:19.383159,pay_XPSmEciw5sa95hvsmgVO,236,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:22.073800,pay_JLQJ8KP4677ZzTdq53PE,206,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:23.967830,pay_HX2DsyHyxWzwlYijPrrK,270,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:26.444738,pay_2677CIOM4a0fVFk1YOoU,183,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:28.519124,pay_4CMeAYbI9N3zDWEE2E5R,166,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:31.044775,pay_fn9tAoArsAwDdSnArn60,87,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:32.852276,pay_BBwuRUpRRSTlFJWoKSgk,186,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:34.728601,pay_8TUumVbzHCVL1e1KzWGb,250,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:36.925204,pay_0v3qtxfD0JaoJUmpVejN,256,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:38.831537,pay_uC9Bt1jduH9dHSDfhaRb,193,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:41.162861,pay_jdZxopKxkBuTfoHnQOj9,161,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:43.122122,pay_6I5M3Te0SvZd0Ba3IOu2,117,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:45.100844,pay_MkW7bgMfiHlG7c6et7HU,290,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:47.157269,pay_9nL0Rxch2ntYTO6yvblj,75,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:49.142655,pay_CkCakm4ehES67VfGW80C,285,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:51.705854,pay_OnFE82Dq8C1MANwetlFc,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,25,2025-06-06T17:44:53.740050,pay_MCjjr9cH4egg1iJEtWkd,52,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:11.920384,pay_bnUdeD9k4ki4dBr7DsXN,256,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:14.619224,pay_KR4mal93ahZcen7hmts7,191,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:16.754572,pay_clzRBNV6WicGmDllsALN,221,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:18.816873,pay_V7uxCC9sriIhZoKkJcfp,190,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:21.327635,pay_lypm86qvOnOKTQiOFjCV,199,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:23.440776,pay_EN1IbYf5r6nI8pt31sxu,194,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:25.654957,pay_yAnG00W2D9O8xb4NEHMi,173,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:27.728042,pay_RyQMhPPl63dtlSPH0ywQ,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:29.818583,pay_ZIu3FgkQ2c9nSgchmtF3,63,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:31.764378,pay_hkfxYjia8rfraten80KI,212,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:33.928019,pay_tvG5zZ76iMfWjv4JFvhy,293,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:36.322921,pay_35xlw3grWmBxogIlfmuU,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:38.158440,pay_nLNgy40WvbztkwjggHqT,158,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:40.281995,pay_SB0Kp1iI6PDv3Sex209z,257,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:42.621054,pay_l2XPc3TE9zaCq3Tprqns,138,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:44.731414,pay_CdFml8fHZ0xpt6hRXNCZ,290,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:47.212170,pay_kRsHPP3EC2DiWOPi9DT1,247,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:49.223461,pay_sEWaWJmz0SVlIpNgs7YR,197,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:51.383692,pay_EidpAcX68ueJRyFwjA4l,192,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,24,2025-06-06T17:44:53.476610,pay_ySb9N2RCdXXEwreTmByX,248,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:11.912547,pay_WjbP5MGOrJKNIgWzUvjS,237,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:15.011520,pay_poQcKqMG3R7JtJckJLS7,141,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:17.295145,pay_GvCxMy97IsD3TgzJwcet,82,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:19.523451,pay_GZHt4Hs0PqeR1ik9dXYs,151,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:22.175922,pay_TiZh9sH88CkwQlpP9OZO,222,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:24.135537,pay_QpehcsqIudXvd3O6zWxM,196,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:26.182365,pay_QNZRGlacklxqHUdEh1m7,146,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:27.985436,pay_FTCJCJYGhGWumnlvaha1,172,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:29.976971,pay_DwKIEjlhgf7oQeGDmo33,264,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:31.970854,pay_9zjrle3ZniVIPgXgaaUg,175,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:33.875490,pay_aBFw924qdCa7q8yM291v,81,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:36.021184,pay_UbOHaK9rQBBZrkrRxrle,239,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:38.151759,pay_IkNLToNBYUstGHz9pRkP,258,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:39.959848,pay_XpTzZXS7ljnmqGp2nXbY,197,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:42.319564,pay_MBA3LJ48N1rWpt1w3Hqi,147,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:45.171072,pay_eWNOanptCXwMuVBgG1rg,286,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:47.346117,pay_NWc69ploikhvrObWceoX,267,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:49.441434,pay_V06VpodkT8oB9XFlkCCR,233,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:51.972386,pay_OfUeEg8kFoBz1NWrLeL8,151,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,13,2025-06-06T17:44:53.977131,pay_dm4Y3Y91mXKCNIgQbqGT,258,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:11.924067,pay_1fE36mNec09iN6uV9rLu,178,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:14.555216,pay_dT4cKzyxaTsCQIgBxVQo,133,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:16.461654,pay_rYpkzXxyF1Ym71dz1207,158,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:18.627228,pay_s1lmZzsIuyfDW4nPxNJS,295,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:20.538837,pay_Iu6M2kgmHjqYK8754Jri,126,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:22.867982,pay_gVv5TZfLf9snvBcoI83K,233,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:25.078143,pay_rQsocWECvly3lGlzJywF,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:26.989822,pay_fe1Nfwr3MvmMJKp63GIx,62,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.43,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:29.307942,pay_PYRethwwckzGZlKKZD0C,263,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:31.593150,pay_hjvox2jfEYqQ4udO15S6,51,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:33.910570,pay_Cl4REdxphIwLlvyJRhGq,211,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:36.026603,pay_be1IHlIzZkNonVFNsZ03,122,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:38.123444,pay_n720ssWiqvmT6o0VEPwn,159,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:40.213298,pay_r9hzwqfTKbDmgKwH9pvt,180,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:42.240520,pay_eYA9jzxdFYrmVADSXbXw,93,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:44.625675,pay_3QDvjeLGFjfQKY4QB1TJ,138,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:46.996314,pay_GJ8jPZHd3nTJW62jWHfH,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:49.035018,pay_A4WVTsyQg1xI8PQlQEps,134,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:51.781953,pay_xo9DCHHEhGygw4Qniwju,140,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,31,2025-06-06T17:44:53.871646,pay_WUaaEqiaPUmxyOhURqXD,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:11.927867,pay_oxHynA4wIFXwiBLUJO3l,81,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:14.985074,pay_4i2v7XJ0c4iSgzr5sbNh,80,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:17.321552,pay_bweSFwohrYl5IIODeoW9,57,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:19.344305,pay_016hZb9u43UlKimO6EWY,125,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:21.843684,pay_7zywKYeNxk2s4pEnIc61,71,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.4,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:24.057886,pay_uVsgZx0fUJXFkRgY2lCc,245,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:26.444945,pay_M1WAKCttHCUAkmwc2dJ9,162,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:28.288358,pay_tOLpHBNBGpuftvMZWcQG,87,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.38,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:30.542026,pay_ad7T1i6GKUGYKaPvVg43,210,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:32.431254,pay_LB35yb2YL9RV60wVztuL,83,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:34.266327,pay_INOz46r8F3ewh0zPNF58,87,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:36.520253,pay_IRS6QDB8t81fhwOgpp3x,144,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:38.444294,pay_GK4TCuOao4CMUiRpY21H,258,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:40.216541,pay_JprkKQmpEkTaMwJIl3zj,297,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:42.174804,pay_8IXxCTHkwSlAGUzWgpDS,60,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:45.168436,pay_7s6deOl58w9vYFHecQnl,196,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:47.321475,pay_se2xyLXjjAF2lfEvkZrq,88,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:49.560481,pay_m5iYZcOLNmgSBI7dmBJi,281,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:52.099323,pay_5VHQuHafIGOOFrG18c0t,97,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,39,2025-06-06T17:44:54.037763,pay_UyPj6akpCP7hku0zGwRr,75,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:11.908683,pay_0vu418IpMsiL8MITUdcG,98,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:14.611964,pay_yNG8nh8O3l1sIzIaF9E5,261,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:16.585858,pay_sGfplch4F14mqIPjz0pf,80,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:18.803025,pay_DFdn5MnYjep4Sgti4sbc,287,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:20.950435,pay_iqYYQB5SStf9wO7X8Xzj,122,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:23.008990,pay_KrHpKdQHlWH8jBoo9VCY,181,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:24.800979,pay_2ZSXIsziHkPFYHGo5RuZ,191,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:27.116030,pay_A0ogQ6ikuaVsxthJks3V,82,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:28.929986,pay_XlGhuQED9bq6KOALu2Hx,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:30.818356,pay_3kI4uNMGi80QMTfHmySd,204,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:33.102122,pay_1cRBG6hJxhpYicyLiVj9,211,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:35.333624,pay_RB47EGOCPRyn0XU1iBe3,61,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:37.507022,pay_rI6Lrzqp5Kw2Wy4g6vqx,257,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:39.787701,pay_pTAjH7WgC0R8xr2IlmvJ,186,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:42.285653,pay_wjh1vKoUz0diBqCOvGFY,217,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:45.173888,pay_U0txP2G40jH0hEas7Nzo,283,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:47.308658,pay_yQEBZJFTzpXXbeymxQIU,290,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:49.439655,pay_W0HGVTRvQfdycZQGrKnz,174,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:51.644795,pay_HQxzeOJihh6N1ZNXWMkY,62,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,7,2025-06-06T17:44:54.023877,pay_P0BEiyGWydNxlUAUWdZy,217,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:11.911760,pay_DJXlIeWcGc5UTk9mFkkM,264,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:14.736027,pay_JHRRCjA61CBWyugE65Do,225,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:17.005429,pay_hfrgkwFV0KlAiMAnTdL5,71,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:19.298917,pay_0Z0CXabDq3XjHf17A7ht,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:21.840184,pay_U7lrAzGQqocGFFJ5Xzqp,91,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:23.772089,pay_KQ1ueho7YM2lhw7h1ikM,75,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:25.693860,pay_y7YATlLuySTVIzBLTUlq,52,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:28.136316,pay_xP4RjldYM3kkQoZMWXMa,170,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:30.247960,pay_WHcOuDWo2BEEisb8ufkn,139,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:32.201899,pay_wXOEjNbiczLC1sL1ecXp,288,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:34.311622,pay_uqSn4SLZX6qG5fJxnOLp,118,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:36.303204,pay_QfrSEIeOXMyaK2yGmy2a,242,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:38.140548,pay_W0XZXYHhFAed2113HKZx,77,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:39.958793,pay_lVftaABxoJc87Dvw8aN5,251,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:42.324356,pay_OIhjbi2yqoRv41acqZ0y,298,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:44.613968,pay_H3VeAN7C2W4gUx83FUa0,265,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:46.918768,pay_4C7DXaIQsHva7Ncmd6ZG,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:49.015854,pay_KvdH0q0NZMTxIhfYXBAA,176,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:51.771916,pay_heQJs4zgmzWh2andUIu2,55,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.28,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,12,2025-06-06T17:44:54.134215,pay_ymLO929wg4qAHLJ1DV1s,232,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:11.926810,pay_jroOPkWZOLcpCDi0aYhk,198,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:14.671317,pay_6mOJARxe4t1bbMzR7dpM,179,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:16.698840,pay_R3IgXe8i86qhZ6TNAJzb,267,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:18.547026,pay_JwPGlBTsJUbNJCSiVDkL,156,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:20.676777,pay_MbzmHfXzQArWWZxCZpL6,268,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:23.161550,pay_sGOAfh3ppnxwL1o2Mez5,146,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:25.315195,pay_JQMm687yTiL7uBWPOhlZ,148,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:27.204639,pay_WZhq4L7k7xuSYWtymSA9,269,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:29.160815,pay_w1el6i8MbggeoO550Kr7,229,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:31.811352,pay_XeviYjHuJvyufdUkvFAV,228,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:33.989312,pay_Kwl8axwbGUiABNKbj2LL,82,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.38,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:36.326112,pay_RhK0rl5FHexmvISPEanV,127,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:38.096138,pay_ShCgkjSS9vEQXlQbcVI7,118,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:40.004118,pay_4MKtMmTeb6F7RT2uRU8R,296,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:42.299829,pay_UiHhwVXDcw4JWp4OLUsn,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:44.731753,pay_r8sfkZ2aHWK7yMkvNPb0,211,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:47.104640,pay_FokUvVSQxhpuka1aAD1a,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:49.139599,pay_qPhhRGVhbeSARfRVZjHY,55,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:51.714381,pay_t7EUNogqoGquwirR3pj2,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,36,2025-06-06T17:44:53.718909,pay_Hkck0n8KLDvl13K6IQc6,146,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:11.918577,pay_8dqJnR1cZC1HpGq5iIff,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:14.473140,pay_KayXih1qSx84hVJG2uXL,158,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:16.597303,pay_VblzofsEZqV5U38ySTyP,126,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:18.435003,pay_C13RI7LbUpBCGIKlCHu2,120,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:20.328536,pay_0tjB9DO7duxMuGjBehDb,158,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:23.222549,pay_jJtDkihc1GINdaahsIGe,75,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.4,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:25.509408,pay_8wgLzleycGtVH4UJ0C5j,82,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:27.977276,pay_fyKgA8zMM637pHJWqS9E,247,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:30.052189,pay_qPklR5aDLLvS5aeRbvxM,229,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:31.964002,pay_oZaK5Gt55ilgFmP8Vyyh,298,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:33.808991,pay_IrtQLZeEp3BOCoph8OTw,203,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:35.751885,pay_um0oBbOQHpNUQDllz9G6,121,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:38.056655,pay_6CA5pp6ZH3aaFOT3ogH7,191,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:39.836911,pay_ta9KEf5YdbGHsYrMGM59,237,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:42.264731,pay_V4iFlAKhd1zWnAhz3UvO,55,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:44.735258,pay_REy6Bwpq2VXeRMrto8hT,178,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:47.131960,pay_nNkPbTiw3bokR9cLMXAe,178,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:49.009644,pay_lUGsggCP8C6IDhl84grn,101,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:51.770307,pay_MwU54HhvaAiMDB1Hef5R,147,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,21,2025-06-06T17:44:54.116058,pay_jOLyHb0MpUl9yddgPiMc,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:11.921351,pay_qqtAhl7Qg60DphNuO6ma,172,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:14.999728,pay_5r9mV8w0DLqkNLVpFlC8,85,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:17.537083,pay_mvINDnl02svdEmqd9HZj,278,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:19.480327,pay_9YgmemhpqedZwLoHGFvl,101,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:22.386146,pay_Ojlk1BZ3Nmi0GsnS8bt3,91,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:24.605313,pay_cqYFkGRxonMFRM1hjLS6,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:26.430147,pay_wpeVd5WdV4wuojKzaaPf,179,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:28.325557,pay_5oORlwnsQPhsxCmBrEpA,169,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:30.255777,pay_DQabjM9XK8UP11VpGIDe,157,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:32.351770,pay_sjCo6d6NK8OEeIdGuHT9,284,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:34.435673,pay_feT6NZIq33HDAdCG78bO,290,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:36.570571,pay_HdkGKhpkxLTNAmTWoklP,80,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:38.860405,pay_6VEGysEDDObtPjwDZK74,295,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:40.771129,pay_nGQrP0oeOzCjQqUTP2bc,245,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:42.878606,pay_QCv5z31EAKFeV1pP8pYz,212,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:45.288039,pay_ygwYNRQILwmx0d5tcTop,154,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:47.456174,pay_7QG4HKTboAvhH0xttIpI,103,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:49.525713,pay_0czJxZ7LqlqLSUu4YUCG,99,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:51.638449,pay_VmTeA4kGipRT0wuVYVT9,297,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,26,2025-06-06T17:44:53.846284,pay_uH7dlOOEmVwlpYKXUaAe,120,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:11.922602,pay_E27tc5AAhbrRVRX9Ikui,51,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:14.979901,pay_g2ktQhhtiq8XPQDOqF4Q,204,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:17.371622,pay_9KSmX6EdcnVurWeMMSKF,175,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:19.708557,pay_E2DTSZI8v1gjGAKI6Oz8,194,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:22.479174,pay_4TQp5GuSlieAAFVH623b,213,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:24.895405,pay_slhzaQYB0qTDbPfehrck,213,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:26.957476,pay_JvhmK99LqvwWsbcZqoxA,193,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:29.350646,pay_YOZ8zU8ytr7ATU4zFizb,262,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:31.438491,pay_jMKCZYPscYHv6eosc6QG,265,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:33.300412,pay_J3iR3xtS6kGpLb9DkxdV,166,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:35.218727,pay_jRbfjDdN24EbTbSo8hYJ,68,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:37.089077,pay_3JllmiQHcAKvvOd0qJYC,265,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:38.963578,pay_lU2XZoOdkXOlkgOv5szJ,226,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:40.879598,pay_VtsrplDo67J2iwB1McA8,68,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:42.971259,pay_GP02JvTcBWWsIf2xffEU,209,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:44.847832,pay_aPnxqJA3qqBIw3r01el6,163,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:47.152173,pay_WsGExGHCNHDhBqOrhyjt,91,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:49.202152,pay_aL1tddevqb0LKjmEo87W,159,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:51.738737,pay_u0ykMXsqjTeUbYf9Y21W,121,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,28,2025-06-06T17:44:53.915792,pay_t2Lqt3tyFD3gag6gQ1Mn,238,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:11.929583,pay_Kgg8WtEpmnAmW8WGm2ca,153,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:14.978366,pay_C0ZkpTlpSgA4wTj4OvNN,59,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:17.194707,pay_d9OSOONEwlYn31WqNCzr,206,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:19.412600,pay_IMaN30ajN4jm73ymnrsd,250,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:22.185370,pay_JUpXfp5nzyDzurcEqU8S,147,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:24.075930,pay_SldPFKJsp6PHxcmUcGq4,116,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:26.213170,pay_ZDhFwHVre7ObSSP8YPZv,269,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:28.378353,pay_wVlRKLv19wADbuQFkke7,162,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:30.696352,pay_abeTG5xLP2cnvv9n74vK,279,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:32.628999,pay_KSU0SAGibHNjHw1Pec7F,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:34.584091,pay_1G2CkJuMuDOE9YGg4csd,67,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:36.484591,pay_3avxYoUiLdGdIipNVXLB,53,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:38.398209,pay_u5cYOZnIgDjl4aGj2l9L,63,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.42,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:40.460322,pay_9K8qacVtkI7O2DBmTCW3,209,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:42.651040,pay_rAjafMJEb8NYlV5io5th,139,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:45.169238,pay_Ij3DqB0oOM8b1W7NSeBX,54,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.28,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:47.506468,pay_JaM5ysR6fpLPPK0BTXXF,197,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:49.953521,pay_GydL3IBQmmVjZBy2ubw6,185,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:52.197479,pay_SyfEzuhnTZ3xYYjd2BDD,274,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,43,2025-06-06T17:44:54.263830,pay_LMrajuxuaIBvGjRVTdv7,156,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:11.908845,pay_3YsKjnXozx0Huu7FXlnN,259,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:14.491681,pay_DydSjjf7mjubUukpcCnf,104,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:16.743727,pay_32JIGt3sSzxuXRn3nwt9,186,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:18.614547,pay_nLpJBWmGZMIHMYrR5M9C,292,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:20.873808,pay_LA6b0Hpv4Pa8DB3qA0ty,264,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:23.324214,pay_QqzmyoKbepBLbWpnU3H2,96,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:25.342738,pay_TdT0WR1X7c4B22KEYGcq,81,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:27.578053,pay_rIu9gmuqjDt0Oj1uv3mf,164,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:29.367102,pay_UGhNS9V6PTQjm3TEk2s8,53,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.28,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:31.637313,pay_4bhofwQuqDQhmGLiKJAY,290,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:33.588271,pay_NELnNNKlmISO0kT0EyYB,195,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:35.790097,pay_Vew9L5SOO4pvKRnKIcsm,188,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:37.782865,pay_5iefKcEz12Q411sAkyTg,254,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:39.737635,pay_Q030m660lK8QeTeHUWvL,195,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:42.103767,pay_5d5rnyhjKyBPVE88Qra6,236,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:45.170312,pay_5ZI3JEilhkJHEUgW4UrZ,167,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:47.224068,pay_6ozmajeZiMkn5dGx70ND,272,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:49.446231,pay_vLmW3h0Oid0MtikXkK1F,98,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:51.965318,pay_zJJjhfjQia9YLiKiHlH3,157,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,8,2025-06-06T17:44:54.337229,pay_cgvKa9XEPOpAYX0JjG1L,157,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:11.917641,pay_Jj5rFQ4002TRDmDHGSTD,145,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:14.673053,pay_QSUqmlxKGlHMAKTeKIrR,81,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:16.972637,pay_assXP81QeyD6B001Djfl,251,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:19.300250,pay_GkXHUo8qhfKROtDucfbi,220,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:21.720362,pay_KhZj54T4CcSyTPlxUvV4,68,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:23.767380,pay_9UjeFoo5K6GSzht6AChN,232,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:25.865119,pay_tCUEPCQ2vINOOI0MtrCO,112,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:28.111777,pay_YAupfActal268q1M42YT,235,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:30.330797,pay_LV3e9QSXasHGmju5e6je,196,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.31,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:32.489799,pay_ReyFWNnEm5kJU7a1UV0K,137,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:34.288899,pay_NGX0PIEhqQnb32dbvaqV,131,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.33,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:36.476107,pay_EeL3vecN6fFJkQ2PExaQ,295,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:38.643792,pay_TFoafW21RxaTNULY01lh,66,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:40.880326,pay_6cjcrWsv7sZCNQz1iQo7,264,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:43.211694,pay_ZEPCIYJI3hOwcHJs9wJk,242,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:45.428200,pay_zYIe7uSOqKYbSDebfpad,132,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:47.550517,pay_4yvM601oHXeIrDkOFsaW,278,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:49.916705,pay_YmM7PSgISXh51qEWlaIG,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:52.186090,pay_VbxEzlfx8iXdVHTcGp5n,259,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,20,2025-06-06T17:44:54.526713,pay_e1xnO95o6pI7j35ae1eX,97,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:11.932829,pay_ImKJAQijr3af7TjRLX5i,69,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:15.010371,pay_D5cqpVHRf0zGr8xJw2zd,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:17.283803,pay_S5zgLoFcAuFdVIZZE0cP,80,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.39,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:19.424285,pay_rABB9yUoRsDab2QMWLWT,227,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:22.390182,pay_7PWafJbObOQlI5x84v5n,76,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:24.804665,pay_9KE6wQkQbXuSoeT6xFnD,76,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:26.775513,pay_PZHc2h3RuB1gy4wCQ5Ju,134,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:28.688596,pay_reM6SUbgk5I7fFDQRbgQ,193,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:31.323367,pay_cLF69XMBhktozy08vsB4,172,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:33.217621,pay_g11lzZR3gr1TM1ZyXXDt,182,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:35.368806,pay_BceUBH40AP07cgZADtsz,99,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:37.444759,pay_zz1ms6iCrVx35HcdBNdO,234,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:39.602252,pay_sOcp4s9xQQwIQm2VWCnD,237,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:41.629016,pay_7ifY3yH31XIaUXj1L8QW,126,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:44.065862,pay_kYbv72edFq0pUnSfQqVt,267,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:46.379622,pay_HG5bx5LZTJB8ElxxbDGd,280,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:48.261483,pay_RLky6vsxr9ci38CWw5B1,179,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:50.520119,pay_zBvmF4bTSCBduKwuZ49E,112,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:52.858657,pay_R38yVmvnl7a0qYOxpXVl,135,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,50,2025-06-06T17:44:54.787715,pay_VBnvQCu3VqGw5rcpJT89,201,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:11.907904,pay_1YBI5nJvNIQpMz8SKb1f,128,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.34,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:14.992728,pay_VYof8ahNG9DgGfmGUSc3,176,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:17.377204,pay_CKxXwzPtdd9LL6F0Tnro,193,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:19.342525,pay_iHtgPWpxntsPVZoIyPOB,285,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:22.322685,pay_ss2FCh80bKsOTAaeIuZt,293,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:24.185044,pay_TEUkESGV2CS5gMLQITaF,208,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:26.211481,pay_MZtcLCIBY9O85zmc9KlY,273,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:28.380596,pay_hxyslEpRaToduRbu6Oop,197,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:30.527061,pay_A635Gvez1EXGhgf3x6cU,292,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:32.440403,pay_3tzaBxuxWFbR0YEWlJ1f,177,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:34.323730,pay_wnd1H4raoUFiWfgjb76a,287,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:36.469860,pay_L26NmMIdMjCEtqOQh61g,58,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:38.833253,pay_26LXvMMSelzwhEYXMYlc,243,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:41.144793,pay_rqlvVXLIeEA1wvA506Pn,93,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:43.733808,pay_iekKPQeAHGWYqNH7YzrE,153,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:46.394829,pay_A3brxFA8yivGMlHL9dNS,144,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:48.305880,pay_FQbagEZml4TqXK5UjdW2,285,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:50.526118,pay_iJ32TYEYgF5g68XfwWxr,124,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:52.770577,pay_JrrSjUD5PyTT9pIPb6Uk,272,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,4,2025-06-06T17:44:54.780757,pay_TGsnpu36r7agKtHJfDrm,207,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:11.929042,pay_bRVHFBEUpzGRX9drV2N7,210,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:14.995840,pay_jfAaV9ZMVDEygIC4Dg0C,238,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:17.536523,pay_MqQxIKB8gEULYMRKV5qw,188,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:19.531522,pay_9KC58tOtR3T8risRlgAS,64,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:22.045354,pay_lhhhD4JIi6sDHcOv3iNZ,275,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:23.943812,pay_kSl1x9Gr1eiofmn2FMH7,183,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:26.069259,pay_3mlIbuBUqJcMcWCaSIwB,65,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.11,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:28.216645,pay_yuoCyWFt1WfaYhXcMUex,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:30.207451,pay_CybC8Qqp5NIqzPAYPg1z,211,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:32.353913,pay_GIKwc9ANOCDaUiKax0Id,74,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:34.215260,pay_TjUNdHc34AUU8umcbiDA,236,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:36.195215,pay_ydASVyZhVa9iBQxrwrWe,178,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:37.964463,pay_6DyzfNvZgjOja7C96RW6,61,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:40.108494,pay_BeJoCDcef9G0pK9N7Oys,269,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:42.617163,pay_fVbBQkA5ono67GuExiIi,133,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:44.747971,pay_unB6C2OMcv0pfKCw2AUZ,132,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:47.148608,pay_HAMoigfHiaduPtMx3MCK,234,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:49.658351,pay_7GI5N8PwsU4IQHMBJrnw,80,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:52.400933,pay_SuKFlQVxIgjAMIekR8qr,249,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,41,2025-06-06T17:44:54.878461,pay_BMtR4lXZ0yRA88F37qKF,127,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:11.917031,pay_1IHAvQKJXyKhuhmgKMkV,285,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.29,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:15.005284,pay_EDxiQYzGuB2tGxUoZXwS,169,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.35,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:17.534823,pay_JiZTdIqpY3agP1Qijfxg,246,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:19.548265,pay_nNjg9YK9rj4oDATZ3Un3,82,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:22.388984,pay_qvktRq559mAZl0sGaJtW,280,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.37,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:24.800358,pay_pNkFlVf0QutxTC1rOrJ2,257,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:27.077915,pay_v362OGD3IBO5Zlb475P6,173,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:29.164221,pay_aS1cPQuDEGMRPJlqeSRI,160,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:31.050881,pay_uNE0gSs0EdMAV3W9ofmV,104,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:32.850856,pay_14JujgvAkbfGlEA9M4Wa,223,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:34.768824,pay_s1K6LaNuWrFcgx411OGp,90,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:36.748460,pay_t1RrKQoark9oZSSsZvxm,116,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:39.035853,pay_GguSUUha0WIIAaP2Nibs,164,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:41.336926,pay_ZjfQgrIvLUEOSdSmDq7a,88,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:43.769335,pay_vSj2Mde17Kn6spUIzAkl,129,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:46.178099,pay_JTAW5w9eHWeNd8UPC5vV,227,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:48.179742,pay_mQQYduFGvyDNLJsBW0QG,207,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:50.451925,pay_5JRgzVFwU8W6nPPTJvyN,112,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:52.402937,pay_FHvOQ8HddGZ9EQHhtojH,50,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,18,2025-06-06T17:44:54.660323,pay_MxDnBDfLmI26XQNiW3fz,189,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:11.907057,pay_qItydoXOwaDEs3LUrynA,149,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.32,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:14.994130,pay_FLHEUnHDRkCB506c6LTS,269,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.13,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:17.681237,pay_s1KRfcewnvTezvngWdSN,149,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:19.868369,pay_spe72bqsSUxQptl5ACn6,207,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:22.241260,pay_OYYOIFzRnSRXRtFwzRdC,119,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:24.151965,pay_ifWzfJSDMZ3VMdNbZUfo,202,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:26.406866,pay_PrHyZvea8GNfnC7geWRl,276,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:28.631273,pay_yVsqI8u5QMMOeQng1b8w,62,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:31.185561,pay_pZLPOTDwIf290KCBeQ62,108,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:32.968108,pay_YNY7dmSSlzmfLGjUpGyk,52,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:34.826997,pay_aKLTxmikpEBejKkZPauz,137,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:36.870246,pay_wQM9lt0iZhOjTL6DzGpK,184,Nyce,400003,succeeded,Unregulated Debit (Special),debit,"NYCE, PULSE, VISA",Yes,0.36,Yes,False
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:39.079284,pay_SQpsLCmUk3ZhGSPEh7h8,114,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.12,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:41.295044,pay_McH6LFw2fKeps5Kjeyua,195,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:43.209055,pay_bG9qATK6Bll9Gn1rwadA,87,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:45.497984,pay_jKAqDinCCxphNGI9LCAX,297,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:47.855864,pay_AIuj8DW2unaB46nkDQyq,86,Mastercard,555555,succeeded,Credit,credit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:50.425068,pay_mBUQh7QD9vwvhXTUzmeH,254,Visa,411111,succeeded,Not Co-badged Debit,debit,N/A,No,0,No,N/A
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:52.676975,pay_kXJhn6YL4kvdyTO2EAzy,53,Accel,440000,succeeded,Regulated Debit,debit,"ACCEL, STAR, VISA",Yes,0.1,Yes,True
+e3c7bdbe-d7dd-418b-9ff6-cd71787eb0a7,1,2025-06-06T17:44:54.968108,pay_nw5tuWM9jttLxTbrWox4,234,Accel,500251,succeeded,Unregulated Debit,debit,"ACCEL, STAR, MASTERCARD",Yes,0.3,Yes,False
