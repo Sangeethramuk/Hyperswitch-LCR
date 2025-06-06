@@ -33,6 +33,7 @@ interface StatsViewProps {
   dailySavingsData?: { regulated: number; unregulated: number } | null;
   dailyVolumeData?: { regulated: number; unregulated: number } | null;
   savingsByNetworkData?: { [network: string]: number };
+  realtimeTotalTransactions?: number;
 }
 
 const CHART_COLORS_HSL = {
@@ -64,12 +65,16 @@ export function StatsView({
   dailySavingsData = null,
   dailyVolumeData = null,
   savingsByNetworkData,
+  realtimeTotalTransactions,
 }: StatsViewProps) {
   const overallSR = currentControls?.overallSuccessRate ?? 0;
   const totalTxns = (totalSuccessful || 0) + (totalFailed || 0);
   const overallSavings = overallSavingsPercentage || 0;
   const totalAmount = totalProcessedAmount || 0;
   const debitRoutedTxns = totalDebitRoutedTransactions || 0;
+
+  // Use the new realtimeTotalTransactions prop if available, otherwise fallback to totalTxns
+  const totalTransactionsToDisplay = (realtimeTotalTransactions ?? totalTxns) * 300;
 
   // Determine if any data is available for the charts that rely on simulation results
   const hasSimulationData = successRateHistory && successRateHistory.length > 0;
@@ -123,44 +128,26 @@ export function StatsView({
 
   return (
     <div className="space-y-6 flex flex-col">
-      {/* Stats Cards in a single row */}
+      {/* First row grid */}
       <div className="grid gap-4 md:grid-cols-3">
+        {/* Monthly Savings Card */}
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
+          <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Savings</CardTitle>
           </CardHeader>
-          <CardContent className="pt-0 pb-6 pl-6 pr-6">
+          <CardContent className="py-6 px-6">
             {/* Calculate total monthly savings by summing regulated and unregulated */}
-            <div className="text-2xl font-bold">${((dailySavingsData?.regulated || 0) + (dailySavingsData?.unregulated || 0)).toFixed(2)}</div>
+            <div className="text-4xl font-bold">${((dailySavingsData?.regulated || 0) + (dailySavingsData?.unregulated || 0)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</div>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Amount Processed</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-0 pb-6 pl-6 pr-6">
-            <div className="text-2xl font-bold">${totalProcessedAmount.toFixed(2)}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pt-4 pl-6 pr-10 pb-2">
-            <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-0 pb-6 pl-6 pr-6">
-            <div className="text-2xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
-          </CardContent>
-        </Card>
-      </div>
 
-      {/* Regulated and Unregulated Savings Cards in a two-column grid */}
-      <div className="grid grid-cols-2 gap-6">
         {/* Regulated Savings Card */}
         <Card>
           <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle className="text-sm font-medium">Regulated Savings</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${dailySavingsData?.regulated?.toFixed(2) || '0.00'}</div>
+            <div className="text-4xl font-bold">${dailySavingsData?.regulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}</div>
           </CardContent>
         </Card>
 
@@ -170,7 +157,40 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Unregulated Savings</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${dailySavingsData?.unregulated?.toFixed(2) || '0.00'}</div>
+            <div className="text-4xl font-bold">${dailySavingsData?.unregulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Second row grid */}
+      <div className="grid grid-cols-3 gap-6">
+        {/* Monthly Amount Processed Card */}
+        <Card>
+          <CardHeader className="px-6 pt-4 pb-2">
+            <CardTitle className="text-sm font-medium">Monthly Amount Processed</CardTitle>
+          </CardHeader>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">${totalProcessedAmount.toLocaleString()}</div>
+          </CardContent>
+        </Card>
+
+        {/* Total Debit Routed Transactions Card */}
+        <Card>
+          <CardHeader className="px-6 pt-4 pb-2">
+            <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
+          </CardHeader>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
+          </CardContent>
+        </Card>
+
+        {/* Total Transactions Card */}
+        <Card>
+          <CardHeader className="px-6 pt-4 pb-2">
+            <CardTitle className="text-sm font-medium">Total Transactions</CardTitle>
+          </CardHeader>
+          <CardContent className="py-6 px-6">
+            <div className="text-4xl font-bold">{totalTransactionsToDisplay.toLocaleString()}</div>
           </CardContent>
         </Card>
       </div>

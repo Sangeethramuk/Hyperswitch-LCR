@@ -66,6 +66,7 @@ export default function HomePage() {
   const [dailySavingsData, setDailySavingsData] = useState<{ regulated: number; unregulated: number } | null>(null);
   const [dailyVolumeData, setDailyVolumeData] = useState<{ regulated: number; unregulated: number } | null>(null);
   const [savingsByNetworkData, setSavingsByNetworkData] = useState<{[network: string]: number}>({});
+  const [realtimeTotalTransactions, setRealtimeTotalTransactions] = useState<number>(0);
 
   const { toast } = useToast();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -236,6 +237,7 @@ export default function HomePage() {
     accumulatedGlobalStatsRef.current = { totalSuccessful: 0, totalFailed: 0 };
     setTransactionLogs([]); transactionCounterRef.current = 0;
     setSummaryAttempted(false); setSimulationCsvFileName(null);
+    setRealtimeTotalTransactions(0);
     if (streamReaderRef.current) {
       streamReaderRef.current.cancel('Simulation reset by user').catch(e => console.warn("Error cancelling previous stream reader:", e));
       streamReaderRef.current = null;
@@ -332,6 +334,8 @@ export default function HomePage() {
           structuredData: details,
         };
         setTransactionLogs(prev => [structuredLogEntry, ...prev]);
+        // Increment real-time total transactions counter
+        setRealtimeTotalTransactions(prev => prev + 1);
         break;
       case 'summary':
         console.log("Received summary data:", eventData.content);
@@ -522,11 +526,11 @@ export default function HomePage() {
               {parentTab !== 'least-cost-routing' ? (
                 <Tabs value={contentTab} onValueChange={tab => setContentTab(tab as 'stats' | 'analytics')} className="flex flex-col h-full">
                   <div className="flex items-center justify-start p-4 pb-0"><TabsList><TabsTrigger value="stats">Stats</TabsTrigger><TabsTrigger value="analytics">Analytics</TabsTrigger></TabsList></div>
-                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} /></div></ScrollArea></TabsContent>
+                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} realtimeTotalTransactions={realtimeTotalTransactions} /></div></ScrollArea></TabsContent>
                   <TabsContent value="analytics" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-2 md:p-4 lg:p-6"><div className="bg-white dark:bg-card border border-gray-200 dark:border-border rounded-xl shadow-sm p-6 mb-6"><AnalyticsGraphsView successRateHistory={successRateHistory} volumeHistory={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} /></div></div></ScrollArea></TabsContent>
                 </Tabs>
               ) : (
-                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} /></div></ScrollArea></div>
+                <div className="flex flex-col h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} realtimeTotalTransactions={realtimeTotalTransactions} /></div></ScrollArea></div>
               )}
             </div>
             <div className="flex flex-col h-full min-h-0 border-l p-2 md:p-4 lg:p-6 w-[400px] min-w-[300px]">

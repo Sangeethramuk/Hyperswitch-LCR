@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PieChart as PieChartIcon } from 'lucide-react'; // Renamed to avoid conflict
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 interface TransactionDistributionChartProps {
   data: Array<{ name: string; value: number; fill?: string }>; // Made fill optional
@@ -39,20 +39,18 @@ const getColorForNetwork = (networkName: string) => {
 };
 
 export function TransactionDistributionChart({ data }: TransactionDistributionChartProps) {
-  const previousDataRef = useRef<Array<{ name: string; value: number; fill?: string }>>([]);
-
-  useEffect(() => {
-    if (data && data.length > 0 && data.some(item => item.value > 0)) {
-      // When updating, assign the correct color based on network name
-      previousDataRef.current = data.map(item => ({ 
-        ...item, 
-        fill: getColorForNetwork(item.name) 
-      }));
+  // Process data directly from the prop
+  const processedData = useMemo(() => {
+    if (!data || data.length === 0 || !data.some(item => item.value > 0)) {
+      return [];
     }
-  }, [data]);
+    return data.map(item => ({
+      ...item,
+      fill: getColorForNetwork(item.name)
+    }));
+  }, [data]); // Re-process whenever the data prop changes
 
-  const currentData = (data && data.length > 0 && data.some(item => item.value > 0)) ? data.map(item => ({...item, fill: getColorForNetwork(item.name)})) : previousDataRef.current;
-  const hasData = currentData && currentData.length > 0 && currentData.some(item => item.value > 0);
+  const hasData = processedData.length > 0;
 
   return (
     <Card>
@@ -67,8 +65,8 @@ export function TransactionDistributionChart({ data }: TransactionDistributionCh
               <Legend 
                 wrapperStyle={{ color: 'hsl(var(--foreground))', fontSize: '12px', paddingTop: '10px' }}
                 formatter={(value, entry) => {
-                  const legendItem = currentData.find(item => item.name === value);
-                  const percentage = legendItem ? (legendItem.value / currentData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0) : 0;
+                  const legendItem = processedData.find(item => item.name === value);
+                  const percentage = legendItem ? (legendItem.value / processedData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0) : 0;
                   return (
                     <span style={{ color: 'hsl(var(--foreground))' }}>
                       {value} ({percentage}%)
@@ -77,7 +75,7 @@ export function TransactionDistributionChart({ data }: TransactionDistributionCh
                 }}
               />
               <Pie
-                data={currentData}
+                data={processedData}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
@@ -94,14 +92,13 @@ export function TransactionDistributionChart({ data }: TransactionDistributionCh
                 stroke="hsl(var(--background))" // Use direct background for stroke between cells
                 strokeWidth={2}
               >
-                {currentData.map((entry, index) => (
-                  <Cell 
-                    key={`cell-${index}`} 
+                {processedData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
                     fill={entry.fill || PIE_CHART_COLORS[index % PIE_CHART_COLORS.length]} // Use assigned fill or fallback
                   />
                 ))}
               </Pie>
-              <Tooltip formatter={(value, name) => [`${value} transactions`, name]} />
             </PieChart>
           </ResponsiveContainer>
         ) : (
