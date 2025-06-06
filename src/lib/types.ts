@@ -138,14 +138,28 @@ export interface MerchantConnector {
   [key: string]: any; // Allow other dynamic properties
 }
 
+// Define interface for the structured transaction log data
+export interface StructuredTransactionLogEntry {
+  transactionNumber: number;
+  cardType: string;
+  amount: number;
+  isDebitRouted: string;
+  leastCostNetwork: string;
+  savingsPercentage: number;
+  coBadgedNetworks: string;
+  status: string; // Keep status for potential coloring/icons
+  formattedOutput?: string; // Add the formatted output field
+}
+
 // For logging payment attempts during simulation
 export interface TransactionLogEntry {
   transactionNumber: number;
   status: string; // e.g., "succeeded", "failed", "pending"
   connector: string; // The connector used for the transaction
   timestamp: number; // epoch milliseconds, to help with sequencing and time-based analysis
-  routingApproach?: 'exploration' | 'exploitation' | 'unknown' | 'N/A'; // Added routing approach
+  routingApproach?: 'exploration' | 'exploitation' | 'unknown' | 'N/A' | 'Debit Routing'; // Added routing approach
   sr_scores?: Record<string, number>; // Added sr_scores
   rawLog?: string; // ✅ NEW: Full raw Python log for detailed UI display
+  structuredData?: StructuredTransactionLogEntry; // Added structured data field
 }
 

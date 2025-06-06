@@ -98,7 +98,8 @@ CSV_HEADERS = [
 
 def safe_print(*args, **kwargs):
     with print_lock:
-        print(*args, **kwargs)
+        sys.stdout.write(' '.join(str(arg) for arg in args) + '\n')
+        sys.stdout.flush()
 
 def generate_payment_payload(card_number, amount, payment_type="debit", exp_month=None):
     card_exp_month = exp_month if exp_month else "03"
@@ -130,20 +131,17 @@ def generate_decide_gateway_payload(payment_id, amount_dollars, card_isin):
     }
 
 def write_to_csv(data_list, filename):
-    safe_print(f"Attempting to write CSV to: {filename}") # Log the target filename
     if not data_list: 
-        safe_print("Data list is empty. Will clear/create an empty CSV.") # Log empty data case
         try:
             with open(filename, 'w', newline='', encoding='utf-8') as output_file:
                 pass 
-            safe_print(f"{GREEN}✅ Successfully cleared/created empty CSV at {filename}{RESET}") # Success log for empty
         except IOError as e:
-            safe_print(f"{RED}❌ Error clearing/creating CSV file {filename}: {e}{RESET}") # Detailed error log
-        return
+            print(f"event: error\ndata: {json.dumps({'message': f'Error clearing/creating CSV file {filename}: {e}'})}\n\n")
+            return
 
     keys = list(data_list[0].keys()) if data_list else []
     if not keys: 
-        safe_print(f"{RED}Cannot write to CSV {filename}: No data keys found, though data_list was not empty.{RESET}")
+        print(f"event: error\ndata: {json.dumps({'message': f'Cannot write to CSV {filename}: No data keys found, though data_list was not empty.'})}\n\n")
         return
         
     try:
@@ -151,7 +149,7 @@ def write_to_csv(data_list, filename):
             dict_writer = csv.DictWriter(output_file, fieldnames=CSV_HEADERS)
             dict_writer.writeheader() 
             dict_writer.writerows(data_list)
-        safe_print(f"{GREEN}✅ Successfully wrote {len(data_list)} rows to CSV at {filename}{RESET}") # Success log for data
+        print(f"event: info\ndata: {json.dumps({'message': f'Successfully wrote {len(data_list)} rows to CSV at {filename}'})}\n\n")
     except IOError as e: safe_print(f"{RED}❌ Error writing CSV file {filename}: {e}{RESET}") # Detailed error log
 
 def get_run_specific_cards(input_min_amt, input_max_amt):
@@ -206,7 +204,7 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
         card_number = card_info["number"]; label = card_info["label"]
         min_amt, max_amt = card_info["amount_range"]
         if min_amt > max_amt: 
-            safe_print(f"{RED}BATCH {batch_id}, TXN IDX {i}: SKIPPING due to invalid range ({min_amt} > {max_amt}) for card: {card_info}{RESET}")
+            print(f"event: warning\ndata: {json.dumps({'message': f'BATCH {batch_id}, TXN IDX {i}: SKIPPING due to invalid range ({min_amt} > {max_amt}) for card: {card_info["label"]}'})}\n\n")
             continue 
         amount = random.randint(min_amt, max_amt)
         payment_type = card_info.get("payment_type", "debit")
@@ -278,21 +276,19 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
 
                         if txn_data["is_eligible_for_debit_routing"] == "Yes": batch_total_processed_dg_eligible += hs_returned_amount_dollars
                 except Exception as dg_e: # More specific exception for DG call if needed for debugging
-                    safe_print(f"{YELLOW}Batch {batch_id}, Txn {i}: DG API call failed. Error: {dg_e}{RESET}")
-                    # txn_data already has default N/A values for DG fields
-                    pass 
+                    print(f"event: warning\ndata: {json.dumps({'message': f'Batch {batch_id}, Txn {i} ({label}): DG API call failed. Error: {dg_e}'})}\n\n")
         except requests.exceptions.HTTPError as http_err:
             txn_data["status"] = f"FAILED_HS_HTTP_{http_err.response.status_code}"
-            safe_print(f"{RED}Batch {batch_id}, Txn {i} ({label}): HS API HTTP Error. Status: {http_err.response.status_code}, Response: {http_err.response.text[:200]}...{RESET}")
+            print(f"event: error\ndata: {json.dumps({'message': f'Batch {batch_id}, Txn {i} ({label}): HS API HTTP Error. Status: {http_err.response.status_code}, Response: {http_err.response.text[:200]}...'})}\n\n")
         except requests.exceptions.RequestException as req_err: # Catches ConnectionError, Timeout, etc.
             txn_data["status"] = "FAILED_HS_REQUEST_EXCEPTION"
-            safe_print(f"{RED}Batch {batch_id}, Txn {i} ({label}): HS API Request Exception. Error: {req_err}{RESET}")
+            print(f"event: error\ndata: {json.dumps({'message': f'Batch {batch_id}, Txn {i} ({label}): HS API Request Exception. Error: {req_err}'})}\n\n")
         except json.JSONDecodeError as json_err:
             txn_data["status"] = "FAILED_HS_JSON_PARSE"
-            safe_print(f"{RED}Batch {batch_id}, Txn {i} ({label}): HS API JSON Decode Error. Error: {json_err}{RESET}")
+            print(f"event: error\ndata: {json.dumps({'message': f'Batch {batch_id}, Txn {i} ({label}): HS API JSON Decode Error. Error: {json_err}'})}\n\n")
         except Exception as e: # Fallback for any other unexpected error during HS call
             txn_data["status"] = "FAILED_HS_UNEXPECTED_ERROR"
-            safe_print(f"{RED}Batch {batch_id}, Txn {i} ({label}): HS API Unexpected Error. Error: {e}{RESET}")
+            print(f"event: error\ndata: {json.dumps({'message': f'Batch {batch_id}, Txn {i} ({label}): HS API Unexpected Error. Error: {e}'})}\n\n")
             
         if txn_data["status"] != "succeeded": txn_data["saving_percentage"] = 0
         # Ensure is_eligible_for_debit_routing, is_debit_routed, is_regulated are set even if DG call fails or for non-debit transactions
@@ -321,13 +317,32 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
         if txn_data.get("co_badged_card_networks") and txn_data["co_badged_card_networks"] != "N/A":
             lcn_log = txn_data["co_badged_card_networks"].split(',')[0].strip()
 
-        safe_print(f"[{log_txn_num}]")
-        safe_print(f"Card Type: {card_type_display_log} | Amount: ${txn_data['amount']}")
-        safe_print(f"IsDebitRouted: {txn_data['is_debit_routed']} | Least Cost Network: {lcn_log} | Savings: {txn_data['saving_percentage']:.2f}%")
-        safe_print("-" * 20)
-
         if INTER_PAYMENT_SLEEP_SEC > 0: time.sleep(INTER_PAYMENT_SLEEP_SEC)
-        
+
+        # Send structured transaction details as an SSE event
+        transaction_details_event = {
+            'type': 'transaction_details',
+            'content': {
+                'transactionNumber': log_txn_num,
+                'cardType': card_type_display_log,
+                'amount': txn_data['amount'],
+                'isDebitRouted': txn_data['is_debit_routed'],
+                'leastCostNetwork': lcn_log,
+                'savingsPercentage': txn_data['saving_percentage'],
+                'coBadgedNetworks': txn_data['co_badged_card_networks'],
+                'status': txn_data['status'],
+                'formattedOutput': f"""
+╔════════════════════════════════════════════════════════════════════════════════╗
+║ Transaction #{log_txn_num:03d}: {card_type_display_log:<40} ║
+║ Amount: ${txn_data['amount']:<10,.2f} Status: {txn_data['status']:<20} ║
+║ Debit Routed: {txn_data['is_debit_routed']:<5} LCN: {lcn_log:<10} ║
+║ Savings: {txn_data['saving_percentage']:.2f}% ║
+║ Co-badged Networks: {txn_data['co_badged_card_networks']:<40} ║
+╚════════════════════════════════════════════════════════════════════════════════╝"""
+            }
+        }
+        print(f"event: transaction_details\ndata: {json.dumps(transaction_details_event)}\n\n")
+
         # Periodically send chart data updates (e.g., after every 1 transaction within this batch)
         if True:
              with summary_lock:
@@ -366,7 +381,7 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                      "total_debit_routed_transactions": current_global_debit_routed_count # Use the global counter
                  }
                  # Send summary as an SSE event
-                 print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
+# [REMOVED] Invalid print: print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
 
                  sys.stdout.flush() # Ensure the output is sent immediately
 
@@ -383,18 +398,14 @@ def simulate_debit_routing():
     TOTAL_TRANSACTIONS = NO_OF_BATCHES * BATCH_SIZE
     current_transaction_number = 0 
     global_run_id = str(uuid.uuid4())
-    safe_print(f"🔁 Starting Simulation with {TOTAL_TRANSACTIONS} transactions ({NO_OF_BATCHES} batches of {BATCH_SIZE})... (Global Run ID: {global_run_id})")
-    safe_print(f"    Using API Key: ...{API_KEY[-4:] if len(API_KEY) > 4 else API_KEY}")
-    safe_print(f"    Using Profile ID: {PROFILE_ID}")
-    safe_print(f"    Input Amount Range: ${INPUT_MIN_AMOUNT} - ${INPUT_MAX_AMOUNT}")
-    safe_print(f"    Targeting Payments: {PAYMENTS_API_URL}, Decide: {DECIDE_GATEWAY_API_URL}\n")
-
-    if TOTAL_TRANSACTIONS <= 0: safe_print(f"{RED}❌ TOTAL_TRANSACTIONS must be positive. Received: {TOTAL_TRANSACTIONS}{RESET}"); return
-    if not (0 <= INPUT_DEBIT_PERCENT <= 100): safe_print(f"{RED}❌ INPUT_DEBIT_PERCENT must be 0-100. Received: {INPUT_DEBIT_PERCENT}{RESET}"); return
-    if not (0 <= INPUT_CO_BADGED_PERCENT <= 100): safe_print(f"{RED}❌ INPUT_CO_BADGED_PERCENT must be 0-100. Received: {INPUT_CO_BADGED_PERCENT}{RESET}"); return
-    if not (0 <= INPUT_REGULATED_PERCENT <= 100): safe_print(f"{RED}❌ INPUT_REGULATED_PERCENT must be 0-100. Received: {INPUT_REGULATED_PERCENT}{RESET}"); return
-    if INPUT_MIN_AMOUNT <= 0 : safe_print(f"{RED}❌ MIN_AMOUNT must be positive. Received: {INPUT_MIN_AMOUNT}{RESET}"); return
-    if INPUT_MAX_AMOUNT < INPUT_MIN_AMOUNT: safe_print(f"{RED}❌ MAX_AMOUNT ({INPUT_MAX_AMOUNT}) must be >= MIN_AMOUNT ({INPUT_MIN_AMOUNT}).{RESET}"); return
+    print(f"event: info\ndata: {json.dumps({'message': f'Starting Simulation with {TOTAL_TRANSACTIONS} transactions ({NO_OF_BATCHES} batches of {BATCH_SIZE})... (Global Run ID: {global_run_id})'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'Using API Key: ...{API_KEY[-4:] if len(API_KEY) > 4 else API_KEY}, Profile ID: {PROFILE_ID}, Input Amount Range: ${INPUT_MIN_AMOUNT} - ${INPUT_MAX_AMOUNT}, Targeting Payments: {PAYMENTS_API_URL}, Decide: {DECIDE_GATEWAY_API_URL}'})}\n\n")
+    if TOTAL_TRANSACTIONS <= 0: print(f"event: error\ndata: {json.dumps({'message': f'TOTAL_TRANSACTIONS must be positive. Received: {TOTAL_TRANSACTIONS}'})}\n\n"); return
+    if not (0 <= INPUT_DEBIT_PERCENT <= 100): print(f"event: error\ndata: {json.dumps({'message': f'INPUT_DEBIT_PERCENT must be 0-100. Received: {INPUT_DEBIT_PERCENT}'})}\n\n"); return
+    if not (0 <= INPUT_CO_BADGED_PERCENT <= 100): print(f"event: error\ndata: {json.dumps({'message': f'INPUT_CO_BADGED_PERCENT must be 0-100. Received: {INPUT_CO_BADGED_PERCENT}'})}\n\n"); return
+    if not (0 <= INPUT_REGULATED_PERCENT <= 100): print(f"event: error\ndata: {json.dumps({'message': f'INPUT_REGULATED_PERCENT must be 0-100. Received: {INPUT_REGULATED_PERCENT}'})}\n\n"); return
+    if INPUT_MIN_AMOUNT <= 0 : print(f"event: error\ndata: {json.dumps({'message': f'MIN_AMOUNT must be positive. Received: {INPUT_MIN_AMOUNT}'})}\n\n"); return
+    if INPUT_MAX_AMOUNT < INPUT_MIN_AMOUNT: print(f"event: error\ndata: {json.dumps({'message': f'MAX_AMOUNT ({INPUT_MAX_AMOUNT}) must be >= MIN_AMOUNT ({INPUT_MIN_AMOUNT}).'})}\n\n"); return
 
     PAYMENTS_HEADERS = {"Content-Type": "application/json", "Accept": "application/json", "api-key": API_KEY, "x-feature": "router-custom"}
     card_lists_for_run = get_run_specific_cards(INPUT_MIN_AMOUNT, INPUT_MAX_AMOUNT)
@@ -433,13 +444,13 @@ def simulate_debit_routing():
     overall_num_global_network_cheaper = overall_counts["global_cheaper"]
     overall_num_unregulated_debit_routed = overall_counts["unregulated"]
 
-    safe_print(f"    Overall Transaction Distribution Plan (for {TOTAL_TRANSACTIONS} total transactions):")
-    safe_print(f"    - Credit Transactions: {overall_num_credit_txns}")
-    safe_print(f"    - Not Co-badged Debit: {overall_num_not_co_badged_debit}")
-    safe_print(f"    - Regulated Debit Routed: {overall_num_regulated_debit_routed}")
-    safe_print(f"    - Global Network Cheaper: {overall_num_global_network_cheaper}")
-    safe_print(f"    - Unregulated Debit Routed: {overall_num_unregulated_debit_routed}\n")
-
+    print(f"event: info\ndata: {json.dumps({'message': f'Overall Transaction Distribution Plan (for {TOTAL_TRANSACTIONS} total transactions):'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Credit Transactions: {overall_num_credit_txns}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Not Co-badged Debit: {overall_num_not_co_badged_debit}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Regulated Debit Routed: {overall_num_regulated_debit_routed}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Global Network Cheaper: {overall_num_global_network_cheaper}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Unregulated Debit Routed: {overall_num_unregulated_debit_routed}'})}\n\n")
+    
     ALL_CARDS_TO_SIMULATE_GLOBALLY = []
     def populate_global_cards(source_list, count, name):
         if source_list and count > 0: ALL_CARDS_TO_SIMULATE_GLOBALLY.extend([random.choice(source_list) for _ in range(count)])
@@ -452,7 +463,7 @@ def simulate_debit_routing():
     populate_global_cards(card_lists_for_run[1], overall_num_unregulated_debit_routed, "Unregulated Debit") 
 
     if len(ALL_CARDS_TO_SIMULATE_GLOBALLY) != TOTAL_TRANSACTIONS:
-        safe_print(f"{RED}CRITICAL: Mismatch in total cards prepared ({len(ALL_CARDS_TO_SIMULATE_GLOBALLY)}) vs TOTAL_TRANSACTIONS ({TOTAL_TRANSACTIONS}). Exiting.{RESET}")
+        print(f"event: error\ndata: {json.dumps({'message': f'CRITICAL: Mismatch in total cards prepared ({len(ALL_CARDS_TO_SIMULATE_GLOBALLY)}) vs TOTAL_TRANSACTIONS ({TOTAL_TRANSACTIONS}). Exiting.'})}\n\n")
         return
         
     random.shuffle(ALL_CARDS_TO_SIMULATE_GLOBALLY)
@@ -486,22 +497,20 @@ def simulate_debit_routing():
         if txn_summary_item.get("is_debit_routed") == "Yes":
             total_debit_routed_count += 1
             
-    safe_print("\n" + "=" * 40)
-    safe_print(f"       {BLUE}📊 OVERALL SIMULATION SUMMARY REPORT (Global Run ID: {global_run_id}) 📊{RESET}")
-    safe_print("=" * 40)
-    safe_print(f"   --- Input Percentages ---")
-    safe_print(f"   - Configured Debit Percent (of Total): {INPUT_DEBIT_PERCENT}%")
-    safe_print(f"   - Configured Co-badged Percent (of Debit): {INPUT_CO_BADGED_PERCENT}%")
-    safe_print(f"   - Configured Regulated Percent (of Co-badged Debit): {INPUT_REGULATED_PERCENT}%")
-    safe_print("-" * 40)
-    safe_print("   --- Aggregated Savings & Processing (All Batches) ---")
-    safe_print(f"   💰 Total Savings (as % of Total Processed Amount): {GREEN}{overall_savings_percentage:.2f}%{RESET} (Total Savings: ${total_savings_all_batches:.2f} on Total Processed: ${total_processed_all_types_all_batches:.2f})")
-    safe_print(f"   💲 Total Amount Processed (All Successful Txns): ${total_processed_all_types_all_batches:.2f} USD")
-    safe_print(f"   📈 Total Debit Routed Transactions: {YELLOW}{total_debit_routed_count}{RESET}")
-    safe_print("=" * 40 + "\n")
-
+    print(f"event: info\ndata: {json.dumps({'message': '========================================'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'📊 OVERALL SIMULATION SUMMARY REPORT (Global Run ID: {global_run_id}) 📊'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': '========================================'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': '--- Input Percentages ---'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Configured Debit Percent (of Total): {INPUT_DEBIT_PERCENT}%'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Configured Co-badged Percent (of Debit): {INPUT_CO_BADGED_PERCENT}%'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'- Configured Regulated Percent (of Co-badged Debit): {INPUT_REGULATED_PERCENT}%'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': '----------------------------------------'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': '--- Aggregated Savings & Processing (All Batches) ---'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'💰 Total Savings (as % of Total Processed Amount): {overall_savings_percentage:.2f}% (Total Savings: ${total_savings_all_batches:.2f} on Total Processed: ${total_processed_all_types_all_batches:.2f})'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'💲 Total Amount Processed (All Successful Txns): ${total_processed_all_types_all_batches:.2f} USD'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'📈 Total Debit Routed Transactions: {total_debit_routed_count}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': '========================================\n'})}\n\n")
     # Prepare structured summary data for SSE
-    # This final summary can still use aggregated batch results for completeness
     final_total_debit_routed = sum(1 for txn in all_simulation_data if txn.get("is_debit_routed") == "Yes")
     final_overall_savings_percentage = (total_savings_all_batches / total_processed_all_types_all_batches * 100) if total_processed_all_types_all_batches > 0 else 0
 
@@ -510,13 +519,13 @@ def simulate_debit_routing():
         "total_processed_amount": round(total_processed_all_types_all_batches, 2),
         "total_debit_routed_transactions": final_total_debit_routed # Use final aggregated count here
     }
-    safe_print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}")
+# [REMOVED] Invalid print: print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}")
 
     write_to_csv(all_simulation_data, CSV_FILENAME)
-    # Corrected log message for CSV writing in 'w' mode
-    if all_simulation_data: # Only print if data was actually written
-        safe_print(f"📄 All simulation data for Global Run ID {global_run_id} written to {CSV_FILENAME} (file overwritten)")
-    # If no data, write_to_csv prints its own message about clearing/creating the file.
+    if all_simulation_data:
+        print(f"event: info\ndata: {json.dumps({'message': f'All simulation data for Global Run ID {global_run_id} written to {CSV_FILENAME} (file overwritten)'})}\n\n")
+    else:
+        print(f"event: info\ndata: {json.dumps({'message': f'Data list is empty. CSV file {CSV_FILENAME} will be cleared or remain empty.'})}\n\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simulate Debit Payments with configurable transaction mix and parallelism.")

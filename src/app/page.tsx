@@ -15,12 +15,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogD
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import type { PaymentMethod, ProcessorMetricsHistory, StructuredRule, ControlsState, OverallSRHistory, MerchantConnector, TransactionLogEntry, AISummaryInput, AISummaryOutput, TimeSeriesDataPoint } from '@/lib/types';
+import type { PaymentMethod, ProcessorMetricsHistory, StructuredRule, ControlsState, OverallSRHistory, MerchantConnector, TransactionLogEntry, AISummaryInput, AISummaryOutput, TimeSeriesDataPoint, StructuredTransactionLogEntry } from '@/lib/types';
 import { PAYMENT_METHODS } from '@/lib/constants';
 import { useToast } from '@/hooks/use-toast';
 import { summarizeSimulation } from '@/ai/flows/summarize-simulation-flow';
 import { MiniSidebar } from '@/components/MiniSidebar';
 import { groupLogs } from '@/lib/utils';
+import { CheckCircle2, XCircle, Gauge, DollarSign, MinusCircle } from 'lucide-react';
 
 const LOCALSTORAGE_API_KEY = 'hyperswitch_apiKey';
 const LOCALSTORAGE_PROFILE_ID = 'hyperswitch_profileId';
@@ -295,50 +296,6 @@ export default function HomePage() {
     let logEntry: TransactionLogEntry;
 
     switch(eventData.type) {
-      case 'log':
-        logEntry = { ...baseLog, status: 'info', rawLog: String(eventData.content) } as TransactionLogEntry;
-        const newLogEntry: TransactionLogEntry = {
-          transactionNumber: Number(transactionCounterRef.current),
-          timestamp: Date.now(),
-          connector: 'Python Script',
-          routingApproach: 'N/A',
-          status: 'info',
-          rawLog: String(eventData.content),
-        };
-        setTransactionLogs(prev => {
-          const lastLog = prev[0];
-          if (lastLog && lastLog.rawLog !== undefined && lastLog.rawLog.includes('--------------------') && newLogEntry.rawLog !== undefined && newLogEntry.rawLog.includes('--------------------')) {
-            return [{ ...baseLog, status: 'info', rawLog: lastLog.rawLog + '\n' + newLogEntry.rawLog } as TransactionLogEntry, ...prev.slice(1)];
-          } else {
-            return [newLogEntry, ...prev];
-          }
-        });
-        break;
-      case 'error_log':
-        logEntry = { ...baseLog, status: 'error', rawLog: String(eventData.content) } as TransactionLogEntry;
-        setTransactionLogs(prev => [logEntry, ...prev]);
-        break;
-      case 'script_error':
-        logEntry = { ...baseLog, status: 'error', rawLog: `SCRIPT ERROR: ${eventData.content}` } as TransactionLogEntry;
-        setTransactionLogs(prev => [logEntry, ...prev]);
-        setSimulationState('idle');
-        break;
-      case 'script_exit':
-        const exitMessage = `Script exited with code ${eventData.content.code}.`;
-        logEntry = { ...baseLog, status: eventData.content.code === 0 ? 'info' : 'error', rawLog: exitMessage } as TransactionLogEntry;
-        setTransactionLogs(prev => [logEntry, ...prev]);
-        break;
-      case 'csv_ready':
-        logEntry = { ...baseLog, status: 'info', rawLog: `CSV file '${eventData.content.fileName}' is ready.` } as TransactionLogEntry;
-        setTransactionLogs(prev => [logEntry, ...prev]);
-        setSimulationCsvFileName(eventData.content.fileName);
-        break;
-      case 'summary':
-        console.log("Received summary data:", eventData.content);
-        setOverallSavingsPercentage(eventData.content.overall_savings_percentage);
-        setTotalProcessedAmount(eventData.content.total_processed_amount);
-        setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions ?? 0);
-        break;
       case 'chart_update':
         console.log('Received chart update:', eventData.content);
         setTransactionDistributionData(Object.keys(eventData.content.transactionDistribution).map(network => ({
@@ -348,6 +305,26 @@ export default function HomePage() {
         setDailySavingsData(eventData.content.dailySavings);
         setDailyVolumeData(eventData.content.dailyVolume);
         setSavingsByNetworkData(eventData.content.savingsByNetwork);
+        break;
+      case 'transaction_details':
+        // Parse the structured transaction details
+        const details = eventData.content as StructuredTransactionLogEntry;
+        const structuredLogEntry: TransactionLogEntry = {
+          transactionNumber: details.transactionNumber,
+          timestamp: Date.now(), // Use current time for UI display order
+          connector: details.leastCostNetwork !== 'N/A' ? details.leastCostNetwork : details.cardType, // Use LCN or Card Type as connector display
+          routingApproach: 'Debit Routing', // Or dynamically set based on data
+          status: details.status, // Use status from structured data
+          // Store structured data directly, instead of rawLog
+          structuredData: details,
+        };
+        setTransactionLogs(prev => [structuredLogEntry, ...prev]);
+        break;
+      case 'summary':
+        console.log("Received summary data:", eventData.content);
+        setOverallSavingsPercentage(eventData.content.overall_savings_percentage);
+        setTotalProcessedAmount(eventData.content.total_processed_amount);
+        setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions ?? 0);
         break;
       default:
         console.warn("Unknown SSE event type:", eventData.type);
@@ -542,24 +519,33 @@ export default function HomePage() {
                   {transactionLogs.length > 0 ? (
                     groupLogs(transactionLogs).map((logGroup, index) => (
                       <div key={`group-${index}`} className="text-sm p-3 mb-2 border rounded-md font-mono break-all bg-card">
-                        {logGroup.map((log, logIndex) => (
-                          <div key={`${log.timestamp}-${logIndex}`} className="mb-1">
-                            <div className="flex justify-between items-center">
-                              <span className="font-bold text-sm">Log Entry #{log.transactionNumber}</span>
-                              <span className="text-gray-500 dark:text-gray-400">
-                                {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 })}
-                              </span>
-                            </div>
-                            {log.rawLog ? (
-                              <pre className="whitespace-pre-wrap">{log.rawLog}</pre>
-                            ) : (
-                              <>
-                                <div><span className="font-semibold">Processor:</span> {log.connector}</div>
-                                <div><span className="font-semibold">Status:</span> {log.status}</div>
-                              </>
-                            )}
-                          </div>
-                        ))}
+                        {/* Check if the log entry has structured data or is a raw log */}
+                        {logGroup.filter(log => log.structuredData).map((log, logIndex) => (
+                           <div key={`${log.timestamp}-${logIndex}`} className="mb-2 last:mb-0">
+                               {/* Use the pre-formatted output if available */}
+                               {log.structuredData!.formattedOutput ? (
+                                 <pre className="text-xs whitespace-pre font-mono bg-card border rounded-md p-2 shadow-sm">{log.structuredData!.formattedOutput}</pre>
+                               ) : (
+                                 <div className="text-xs bg-card border rounded-md p-2 shadow-sm">
+                                   <div><span className="font-semibold">Txn {log.structuredData!.transactionNumber}:</span> {log.structuredData!.cardType} - ${log.structuredData!.amount.toFixed(2)}</div>
+                                   <div><span className="font-semibold">Status:</span> {log.structuredData!.status}</div>
+                                   {log.structuredData!.isDebitRouted === 'Yes' && (
+                                     <>
+                                       <div><span className="font-semibold">Debit Routed:</span> Yes</div>
+                                       <div><span className="font-semibold">LCN:</span> {log.structuredData!.leastCostNetwork}</div>
+                                       <div><span className="font-semibold">Savings:</span> {log.structuredData!.savingsPercentage.toFixed(2)}%</div>
+                                       {log.structuredData!.coBadgedNetworks && log.structuredData!.coBadgedNetworks !== 'N/A' && (
+                                         <div><span className="font-semibold">Co-badged Networks:</span> {log.structuredData!.coBadgedNetworks}</div>
+                                       )}
+                                     </>
+                                   )}
+                                   {log.structuredData!.isDebitRouted === 'No' && (
+                                     <div><span className="font-semibold">Debit Routed:</span> No</div>
+                                   )}
+                                 </div>
+                               )}
+                           </div>
+                         ))}
                       </div>
                     ))
                   ) : (
