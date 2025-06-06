@@ -381,7 +381,7 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                      "total_debit_routed_transactions": current_global_debit_routed_count # Use the global counter
                  }
                  # Send summary as an SSE event
-# [REMOVED] Invalid print: print(f"data: {json.dumps({'type': 'summary', 'content': partial_summary})}")
+                 print(f"event: summary\ndata: {json.dumps({'type': 'summary', 'content': partial_summary})}\n\n")
 
                  sys.stdout.flush() # Ensure the output is sent immediately
 
@@ -519,7 +519,7 @@ def simulate_debit_routing():
         "total_processed_amount": round(total_processed_all_types_all_batches, 2),
         "total_debit_routed_transactions": final_total_debit_routed # Use final aggregated count here
     }
-# [REMOVED] Invalid print: print(f"data: {json.dumps({'type': 'summary', 'content': summary_data})}")
+    print(f"event: summary\ndata: {json.dumps({'type': 'summary', 'content': summary_data})}\n\n")
 
     write_to_csv(all_simulation_data, CSV_FILENAME)
     if all_simulation_data:
