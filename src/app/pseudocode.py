@@ -39,10 +39,12 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..')) # Assuming 
 CSV_FILENAME = os.path.join(PROJECT_ROOT, 'public', 'debit_routing_simulation_results.csv')
 PAYMENTS_API_URL = 'https://sandbox.hyperswitch.io/payments'
 DECIDE_GATEWAY_API_URL = 'https://sandbox.juspay.in/decide-gateway'
-DECIDE_MERCHANT_ID = DEFAULT_PROFILE_ID
+# DECIDE_MERCHANT_ID will be determined dynamically, renamed for clarity
 
 API_KEY = ""
-PROFILE_ID = ""
+PROFILE_ID = "" # User-inputted profile_id, used for /payments and potentially for /decide-gateway
+MERCHANT_ID = "" # User-inputted merchant_id
+DECIDE_GATEWAY_PROFILE_ID_TO_USE = "" # Profile ID to be used for the decide-gateway API call
 NO_OF_BATCHES = 0
 BATCH_SIZE = 0
 INPUT_DEBIT_PERCENT = 0
@@ -125,8 +127,9 @@ def generate_payment_payload(card_number, amount, payment_type="debit", exp_mont
     return payload
 
 def generate_decide_gateway_payload(payment_id, amount_dollars, card_isin):
+    global DECIDE_GATEWAY_PROFILE_ID_TO_USE # Use the dynamically set profile ID
     return {
-        "merchantId": DECIDE_MERCHANT_ID, "eligibleGatewayList": [payment_id], "rankingAlgorithm": "NTW_BASED_ROUTING", "eliminationEnabled": True,
+        "merchantId": DECIDE_GATEWAY_PROFILE_ID_TO_USE, "eligibleGatewayList": [payment_id], "rankingAlgorithm": "NTW_BASED_ROUTING", "eliminationEnabled": True,
         "paymentInfo": { "paymentId": payment_id, "amount": amount_dollars, "currency": "USD", "customerId": "CUST12345", "udfs": None, "preferredGateway": None, "paymentType": "MOTO_PAYMENT", "metadata": json.dumps({"merchant_category_code":"merchant_category_code_0001","acquirer_country":"US"}), "internalMetadata": None, "isEmi": False, "emiBank": None, "emiTenure": None, "paymentMethodType": "CARD", "paymentMethod": "null", "paymentSource": None, "authType": None, "cardIssuerBankName": None, "cardIsin": card_isin, "cardType": None, "cardSwitchProvider": None }
     }
 
@@ -332,14 +335,16 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
                 'savingsPercentage': txn_data['saving_percentage'],
                 'coBadgedNetworks': txn_data['co_badged_card_networks'],
                 'status': txn_data['status'],
+                'paymentNetwork': txn_data.get('card_network', 'N/A'),
                 'formattedOutput': f"""
-╔════════════════════════════════════════════════════════════════════════════════╗
-║ Transaction #{log_txn_num:03d}: {card_type_display_log:<40} ║
-║ Amount: ${txn_data['amount']:<10,.2f} Status: {txn_data['status']:<20} ║
-║ Debit Routed: {txn_data['is_debit_routed']:<5} LCN: {lcn_log:<10} ║
-║ Savings: {txn_data['saving_percentage']:.2f}% ║
-║ Co-badged Networks: {txn_data['co_badged_card_networks']:<40} ║
-╚════════════════════════════════════════════════════════════════════════════════╝"""
+╔════════════════════════════════════════════════════════════════════════╗
+║ Transaction #{log_txn_num:03d}: {card_type_display_log:<56}            ║
+║ Amount: ${txn_data['amount']:<10,.2f} Status: {txn_data['status']:<36} ║
+║ Payment Network: {txn_data.get('card_network', 'N/A'):<20}             ║
+║ Savings: {txn_data['saving_percentage']:.2f}%                          ║
+║ Debit Routed: {txn_data['is_debit_routed']:<5} LCN: {lcn_log:<10}      ║
+║ Co-badged Networks: {txn_data['co_badged_card_networks']:<50}          ║
+╚════════════════════════════════════════════════════════════════════════╝"""
             }
         }
         print(f"event: transaction_details\ndata: {json.dumps(transaction_details_event)}\n\n")
@@ -395,12 +400,46 @@ def run_batch(batch_id, transactions_for_this_batch, global_run_id, results_list
         })
 
 def simulate_debit_routing():
-    global TOTAL_TRANSACTIONS, current_transaction_number
+    global TOTAL_TRANSACTIONS, current_transaction_number, API_KEY, PROFILE_ID, MERCHANT_ID, DECIDE_GATEWAY_PROFILE_ID_TO_USE
+    
+    # Fetch business profile to determine decide-gateway profile ID
+    business_profile_url = f"https://sandbox.hyperswitch.io/account/{MERCHANT_ID}/business_profile/{PROFILE_ID}"
+    headers = {"api-key": API_KEY, "Content-Type": "application/json"}
+    is_debit_routing_globally_enabled = False # Default
+    
+    try:
+        print(f"event: info\ndata: {json.dumps({'message': f'Fetching business profile from: {business_profile_url}'})}\n\n")
+        response = requests.get(business_profile_url, headers=headers, timeout=10)
+        response.raise_for_status() # Raise an exception for HTTP errors
+        business_profile_data = response.json()
+        is_debit_routing_globally_enabled = business_profile_data.get("is_debit_routing_enabled", False)
+        print(f"event: info\ndata: {json.dumps({'message': f'Business profile fetched. is_debit_routing_enabled: {is_debit_routing_globally_enabled}'})}\n\n")
+    except requests.exceptions.RequestException as e:
+        print(f"event: error\ndata: {json.dumps({'message': f'Error fetching business profile: {e}. Defaulting is_debit_routing_enabled to False.'})}\n\n")
+    except json.JSONDecodeError as e:
+        print(f"event: error\ndata: {json.dumps({'message': f'Error decoding business profile JSON: {e}. Defaulting is_debit_routing_enabled to False.'})}\n\n")
+    except Exception as e: # Catch any other unexpected error
+        print(f"event: error\ndata: {json.dumps({'message': f'Unexpected error fetching business profile: {e}. Defaulting is_debit_routing_enabled to False.'})}\n\n")
+
+    # Debug log for is_debit_routing_globally_enabled
+    debug_message = f'DEBUG: is_debit_routing_globally_enabled = {is_debit_routing_globally_enabled} (type: {type(is_debit_routing_globally_enabled)})'
+    print(f"event: debug\ndata: {json.dumps({'message': debug_message})}\n\n")
+
+    if is_debit_routing_globally_enabled:
+        DECIDE_GATEWAY_PROFILE_ID_TO_USE = PROFILE_ID # User-inputted profile_id
+        message_content_enabled = f'Debit routing is ENABLED globally. Using profile_id {PROFILE_ID} for decide-gateway calls.'
+        print(f"event: info\ndata: {json.dumps({'message': message_content_enabled})}\n\n")
+    else:
+        DECIDE_GATEWAY_PROFILE_ID_TO_USE = "ifashbbfkbhalfl"
+        message_content_disabled = 'Debit routing is DISABLED globally or profile fetch failed. Using profile_id "ifashbbfkbhalfl" for decide-gateway calls.'
+        print(f"event: info\ndata: {json.dumps({'message': message_content_disabled})}\n\n")
+
     TOTAL_TRANSACTIONS = NO_OF_BATCHES * BATCH_SIZE
     current_transaction_number = 0 
     global_run_id = str(uuid.uuid4())
     print(f"event: info\ndata: {json.dumps({'message': f'Starting Simulation with {TOTAL_TRANSACTIONS} transactions ({NO_OF_BATCHES} batches of {BATCH_SIZE})... (Global Run ID: {global_run_id})'})}\n\n")
-    print(f"event: info\ndata: {json.dumps({'message': f'Using API Key: ...{API_KEY[-4:] if len(API_KEY) > 4 else API_KEY}, Profile ID: {PROFILE_ID}, Input Amount Range: ${INPUT_MIN_AMOUNT} - ${INPUT_MAX_AMOUNT}, Targeting Payments: {PAYMENTS_API_URL}, Decide: {DECIDE_GATEWAY_API_URL}'})}\n\n")
+    print(f"event: info\ndata: {json.dumps({'message': f'Using API Key: ...{API_KEY[-4:] if len(API_KEY) > 4 else API_KEY}, Payments Profile ID: {PROFILE_ID}, Decide Gateway Profile ID: {DECIDE_GATEWAY_PROFILE_ID_TO_USE}, Input Amount Range: ${INPUT_MIN_AMOUNT} - ${INPUT_MAX_AMOUNT}'})}\n\n")
+    
     if TOTAL_TRANSACTIONS <= 0: print(f"event: error\ndata: {json.dumps({'message': f'TOTAL_TRANSACTIONS must be positive. Received: {TOTAL_TRANSACTIONS}'})}\n\n"); return
     if not (0 <= INPUT_DEBIT_PERCENT <= 100): print(f"event: error\ndata: {json.dumps({'message': f'INPUT_DEBIT_PERCENT must be 0-100. Received: {INPUT_DEBIT_PERCENT}'})}\n\n"); return
     if not (0 <= INPUT_CO_BADGED_PERCENT <= 100): print(f"event: error\ndata: {json.dumps({'message': f'INPUT_CO_BADGED_PERCENT must be 0-100. Received: {INPUT_CO_BADGED_PERCENT}'})}\n\n"); return
@@ -533,6 +572,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simulate Debit Payments with configurable transaction mix and parallelism.")
     parser.add_argument("--api_key", type=str, default=DEFAULT_API_KEY, help="API Key for Payments API")
     parser.add_argument("--profile_id", type=str, default=DEFAULT_PROFILE_ID, help="Profile ID for Payments API")
+    parser.add_argument("--merchant_id", type=str, required=True, help="Merchant ID for Business Profile API call")
     parser.add_argument("--no_of_batches", type=int, default=DEFAULT_NO_OF_BATCHES, help="Number of batches to run (each in a parallel thread).")
     parser.add_argument("--batch_size", type=int, default=DEFAULT_BATCH_SIZE, help="Number of transactions per batch.")
     parser.add_argument("--input_debit_percent", type=float, default=DEFAULT_INPUT_DEBIT_PERCENT, help="Percentage of total transactions that are debit (0-100).")
@@ -544,6 +584,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     API_KEY = args.api_key
     PROFILE_ID = args.profile_id
+    MERCHANT_ID = args.merchant_id # Assign merchant_id from args
     NO_OF_BATCHES = args.no_of_batches
     BATCH_SIZE = args.batch_size
     INPUT_DEBIT_PERCENT = args.input_debit_percent

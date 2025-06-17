@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     const {
       apiKey,
       profileId,
-      // merchantId, // Not currently used by script for DECIDE_MERCHANT_ID
+      merchantId, // Added merchantId
       numberOfBatches,
       batchSize,
       inputDebitPercent,
@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
       maxAmount,
     } = body;
 
-    if (!apiKey || !profileId) {
-      return NextResponse.json({ success: false, error: 'API Key and Profile ID are required.' }, { status: 400 });
+    if (!apiKey || !profileId || !merchantId) {
+      return NextResponse.json({ success: false, error: 'API Key, Profile ID, and Merchant ID are required.' }, { status: 400 });
     }
 
     const scriptPath = path.join(process.cwd(), 'src', 'app', 'pseudocode.py');
@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
     const args: string[] = ['-u', scriptPath];
     args.push('--api_key', apiKey);
     args.push('--profile_id', profileId);
+    args.push('--merchant_id', merchantId); // Added merchant_id argument
 
     if (numberOfBatches && Number(numberOfBatches) > 0) args.push('--no_of_batches', String(numberOfBatches));
     if (batchSize && Number(batchSize) > 0) args.push('--batch_size', String(batchSize));
