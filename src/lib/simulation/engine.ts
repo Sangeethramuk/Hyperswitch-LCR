@@ -519,7 +519,7 @@ export class PaymentSimulationEngine {
       }
 
       // Get card lists for this run
-      const [runRegulatedCards, runUnregulatedCards, runGlobalNetworkCheaperCards, runNotCoBadgedCards, runCreditCards] = 
+      const [runRegulatedCards, runUnregulatedCards, runGlobalNetworkCheaperCards, runNotCoBadgedCards, runCreditCards] =
         this.getRunSpecificCards(this.params.minAmount, this.params.maxAmount);
 
       // Calculate transaction distribution
@@ -529,7 +529,7 @@ export class PaymentSimulationEngine {
       const overallNumNotCoBadgedDebit = overallNumTotalDebitTxns - overallNumCoBadgedOfDebit;
       const overallNumRegulatedDebitRouted = Math.round(overallNumCoBadgedOfDebit * (this.params.inputRegulatedPercent / 100));
       const overallRemainingCoBadged = overallNumCoBadgedOfDebit - overallNumRegulatedDebitRouted;
-      
+
       let overallNumGlobalNetworkCheaper = 0;
       if (runGlobalNetworkCheaperCards.length > 0) {
         const gncPerc = randomInt(10, 20) / 100;
@@ -539,23 +539,21 @@ export class PaymentSimulationEngine {
 
       // Create all cards to simulate
       const allCardsToSimulateGlobally: CardInfo[] = [];
-      
+
       // Populate cards based on distribution
-      for (let i = 0; i < overallNumCreditTxns; i++) {
-        if (runCreditCards.length > 0) allCardsToSimulateGlobally.push(randomChoice(runCreditCards));
-      }
-      for (let i = 0; i < overallNumNotCoBadgedDebit; i++) {
-        if (runNotCoBadgedCards.length > 0) allCardsToSimulateGlobally.push(randomChoice(runNotCoBadgedCards));
-      }
-      for (let i = 0; i < overallNumRegulatedDebitRouted; i++) {
-        if (runRegulatedCards.length > 0) allCardsToSimulateGlobally.push(randomChoice(runRegulatedCards));
-      }
-      for (let i = 0; i < overallNumGlobalNetworkCheaper; i++) {
-        if (runGlobalNetworkCheaperCards.length > 0) allCardsToSimulateGlobally.push(randomChoice(runGlobalNetworkCheaperCards));
-      }
-      for (let i = 0; i < overallNumUnregulatedDebitRouted; i++) {
-        if (runUnregulatedCards.length > 0) allCardsToSimulateGlobally.push(randomChoice(runUnregulatedCards));
-      }
+      const addCards = (cardList: CardInfo[], count: number) => {
+        for (let i = 0; i < count; i++) {
+          if (cardList.length > 0) {
+            allCardsToSimulateGlobally.push(randomChoice(cardList));
+          }
+        }
+      };
+
+      addCards(runCreditCards, overallNumCreditTxns);
+      addCards(runNotCoBadgedCards, overallNumNotCoBadgedDebit);
+      addCards(runRegulatedCards, overallNumRegulatedDebitRouted);
+      addCards(runGlobalNetworkCheaperCards, overallNumGlobalNetworkCheaper);
+      addCards(runUnregulatedCards, overallNumUnregulatedDebitRouted);
 
       // Shuffle the cards
       const shuffledCards = shuffleArray(allCardsToSimulateGlobally);
