@@ -10,7 +10,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 262 83% 58%; /* Tailwind purple-600 */
+    --primary: 221 83% 53%; /* Tailwind blue-600 */
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -23,7 +23,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --input-border: 0 0% 80%; /* Added for flat input border */
-    --ring: 262 83% 58%; /* purple ring */
+    --ring: 221 83% 53%; /* blue ring */
     --radius: 0.5rem; /* Slightly less rounded for flat */
 
     --chart-1: 44 96% 51%; /* Lime */
@@ -34,12 +34,12 @@
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 262 83% 58%; /* purple for sidebar icons */
+    --sidebar-primary: 221 83% 53%; /* blue for sidebar icons */
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 271 95% 75%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 262 83% 58%; /* purple for sidebar ring */
+    --sidebar-ring: 221 83% 53%; /* blue for sidebar ring */
   }
 
   .dark {
@@ -53,7 +53,7 @@
     --popover: 220 10% 10%;       /* Darker popover */
     --popover-foreground: 0 0% 95%;
     
-    --primary: 262 83% 58%; /* Tailwind purple-600 */
+    --primary: 221 83% 53%; /* Tailwind blue-600 */
     --primary-foreground: 0 0% 100%;  /* White */
     
     --secondary: 220 10% 15%;      /* A bit lighter for secondary elements */
@@ -72,7 +72,7 @@
     --input: 220 10% 10%;         /* Input background, similar to card or slightly different */
     --input-border: 220 10% 20%;  /* Border for input */
     
-    --ring: 262 83% 58%; /* purple ring */
+    --ring: 221 83% 53%; /* blue ring */
 
     /* Sci-fi Chart Colors (can remain distinct or be adjusted for black theme) */
     --chart-1: 44 96% 51%;    /* Stripe - Vibrant Orange */
@@ -83,12 +83,12 @@
     
     --sidebar-background: 220 10% 8%; /* Dark sidebar */
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 262 83% 58%; /* purple for sidebar icons */
+    --sidebar-primary: 221 83% 53%; /* blue for sidebar icons */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 271 80% 65%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 220 10% 15%;
-    --sidebar-ring: 262 83% 58%; /* purple for sidebar ring */
+    --sidebar-ring: 221 83% 53%; /* blue for sidebar ring */
   }
 }
 

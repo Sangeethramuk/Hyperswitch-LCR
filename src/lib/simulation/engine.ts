@@ -598,11 +598,8 @@ export class PaymentSimulationEngine {
       this.emitSSEEvent('info', { message: `💲 Total Amount Processed (All Successful Txns): $${totalProcessedAllTypesAllBatches.toFixed(2)} USD` });
       this.emitSSEEvent('info', { message: `📈 Total Debit Routed Transactions: ${totalDebitRoutedCount}` });
 
-      // Write CSV
-      await this.csvGenerator.ensurePublicDirectory();
-      await this.csvGenerator.writeToCSV(allSimulationData);
-      
-      this.emitSSEEvent('csv_ready', { fileName: this.csvGenerator.getCSVFilename() });
+      // Instead, emit results in-memory:
+      this.emitSSEEvent('simulation_results', { data: allSimulationData });
 
       // Final summary
       const finalSummary: SummaryContent = {

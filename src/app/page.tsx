@@ -74,6 +74,8 @@ export default function HomePage() {
   const parentTab = 'least-cost-routing';
   const [contentTab, setContentTab] = useState<'stats' | 'analytics'>('stats');
 
+  const [simulationResults, setSimulationResults] = useState<any[]>([]);
+
   const { mutate: initiatePythonSimulation, isPending: isPythonSimulationPending } = useMutation<ReadableStream<Uint8Array>, Error, any>({
     mutationFn: async (params: any) => {
       streamControllerRef.current = new AbortController();
@@ -258,7 +260,7 @@ export default function HomePage() {
         if (done) {
           setLastSimulationTimestamp(Date.now());
           console.log("Stream finished.");
-          processCsvForDistribution();
+          processResultsForDistribution();
           break;
         }
         sseBuffer += value;
@@ -343,9 +345,8 @@ export default function HomePage() {
         setTotalProcessedAmount(eventData.content.total_processed_amount * 300);
         setTotalDebitRoutedTransactions(eventData.content.total_debit_routed_transactions * 300);
         break;
-      case 'csv_ready':
-        console.log("CSV file ready:", eventData.content.fileName);
-        setSimulationCsvFileName(eventData.content.fileName);
+      case 'simulation_results':
+        setSimulationResults(eventData.content.data);
         break;
       case 'warning':
         console.warn("Simulation warning:", eventData.content.message);
@@ -431,87 +432,60 @@ export default function HomePage() {
   const handleRequestAiSummary = useCallback(() => { /* ... original ... */ }, [currentControls, transactionLogs, toast, setSummaryAttempted, executeAiSummary]);
   useEffect(() => { /* ... original (for JS sim completion, review if needed for Python SSE) ... */ }, [simulationState, processedPaymentsCount, currentControls, transactionLogs, handleRequestAiSummary, summaryAttempted]);
 
-  const processCsvForDistribution = useCallback(async () => {
-    console.log("Processing CSV for transaction distribution and daily savings...");
-    try {
-      const response = await fetch('/debit_routing_simulation_results.csv');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const csvText = await response.text();
-      const lines = csvText.split('\n');
-      const headers = lines[0].split(',').map(header => header.trim());
-      const networkIndex = headers.indexOf('card_network');
-      const amountIndex = headers.indexOf('amount');
-      const savingsIndex = headers.indexOf('saving_percentage');
-      const statusIndex = headers.indexOf('status');
-      const routedIndex = headers.indexOf('is_debit_routed');
-      const regulatedIndex = headers.indexOf('is_regulated');
-
-      if (networkIndex === -1 || amountIndex === -1 || savingsIndex === -1 || statusIndex === -1 || routedIndex === -1 || regulatedIndex === -1) {
-        console.error("Missing required columns in CSV for distribution.");
-        setTransactionDistributionData([]);
-        setDailySavingsData(null);
-        return;
-      }
-
-      const networkCountMap: { [key: string]: number } = {};
-      let regulatedSavings = 0;
-      let unregulatedSavings = 0;
-
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-
-        const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(value => value.trim()); // Use regex for robust split
-        if (values.length > Math.max(networkIndex, amountIndex, savingsIndex, statusIndex, routedIndex, regulatedIndex)) { // Include regulatedIndex in check
-          const network = values[networkIndex];
-          const amount = parseFloat(values[amountIndex]);
-          const savingPercentage = parseFloat(values[savingsIndex]);
-          const status = values[statusIndex];
-          const isRouted = values[routedIndex];
-          const isRegulated = values[regulatedIndex].toLowerCase() === 'true'; // Get is_regulated value
-
-          // Count all transactions by network that have a valid network
-          if (network && network !== 'N/A') {
-            networkCountMap[network] = (networkCountMap[network] || 0) + 1;
-          }
-
-          if (status === 'succeeded' && isRouted === 'Yes' && !isNaN(amount) && !isNaN(savingPercentage) && network && network !== 'N/A') { // Ensure network is valid and not N/A
-            const savings = amount * (savingPercentage / 100);
-            if (isRegulated) {
-              regulatedSavings += savings;
-            } else {
-              unregulatedSavings += savings;
-            }
-          }
-        }
-      }
-
-      const distributionData = Object.keys(networkCountMap).map(network => ({
-        name: network,
-        value: networkCountMap[network],
-      })).sort((a, b) => b.value - a.value); // Sort by value descending
-
-      console.log("Transaction Distribution Data:", distributionData);
-      setTransactionDistributionData(distributionData);
-
-      // Multiply final savings by 300 for monthly view
-      const monthlyRegulatedSavings = regulatedSavings * 300;
-      const monthlyUnregulatedSavings = unregulatedSavings * 300;
-
-      console.log("Daily Savings Data (Monthly):", { regulated: monthlyRegulatedSavings, unregulated: monthlyUnregulatedSavings });
-      setDailySavingsData({
-        regulated: parseFloat(monthlyRegulatedSavings.toFixed(2)),
-        unregulated: parseFloat(monthlyUnregulatedSavings.toFixed(2))
-      }); // Store rounded monthly savings
-
-    } catch (error) {
-      console.error("Error processing CSV for distribution and daily savings:", error);
+  const processResultsForDistribution = useCallback(() => {
+    if (!simulationResults.length) {
       setTransactionDistributionData([]);
       setDailySavingsData(null);
+      return;
     }
-  }, []);
+
+    // Use simulationResults array directly
+    const networkCountMap: { [key: string]: number } = {};
+    let regulatedSavings = 0;
+    let unregulatedSavings = 0;
+
+    simulationResults.forEach(txn => {
+      const network = txn.card_network;
+      const amount = parseFloat(txn.amount);
+      const savingPercentage = parseFloat(txn.saving_percentage);
+      const status = txn.status;
+      const isRouted = txn.is_debit_routed;
+      const isRegulated = String(txn.is_regulated).toLowerCase() === 'true';
+
+      if (network && network !== 'N/A') {
+        networkCountMap[network] = (networkCountMap[network] || 0) + 1;
+      }
+
+      if (status === 'succeeded' && isRouted === 'Yes' && !isNaN(amount) && !isNaN(savingPercentage) && network && network !== 'N/A') {
+        const savings = amount * (savingPercentage / 100);
+        if (isRegulated) {
+          regulatedSavings += savings;
+        } else {
+          unregulatedSavings += savings;
+        }
+      }
+    });
+
+    const distributionData = Object.keys(networkCountMap).map(network => ({
+      name: network,
+      value: networkCountMap[network],
+    })).sort((a, b) => b.value - a.value);
+
+    setTransactionDistributionData(distributionData);
+
+    // Multiply final savings by 300 for monthly view
+    const monthlyRegulatedSavings = regulatedSavings * 300;
+    const monthlyUnregulatedSavings = unregulatedSavings * 300;
+
+    setDailySavingsData({
+      regulated: parseFloat(monthlyRegulatedSavings.toFixed(2)),
+      unregulated: parseFloat(monthlyUnregulatedSavings.toFixed(2))
+    });
+  }, [simulationResults]);
+
+  useEffect(() => {
+    processResultsForDistribution();
+  }, [simulationResults, processResultsForDistribution]);
 
   return (
     <>
