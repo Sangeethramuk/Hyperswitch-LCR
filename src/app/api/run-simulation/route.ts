@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { spawn, ChildProcessWithoutNullStreams } from 'child_process';
-// import fs from 'fs/promises'; // fs.readFile will be handled by a separate CSV download endpoint
-import path from 'path';
+import { PaymentSimulationEngine } from '@/lib/simulation/engine';
+import { SimulationParams } from '@/lib/simulation/types';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +8,7 @@ export async function POST(request: NextRequest) {
     const {
       apiKey,
       profileId,
-      merchantId, // Added merchantId
+      merchantId,
       numberOfBatches,
       batchSize,
       inputDebitPercent,
@@ -23,95 +22,57 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'API Key, Profile ID, and Merchant ID are required.' }, { status: 400 });
     }
 
-    const scriptPath = path.join(process.cwd(), 'src', 'app', 'pseudocode.py');
-    // const csvPath = path.join(process.cwd(), 'src', 'app', 'debit_routing_simulation_results.csv'); // CSV path for reference, not read here
+    // Create simulation parameters
+    const simulationParams: SimulationParams = {
+      apiKey,
+      profileId,
+      merchantId,
+      numberOfBatches: numberOfBatches || 20,
+      batchSize: batchSize || 50,
+      inputDebitPercent: inputDebitPercent !== undefined ? inputDebitPercent : 90,
+      inputCoBadgedPercent: inputCoBadgedPercent !== undefined ? inputCoBadgedPercent : 80,
+      inputRegulatedPercent: inputRegulatedPercent !== undefined ? inputRegulatedPercent : 50,
+      minAmount: minAmount || 1,
+      maxAmount: maxAmount || 1000,
+    };
 
-    const args: string[] = ['-u', scriptPath];
-    args.push('--api_key', apiKey);
-    args.push('--profile_id', profileId);
-    args.push('--merchant_id', merchantId); // Added merchant_id argument
-
-    if (numberOfBatches && Number(numberOfBatches) > 0) args.push('--no_of_batches', String(numberOfBatches));
-    if (batchSize && Number(batchSize) > 0) args.push('--batch_size', String(batchSize));
-    if (inputDebitPercent !== undefined && !isNaN(parseFloat(String(inputDebitPercent)))) args.push('--input_debit_percent', String(inputDebitPercent));
-    if (inputCoBadgedPercent !== undefined && !isNaN(parseFloat(String(inputCoBadgedPercent)))) args.push('--co_badged_percent', String(inputCoBadgedPercent));
-    if (inputRegulatedPercent !== undefined && !isNaN(parseFloat(String(inputRegulatedPercent)))) args.push('--regulated_percent', String(inputRegulatedPercent));
-    if (minAmount && Number(minAmount) > 0) args.push('--min_amount', String(minAmount));
-    if (maxAmount && Number(maxAmount) > 0) args.push('--max_amount', String(maxAmount));
-    
-    const pythonExecutable = path.join(process.cwd(), '.venv', 'bin', 'python3');
-    let pythonProcess: ChildProcessWithoutNullStreams | null = null;
+    // Create simulation engine
+    const engine = new PaymentSimulationEngine(simulationParams);
 
     const stream = new ReadableStream({
-      start(controller) {
+      async start(controller) {
         try {
-          pythonProcess = spawn(pythonExecutable, args);
-
           const sendEvent = (type: string, content: any) => {
             const message = `data: ${JSON.stringify({ type, content })}\n\n`;
             controller.enqueue(new TextEncoder().encode(message));
           };
 
-          pythonProcess.stdout.on('data', (data) => {
-            const lines = data.toString().split('\n').filter((line:string) => line.trim() !== '');
-            lines.forEach((line:string) => {
-              console.log(`Python stdout: ${line}`);
-              if (line.startsWith('data: ')) {
-                try {
-                  const sseObj = JSON.parse(line.slice(6));
-                  sendEvent(sseObj.type, sseObj.content);
-                } catch (e) {
-                  sendEvent('log', line); // fallback to log if not valid JSON
-                }
-              } else {
-                sendEvent('log', line);
-              }
-            });
+          // Run the simulation and stream events
+          await engine.runSimulation((event) => {
+            sendEvent(event.type, event.content);
           });
 
-          pythonProcess.stderr.on('data', (data) => {
-            const lines = data.toString().split('\n').filter((line:string) => line.trim() !== '');
-            lines.forEach((line:string) => {
-              console.error(`Python stderr: ${line}`);
-              sendEvent('error_log', line);
-            });
-          });
+          // Simulation completed successfully
+          sendEvent('script_exit', { code: 0 });
+          controller.close();
 
-          pythonProcess.on('error', (err) => {
-            console.error('Failed to start Python subprocess.', err);
-            sendEvent('script_error', `Failed to start script: ${err.message}`);
-            controller.close();
-          });
-
-          pythonProcess.on('close', (code) => {
-            console.log(`Python process exited with code ${code}`);
-            sendEvent('script_exit', { code });
-            if (code === 0) {
-              // CSV is generated by the script, client will be notified to download separately
-              sendEvent('csv_ready', { fileName: 'debit_routing_simulation_results.csv' });
-            }
-            controller.close();
-          });
-
-        } catch (e) {
-            let message = 'Unknown error during script execution setup';
-            if (e instanceof Error) message = e.message;
-            console.error('Error setting up script execution:', e);
-            try {
-                const errEvent = `data: ${JSON.stringify({ type: 'script_error', content: `Error setting up script: ${message}` })}\n\n`;
-                controller.enqueue(new TextEncoder().encode(errEvent));
-            } catch (enqueueError) {
-                console.error("Error enqueuing setup error:", enqueueError)
-            }
-            controller.close();
+        } catch (error) {
+          let message = 'Unknown error during simulation execution';
+          if (error instanceof Error) message = error.message;
+          console.error('Error running TypeScript simulation:', error);
+          
+          try {
+            const errEvent = `data: ${JSON.stringify({ type: 'script_error', content: `Simulation error: ${message}` })}\n\n`;
+            controller.enqueue(new TextEncoder().encode(errEvent));
+          } catch (enqueueError) {
+            console.error("Error enqueuing simulation error:", enqueueError);
+          }
+          controller.close();
         }
       },
       cancel(reason) {
         console.log('Stream cancelled by client:', reason);
-        if (pythonProcess && !pythonProcess.killed) {
-          pythonProcess.kill('SIGTERM'); // or 'SIGKILL'
-          console.log('Python process terminated due to client disconnect.');
-        }
+        // TypeScript simulation doesn't need process cleanup like Python subprocess
       },
     });
 
@@ -120,7 +81,6 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
-        // 'X-Accel-Buffering': 'no', // Useful if behind Nginx
       },
     });
 
@@ -130,7 +90,6 @@ export async function POST(request: NextRequest) {
     if (error instanceof Error) {
         message = error.message;
     }
-    // This error is for issues before the stream starts (e.g., request.json() fails)
     return NextResponse.json({ success: false, error: 'Internal server error processing simulation request.', details: message }, { status: 500 });
   }
 }

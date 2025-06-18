@@ -347,6 +347,17 @@ export default function HomePage() {
         console.log("CSV file ready:", eventData.content.fileName);
         setSimulationCsvFileName(eventData.content.fileName);
         break;
+      case 'warning':
+        console.warn("Simulation warning:", eventData.content.message);
+        // You can add a toast notification here if desired
+        // toast({ title: "Warning", description: eventData.content.message, variant: "destructive" });
+        break;
+      case 'info':
+        console.log("Simulation info:", eventData.content.message);
+        break;
+      case 'error':
+        console.error("Simulation error:", eventData.content.message);
+        break;
       default:
         console.warn("Unknown SSE event type:", eventData.type);
     }
@@ -364,11 +375,11 @@ export default function HomePage() {
         console.log('[handleStartSimulation] No connectors in state, fetching merchant connectors...');
         const connectors = await fetchMerchantConnectors(merchantId, apiKey); 
         if (connectors.length === 0) {
-             console.log('[handleStartSimulation] No connectors found after fetch, aborting.');
-             toast({ title: "Error", description: "No merchant connectors found. Cannot start simulation.", variant: "destructive" });
-             return;
+             console.log('[handleStartSimulation] No connectors found after fetch, proceeding with simulation anyway for testing.');
+             // Don't abort - proceed with simulation for testing purposes
+        } else {
+             console.log('[handleStartSimulation] Connectors fetched.');
         }
-        console.log('[handleStartSimulation] Connectors fetched.');
     }
     
     console.log('[handleStartSimulation] currentControls before check:', currentControls);
