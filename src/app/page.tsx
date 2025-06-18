@@ -511,7 +511,33 @@ export default function HomePage() {
               {parentTab !== 'least-cost-routing' ? (
                 <Tabs value={contentTab} onValueChange={tab => setContentTab(tab as 'stats' | 'analytics')} className="flex flex-col h-full">
                   <div className="flex items-center justify-start p-4 pb-0"><TabsList><TabsTrigger value="stats">Stats</TabsTrigger><TabsTrigger value="analytics">Analytics</TabsTrigger></TabsList></div>
-                  <TabsContent value="stats" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-6"><StatsView currentControls={currentControls} merchantConnectors={merchantConnectors} processedPayments={processedPaymentsCount} totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful} totalFailed={accumulatedGlobalStatsRef.current.totalFailed} overallSuccessRateHistory={overallSuccessRateHistory} parentTab={parentTab} successRateHistory={successRateHistory} volumeHistory={volumeHistory} connectorToggleStates={connectorToggleStates} overallSavingsPercentage={overallSavingsPercentage} totalProcessedAmount={totalProcessedAmount} totalDebitRoutedTransactions={totalDebitRoutedTransactions} simulationRunId={lastSimulationTimestamp} transactionDistributionData={transactionDistributionData} dailySavingsData={dailySavingsData} dailyVolumeData={dailyVolumeData} savingsByNetworkData={savingsByNetworkData} realtimeTotalTransactions={realtimeTotalTransactions} /></div></ScrollArea></TabsContent>
+                  <TabsContent value="stats" className="flex-1 h-full">
+                    <ScrollArea className="h-full w-full">
+                      <div className="w-full max-w-full p-6">
+                        <StatsView
+                          currentControls={currentControls}
+                          merchantConnectors={merchantConnectors}
+                          processedPayments={processedPaymentsCount}
+                          totalSuccessful={accumulatedGlobalStatsRef.current.totalSuccessful}
+                          totalFailed={accumulatedGlobalStatsRef.current.totalFailed}
+                          overallSuccessRateHistory={overallSuccessRateHistory}
+                          parentTab={parentTab}
+                          successRateHistory={successRateHistory}
+                          volumeHistory={volumeHistory}
+                          connectorToggleStates={connectorToggleStates}
+                          overallSavingsPercentage={overallSavingsPercentage}
+                          totalProcessedAmount={totalProcessedAmount}
+                          totalDebitRoutedTransactions={totalDebitRoutedTransactions}
+                          simulationRunId={lastSimulationTimestamp}
+                          transactionDistributionData={transactionDistributionData}
+                          dailySavingsData={dailySavingsData}
+                          dailyVolumeData={dailyVolumeData}
+                          savingsByNetworkData={savingsByNetworkData}
+                          realtimeTotalTransactions={realtimeTotalTransactions}
+                        />
+                      </div>
+                    </ScrollArea>
+                  </TabsContent>
                   <TabsContent value="analytics" className="flex-1 h-full"><ScrollArea className="h-full"><div className="p-2 md:p-4 lg:p-6"><div className="bg-white dark:bg-card border border-gray-200 dark:border-border rounded-xl shadow-sm p-6 mb-6"><AnalyticsGraphsView successRateHistory={successRateHistory} volumeHistory={volumeHistory} merchantConnectors={merchantConnectors} connectorToggleStates={connectorToggleStates} /></div></div></ScrollArea></TabsContent>
                 </Tabs>
               ) : (

@@ -128,16 +128,20 @@ export function StatsView({
 
   return (
     <div className="space-y-6 flex flex-col">
-      {/* First row grid */}
-      <div className="grid gap-4 md:grid-cols-3">
+      {/* Responsive grid for all 6 stat cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Monthly Savings Card */}
         <Card>
           <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Savings</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            {/* Calculate total monthly savings by summing regulated and unregulated */}
-            <div className="text-4xl font-bold">${((dailySavingsData?.regulated || 0) + (dailySavingsData?.unregulated || 0)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(0.5rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              ${((dailySavingsData?.regulated || 0) + (dailySavingsData?.unregulated || 0)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+            </div>
           </CardContent>
         </Card>
 
@@ -147,7 +151,12 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Regulated Savings</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${dailySavingsData?.regulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(1rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              ${dailySavingsData?.regulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}
+            </div>
           </CardContent>
         </Card>
 
@@ -157,20 +166,27 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Unregulated Savings</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${dailySavingsData?.unregulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(1rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              ${dailySavingsData?.unregulated?.toLocaleString('en-US', { maximumFractionDigits: 0 }) || '0'}
+            </div>
           </CardContent>
         </Card>
-      </div>
 
-      {/* Second row grid */}
-      <div className="grid grid-cols-3 gap-6">
         {/* Monthly Amount Processed Card */}
         <Card>
           <CardHeader className="px-6 pt-4 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Amount Processed</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">${totalProcessedAmount.toLocaleString()}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(1rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              ${totalProcessedAmount.toLocaleString()}
+            </div>
           </CardContent>
         </Card>
 
@@ -180,7 +196,12 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Total Debit Routed Transactions</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">{totalDebitRoutedTransactions.toLocaleString()}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(1rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              {totalDebitRoutedTransactions.toLocaleString()}
+            </div>
           </CardContent>
         </Card>
 
@@ -190,7 +211,12 @@ export function StatsView({
             <CardTitle className="text-sm font-medium">Total Transactions</CardTitle>
           </CardHeader>
           <CardContent className="py-6 px-6">
-            <div className="text-4xl font-bold">{totalTransactionsToDisplay.toLocaleString()}</div>
+            <div
+              className="font-bold break-all w-full"
+              style={{ fontSize: 'clamp(1rem, 4vw, 2rem)', lineHeight: 1.1 }}
+            >
+              {totalTransactionsToDisplay.toLocaleString()}
+            </div>
           </CardContent>
         </Card>
       </div>
