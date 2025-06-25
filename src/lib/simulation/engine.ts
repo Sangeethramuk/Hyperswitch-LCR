@@ -287,8 +287,9 @@ export class PaymentSimulationEngine {
             
             const debitOutput = resp2Json.debit_routing_output || {};
             const isRegulated = debitOutput.is_regulated;
-            const networks = debitOutput.co_badged_card_networks || [];
-            const savingsPct = debitOutput.saving_percentage || 0;
+            const networksInfo = debitOutput.co_badged_card_networks_info || [];
+            const networks = networksInfo.map((n: { network: any; }) => n.network);
+            const savingsPct = (networksInfo.length > 0 && networksInfo[0].saving_percentage) ? networksInfo[0].saving_percentage : 0;
 
             txnData.co_badged_card_networks = networks.length > 0 ? networks.join(', ') : 'N/A';
             if (txnData.co_badged_card_networks !== 'N/A') {
