@@ -17,7 +17,6 @@ export class SimulationHttpClient {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'api-key': this.apiKey,
-      'x-feature': 'router-custom'
     };
 
     try {
